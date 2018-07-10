@@ -1,0 +1,6 @@
+framework module KIWIKSDK {
+  umbrella header "KIWIKSDK.h"
+
+  export *
+  module * { export * }
+}

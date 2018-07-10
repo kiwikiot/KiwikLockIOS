@@ -1,0 +1,41 @@
+//
+//  SmartHome-prefix.pch
+//  SmartHomeDemo
+//
+//  Created by Levy Xu on 2018/6/14.
+//  Copyright © 2018年 Levy Xu. All rights reserved.
+//
+
+#ifndef SmartHome_prefix_pch
+#define SmartHome_prefix_pch
+
+#import <UIKit/UIKit.h>
+#import <KIWIKSDK/KIWIKSDK.h>
+#import "MJExtension.h"
+#import "UIView+Positioning.h"
+#import "KIWIKUtils.h"
+#import "MJRefresh.h"
+#import "JLCategorys.h"
+#import "SVProgressHUD.h"
+#import "CategoryHeader.h"
+#import "SingletonHeader.h"
+#import "FRAlertController.h"
+#import "FFToast.h"
+#import "FTPopOverMenu.h"
+
+#define DOC_DIR            [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+#define KEY_WINDOW         [[UIApplication sharedApplication] keyWindow]
+#define NDSUD              [NSUserDefaults standardUserDefaults]
+#define NNCDC              [NSNotificationCenter defaultCenter]
+#define FM                 [NSFileManager defaultManager]
+//#define SCREEN_WIDTH       ([[UIScreen mainScreen] bounds].size.width)
+//#define SCREEN_HEIGHT      ([[UIScreen mainScreen] bounds].size.height)
+#define IS_IPHONEX         (([[UIScreen mainScreen] bounds].size.height - 812) ? NO : YES)
+#define SafeInsets_1       (IS_IPHONEX ? UIEdgeInsetsMake(44, 0, 34, 0) : UIEdgeInsetsMake(20, 0, 0, 0))
+#define SafeInsets_2       (IS_IPHONEX ? UIEdgeInsetsMake(88, 0, 34, 0) : UIEdgeInsetsMake(64, 0, 0, 0))
+
+#define MAIN_THEME_COLOR   [UIColor colorWithHex:@"#008CFF"]
+#define MAIN_THEME_BG_COLOR   RGB(240, 240, 240)
+#define PixelOne           (1 / [[UIScreen mainScreen] scale])
+
+#endif /* SmartHome_prefix_pch */

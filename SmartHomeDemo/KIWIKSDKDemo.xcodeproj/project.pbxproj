@@ -1,0 +1,669 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D30AF2B420EA6886000D5BFB /* KIWIKSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30AF2B320EA6886000D5BFB /* KIWIKSettingsViewController.m */; };
+		D32F0DD720E0AAAD0057C442 /* KIWIKSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32F0DD620E0AAAD0057C442 /* KIWIKSDK.framework */; };
+		D344BBCF20D8AA3D00332FAD /* KIWIKWifiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBCE20D8AA3D00332FAD /* KIWIKWifiViewController.m */; };
+		D344BBD220D8AA4B00332FAD /* KIWIKBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBD120D8AA4B00332FAD /* KIWIKBaseViewController.m */; };
+		D344BBD620D8AAC300332FAD /* UIButton+LXMImagePosition.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBD420D8AAC300332FAD /* UIButton+LXMImagePosition.m */; };
+		D344BBDB20D8ABC200332FAD /* KIWIKSSID.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBDA20D8ABC200332FAD /* KIWIKSSID.m */; };
+		D344BBDE20D8AC1B00332FAD /* WifiTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBDD20D8AC1B00332FAD /* WifiTextField.m */; };
+		D344BBE120D8AEA600332FAD /* UILabel+KIWIK.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBDF20D8AEA600332FAD /* UILabel+KIWIK.m */; };
+		D344BBE420D8B03400332FAD /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBE220D8B03400332FAD /* NSString+Category.m */; };
+		D344BBE720D8B05A00332FAD /* KIWIKHotspotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBE620D8B05A00332FAD /* KIWIKHotspotViewController.m */; };
+		D344BBEA20D8B06F00332FAD /* KIWIKConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBE820D8B06F00332FAD /* KIWIKConnectViewController.m */; };
+		D344BBF720D8B1BE00332FAD /* KIWIKAddKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBF620D8B1BE00332FAD /* KIWIKAddKit.m */; };
+		D344BBFA20D8B2CF00332FAD /* MethodButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBF820D8B2CE00332FAD /* MethodButton.m */; };
+		D344BBFD20D8B4AB00332FAD /* CALayer+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBFC20D8B4AB00332FAD /* CALayer+Animation.m */; };
+		D344BC0020D8B58300332FAD /* KIWIKResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBFF20D8B58300332FAD /* KIWIKResultViewController.m */; };
+		D344BC0220D8D85C00332FAD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D344BC0120D8D85C00332FAD /* Localizable.strings */; };
+		D344BC0920D8F57500332FAD /* WTReParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC0620D8F57500332FAD /* WTReParser.m */; };
+		D344BC0A20D8F57500332FAD /* WTReTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC0820D8F57500332FAD /* WTReTextField.m */; };
+		D344BC1120D8F85600332FAD /* KIWIKPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC0F20D8F85500332FAD /* KIWIKPasswordView.m */; };
+		D344BC1420D9061F00332FAD /* KIWIKLockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC1220D9061F00332FAD /* KIWIKLockViewController.m */; };
+		D344BC2820D9069A00332FAD /* KIWIKHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC2620D9069A00332FAD /* KIWIKHistoryViewController.m */; };
+		D344BC2920D9069A00332FAD /* KIWIKHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC2720D9069A00332FAD /* KIWIKHistoryCell.m */; };
+		D344BC7420DA2A9000332FAD /* KIWIKUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC6F20DA2A8E00332FAD /* KIWIKUsersViewController.m */; };
+		D344BC7920DA6E0B00332FAD /* UITableView+KIWIK.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC7820DA6E0A00332FAD /* UITableView+KIWIK.m */; };
+		D344BC8C20DCDA1900332FAD /* KIWIKLockService.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC8B20DCDA1900332FAD /* KIWIKLockService.m */; };
+		D344BC9620DCE0DC00332FAD /* KIWIKEvent+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC9520DCE0DC00332FAD /* KIWIKEvent+UI.m */; };
+		D344BC9D20DD7DE000332FAD /* KIWIKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC9C20DD7DE000332FAD /* KIWIKUser.m */; };
+		D36A61EF20D21E8C00CEDA57 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D36A61EE20D21E8C00CEDA57 /* AppDelegate.m */; };
+		D36A61F220D21E8C00CEDA57 /* KIWIKDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D36A61F120D21E8C00CEDA57 /* KIWIKDevicesViewController.m */; };
+		D36A61F720D21E8D00CEDA57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36A61F620D21E8D00CEDA57 /* Assets.xcassets */; };
+		D36A61FA20D21E8D00CEDA57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D36A61F820D21E8D00CEDA57 /* LaunchScreen.storyboard */; };
+		D36A61FD20D21E8D00CEDA57 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D36A61FC20D21E8D00CEDA57 /* main.m */; };
+		D36A635720D255AE00CEDA57 /* KIWIKUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D36A635620D255AE00CEDA57 /* KIWIKUtils.m */; };
+		D36A652B20D3888800CEDA57 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D36A652A20D3888800CEDA57 /* QuartzCore.framework */; };
+		D36A654820D39C9D00CEDA57 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D36A654720D39C9C00CEDA57 /* Security.framework */; };
+		D36A654A20D39CFD00CEDA57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D36A654920D39CFC00CEDA57 /* Foundation.framework */; };
+		D36A654E20D39D5300CEDA57 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D36A654D20D39D5300CEDA57 /* libicucore.tbd */; };
+		D3D3EC3620EF0EED00549AEC /* Algorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D3EC3320EF0EEC00549AEC /* Algorithm.m */; };
+		D3D3EC3720EF0EED00549AEC /* Jwt.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D3EC3520EF0EEC00549AEC /* Jwt.m */; };
+		FC193E3561A012FC0660F0CC /* libPods-KIWIKSDKDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 223FACE0A202D55B65688FDA /* libPods-KIWIKSDKDemo.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		223FACE0A202D55B65688FDA /* libPods-KIWIKSDKDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KIWIKSDKDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6ABC3CE0C7355FCC0B7D6CB2 /* Pods-KIWIKSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KIWIKSDKDemo.release.xcconfig"; path = "../Pods/Target Support Files/Pods-KIWIKSDKDemo/Pods-KIWIKSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
+		73D93598689FD892A84C734C /* Pods-KIWIKSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KIWIKSDKDemo.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-KIWIKSDKDemo/Pods-KIWIKSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		D30AF2B220EA6886000D5BFB /* KIWIKSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KIWIKSettingsViewController.h; sourceTree = "<group>"; };
+		D30AF2B320EA6886000D5BFB /* KIWIKSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KIWIKSettingsViewController.m; sourceTree = "<group>"; };
+		D32F0DD620E0AAAD0057C442 /* KIWIKSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KIWIKSDK.framework; path = ../../../build/KIWIKSDK.framework; sourceTree = "<group>"; };
+		D344BBCD20D8AA3C00332FAD /* KIWIKWifiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKWifiViewController.h; sourceTree = "<group>"; };
+		D344BBCE20D8AA3D00332FAD /* KIWIKWifiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKWifiViewController.m; sourceTree = "<group>"; };
+		D344BBD020D8AA4B00332FAD /* KIWIKBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKBaseViewController.h; sourceTree = "<group>"; };
+		D344BBD120D8AA4B00332FAD /* KIWIKBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKBaseViewController.m; sourceTree = "<group>"; };
+		D344BBD420D8AAC300332FAD /* UIButton+LXMImagePosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+LXMImagePosition.m"; sourceTree = "<group>"; };
+		D344BBD520D8AAC300332FAD /* UIButton+LXMImagePosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+LXMImagePosition.h"; sourceTree = "<group>"; };
+		D344BBD720D8AAE200332FAD /* CategoryHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryHeader.h; sourceTree = "<group>"; };
+		D344BBD820D8AB9B00332FAD /* SingletonHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonHeader.h; sourceTree = "<group>"; };
+		D344BBD920D8ABC200332FAD /* KIWIKSSID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKSSID.h; sourceTree = "<group>"; };
+		D344BBDA20D8ABC200332FAD /* KIWIKSSID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKSSID.m; sourceTree = "<group>"; };
+		D344BBDC20D8AC1B00332FAD /* WifiTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WifiTextField.h; sourceTree = "<group>"; };
+		D344BBDD20D8AC1B00332FAD /* WifiTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WifiTextField.m; sourceTree = "<group>"; };
+		D344BBDF20D8AEA600332FAD /* UILabel+KIWIK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+KIWIK.m"; sourceTree = "<group>"; };
+		D344BBE020D8AEA600332FAD /* UILabel+KIWIK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+KIWIK.h"; sourceTree = "<group>"; };
+		D344BBE220D8B03400332FAD /* NSString+Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Category.m"; sourceTree = "<group>"; };
+		D344BBE320D8B03400332FAD /* NSString+Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Category.h"; sourceTree = "<group>"; };
+		D344BBE520D8B05900332FAD /* KIWIKHotspotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKHotspotViewController.h; sourceTree = "<group>"; };
+		D344BBE620D8B05A00332FAD /* KIWIKHotspotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKHotspotViewController.m; sourceTree = "<group>"; };
+		D344BBE820D8B06F00332FAD /* KIWIKConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKConnectViewController.m; sourceTree = "<group>"; };
+		D344BBE920D8B06F00332FAD /* KIWIKConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKConnectViewController.h; sourceTree = "<group>"; };
+		D344BBF520D8B1BD00332FAD /* KIWIKAddKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKAddKit.h; sourceTree = "<group>"; };
+		D344BBF620D8B1BE00332FAD /* KIWIKAddKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKAddKit.m; sourceTree = "<group>"; };
+		D344BBF820D8B2CE00332FAD /* MethodButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodButton.m; sourceTree = "<group>"; };
+		D344BBF920D8B2CE00332FAD /* MethodButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MethodButton.h; sourceTree = "<group>"; };
+		D344BBFB20D8B4AB00332FAD /* CALayer+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Animation.h"; sourceTree = "<group>"; };
+		D344BBFC20D8B4AB00332FAD /* CALayer+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Animation.m"; sourceTree = "<group>"; };
+		D344BBFE20D8B58200332FAD /* KIWIKResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKResultViewController.h; sourceTree = "<group>"; };
+		D344BBFF20D8B58300332FAD /* KIWIKResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKResultViewController.m; sourceTree = "<group>"; };
+		D344BC0120D8D85C00332FAD /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		D344BC0520D8F57500332FAD /* WTReParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTReParser.h; sourceTree = "<group>"; };
+		D344BC0620D8F57500332FAD /* WTReParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTReParser.m; sourceTree = "<group>"; };
+		D344BC0720D8F57500332FAD /* WTReTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTReTextField.h; sourceTree = "<group>"; };
+		D344BC0820D8F57500332FAD /* WTReTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTReTextField.m; sourceTree = "<group>"; };
+		D344BC0F20D8F85500332FAD /* KIWIKPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKPasswordView.m; sourceTree = "<group>"; };
+		D344BC1020D8F85600332FAD /* KIWIKPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKPasswordView.h; sourceTree = "<group>"; };
+		D344BC1220D9061F00332FAD /* KIWIKLockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKLockViewController.m; sourceTree = "<group>"; };
+		D344BC1320D9061F00332FAD /* KIWIKLockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKLockViewController.h; sourceTree = "<group>"; };
+		D344BC2420D9069900332FAD /* KIWIKHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKHistoryViewController.h; sourceTree = "<group>"; };
+		D344BC2520D9069900332FAD /* KIWIKHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKHistoryCell.h; sourceTree = "<group>"; };
+		D344BC2620D9069A00332FAD /* KIWIKHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKHistoryViewController.m; sourceTree = "<group>"; };
+		D344BC2720D9069A00332FAD /* KIWIKHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKHistoryCell.m; sourceTree = "<group>"; };
+		D344BC6E20DA2A8E00332FAD /* KIWIKUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKUsersViewController.h; sourceTree = "<group>"; };
+		D344BC6F20DA2A8E00332FAD /* KIWIKUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKUsersViewController.m; sourceTree = "<group>"; };
+		D344BC7720DA6E0A00332FAD /* UITableView+KIWIK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+KIWIK.h"; sourceTree = "<group>"; };
+		D344BC7820DA6E0A00332FAD /* UITableView+KIWIK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+KIWIK.m"; sourceTree = "<group>"; };
+		D344BC8A20DCDA1900332FAD /* KIWIKLockService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KIWIKLockService.h; sourceTree = "<group>"; };
+		D344BC8B20DCDA1900332FAD /* KIWIKLockService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KIWIKLockService.m; sourceTree = "<group>"; };
+		D344BC9420DCE0DC00332FAD /* KIWIKEvent+UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KIWIKEvent+UI.h"; sourceTree = "<group>"; };
+		D344BC9520DCE0DC00332FAD /* KIWIKEvent+UI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "KIWIKEvent+UI.m"; sourceTree = "<group>"; };
+		D344BC9B20DD7DE000332FAD /* KIWIKUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KIWIKUser.h; sourceTree = "<group>"; };
+		D344BC9C20DD7DE000332FAD /* KIWIKUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KIWIKUser.m; sourceTree = "<group>"; };
+		D36A61EA20D21E8C00CEDA57 /* KIWIKSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KIWIKSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D36A61ED20D21E8C00CEDA57 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D36A61EE20D21E8C00CEDA57 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D36A61F020D21E8C00CEDA57 /* KIWIKDevicesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KIWIKDevicesViewController.h; sourceTree = "<group>"; };
+		D36A61F120D21E8C00CEDA57 /* KIWIKDevicesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KIWIKDevicesViewController.m; sourceTree = "<group>"; };
+		D36A61F620D21E8D00CEDA57 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D36A61F920D21E8D00CEDA57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D36A61FB20D21E8D00CEDA57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D36A61FC20D21E8D00CEDA57 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D36A620420D21EDD00CEDA57 /* SmartHomeSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SmartHomeSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D36A635420D2484000CEDA57 /* SmartHome-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartHome-prefix.pch"; sourceTree = "<group>"; };
+		D36A635520D255AE00CEDA57 /* KIWIKUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KIWIKUtils.h; sourceTree = "<group>"; };
+		D36A635620D255AE00CEDA57 /* KIWIKUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KIWIKUtils.m; sourceTree = "<group>"; };
+		D36A652A20D3888800CEDA57 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D36A654720D39C9C00CEDA57 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D36A654920D39CFC00CEDA57 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D36A654D20D39D5300CEDA57 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		D3D3EC3220EF0EEC00549AEC /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Algorithm.h; sourceTree = "<group>"; };
+		D3D3EC3320EF0EEC00549AEC /* Algorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Algorithm.m; sourceTree = "<group>"; };
+		D3D3EC3420EF0EEC00549AEC /* Jwt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jwt.h; sourceTree = "<group>"; };
+		D3D3EC3520EF0EEC00549AEC /* Jwt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jwt.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D36A61E720D21E8C00CEDA57 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D36A654E20D39D5300CEDA57 /* libicucore.tbd in Frameworks */,
+				D32F0DD720E0AAAD0057C442 /* KIWIKSDK.framework in Frameworks */,
+				D36A654A20D39CFD00CEDA57 /* Foundation.framework in Frameworks */,
+				D36A654820D39C9D00CEDA57 /* Security.framework in Frameworks */,
+				D36A652B20D3888800CEDA57 /* QuartzCore.framework in Frameworks */,
+				FC193E3561A012FC0660F0CC /* libPods-KIWIKSDKDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1011C4303911F4BE02F5D5A0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				73D93598689FD892A84C734C /* Pods-KIWIKSDKDemo.debug.xcconfig */,
+				6ABC3CE0C7355FCC0B7D6CB2 /* Pods-KIWIKSDKDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D30AF2B120EA6869000D5BFB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D30AF2B220EA6886000D5BFB /* KIWIKSettingsViewController.h */,
+				D30AF2B320EA6886000D5BFB /* KIWIKSettingsViewController.m */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		D344BBA720D5FA1300332FAD /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				D32F0DD620E0AAAD0057C442 /* KIWIKSDK.framework */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		D344BBAA20D5FE8300332FAD /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				D344BBD920D8ABC200332FAD /* KIWIKSSID.h */,
+				D344BBDA20D8ABC200332FAD /* KIWIKSSID.m */,
+				D344BBDC20D8AC1B00332FAD /* WifiTextField.h */,
+				D344BBDD20D8AC1B00332FAD /* WifiTextField.m */,
+				D344BBF520D8B1BD00332FAD /* KIWIKAddKit.h */,
+				D344BBF620D8B1BE00332FAD /* KIWIKAddKit.m */,
+				D344BBF920D8B2CE00332FAD /* MethodButton.h */,
+				D344BBF820D8B2CE00332FAD /* MethodButton.m */,
+				D344BBD020D8AA4B00332FAD /* KIWIKBaseViewController.h */,
+				D344BBD120D8AA4B00332FAD /* KIWIKBaseViewController.m */,
+				D344BBCD20D8AA3C00332FAD /* KIWIKWifiViewController.h */,
+				D344BBCE20D8AA3D00332FAD /* KIWIKWifiViewController.m */,
+				D344BBE520D8B05900332FAD /* KIWIKHotspotViewController.h */,
+				D344BBE620D8B05A00332FAD /* KIWIKHotspotViewController.m */,
+				D344BBE920D8B06F00332FAD /* KIWIKConnectViewController.h */,
+				D344BBE820D8B06F00332FAD /* KIWIKConnectViewController.m */,
+				D344BBFE20D8B58200332FAD /* KIWIKResultViewController.h */,
+				D344BBFF20D8B58300332FAD /* KIWIKResultViewController.m */,
+			);
+			path = Connect;
+			sourceTree = "<group>";
+		};
+		D344BBD320D8AAAE00332FAD /* Catetory */ = {
+			isa = PBXGroup;
+			children = (
+				D344BC7720DA6E0A00332FAD /* UITableView+KIWIK.h */,
+				D344BC7820DA6E0A00332FAD /* UITableView+KIWIK.m */,
+				D344BBFB20D8B4AB00332FAD /* CALayer+Animation.h */,
+				D344BBFC20D8B4AB00332FAD /* CALayer+Animation.m */,
+				D344BBE320D8B03400332FAD /* NSString+Category.h */,
+				D344BBE220D8B03400332FAD /* NSString+Category.m */,
+				D344BBE020D8AEA600332FAD /* UILabel+KIWIK.h */,
+				D344BBDF20D8AEA600332FAD /* UILabel+KIWIK.m */,
+				D344BBD520D8AAC300332FAD /* UIButton+LXMImagePosition.h */,
+				D344BBD420D8AAC300332FAD /* UIButton+LXMImagePosition.m */,
+				D344BBD720D8AAE200332FAD /* CategoryHeader.h */,
+			);
+			path = Catetory;
+			sourceTree = "<group>";
+		};
+		D344BC0320D8F18E00332FAD /* Lock */ = {
+			isa = PBXGroup;
+			children = (
+				D344BC8A20DCDA1900332FAD /* KIWIKLockService.h */,
+				D344BC8B20DCDA1900332FAD /* KIWIKLockService.m */,
+				D344BC1020D8F85600332FAD /* KIWIKPasswordView.h */,
+				D344BC0F20D8F85500332FAD /* KIWIKPasswordView.m */,
+				D344BC2520D9069900332FAD /* KIWIKHistoryCell.h */,
+				D344BC2720D9069A00332FAD /* KIWIKHistoryCell.m */,
+				D36A635520D255AE00CEDA57 /* KIWIKUtils.h */,
+				D36A635620D255AE00CEDA57 /* KIWIKUtils.m */,
+				D344BC9420DCE0DC00332FAD /* KIWIKEvent+UI.h */,
+				D344BC9520DCE0DC00332FAD /* KIWIKEvent+UI.m */,
+				D344BC9B20DD7DE000332FAD /* KIWIKUser.h */,
+				D344BC9C20DD7DE000332FAD /* KIWIKUser.m */,
+				D36A61F020D21E8C00CEDA57 /* KIWIKDevicesViewController.h */,
+				D36A61F120D21E8C00CEDA57 /* KIWIKDevicesViewController.m */,
+				D344BC1320D9061F00332FAD /* KIWIKLockViewController.h */,
+				D344BC1220D9061F00332FAD /* KIWIKLockViewController.m */,
+				D344BC2420D9069900332FAD /* KIWIKHistoryViewController.h */,
+				D344BC2620D9069A00332FAD /* KIWIKHistoryViewController.m */,
+				D344BC6E20DA2A8E00332FAD /* KIWIKUsersViewController.h */,
+				D344BC6F20DA2A8E00332FAD /* KIWIKUsersViewController.m */,
+			);
+			path = Lock;
+			sourceTree = "<group>";
+		};
+		D344BC0420D8F57500332FAD /* WTReTextField */ = {
+			isa = PBXGroup;
+			children = (
+				D344BC0520D8F57500332FAD /* WTReParser.h */,
+				D344BC0620D8F57500332FAD /* WTReParser.m */,
+				D344BC0720D8F57500332FAD /* WTReTextField.h */,
+				D344BC0820D8F57500332FAD /* WTReTextField.m */,
+			);
+			path = WTReTextField;
+			sourceTree = "<group>";
+		};
+		D36A61E120D21E8C00CEDA57 = {
+			isa = PBXGroup;
+			children = (
+				D36A61EC20D21E8C00CEDA57 /* SmartHomeDemo */,
+				D36A61EB20D21E8C00CEDA57 /* Products */,
+				D36A620320D21EDD00CEDA57 /* Frameworks */,
+				1011C4303911F4BE02F5D5A0 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		D36A61EB20D21E8C00CEDA57 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D36A61EA20D21E8C00CEDA57 /* KIWIKSDKDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D36A61EC20D21E8C00CEDA57 /* SmartHomeDemo */ = {
+			isa = PBXGroup;
+			children = (
+				D36A61ED20D21E8C00CEDA57 /* AppDelegate.h */,
+				D36A61EE20D21E8C00CEDA57 /* AppDelegate.m */,
+				D30AF2B120EA6869000D5BFB /* Settings */,
+				D344BC0320D8F18E00332FAD /* Lock */,
+				D344BBAA20D5FE8300332FAD /* Connect */,
+				D344BBA720D5FA1300332FAD /* SDK */,
+				D36A633320D247F600CEDA57 /* Vendor */,
+				D344BBD320D8AAAE00332FAD /* Catetory */,
+				D36A61F620D21E8D00CEDA57 /* Assets.xcassets */,
+				D36A61F820D21E8D00CEDA57 /* LaunchScreen.storyboard */,
+				D344BC0120D8D85C00332FAD /* Localizable.strings */,
+				D36A61FB20D21E8D00CEDA57 /* Info.plist */,
+				D36A61FC20D21E8D00CEDA57 /* main.m */,
+				D344BBD820D8AB9B00332FAD /* SingletonHeader.h */,
+				D36A635420D2484000CEDA57 /* SmartHome-prefix.pch */,
+			);
+			path = SmartHomeDemo;
+			sourceTree = "<group>";
+		};
+		D36A620320D21EDD00CEDA57 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D36A654D20D39D5300CEDA57 /* libicucore.tbd */,
+				D36A654920D39CFC00CEDA57 /* Foundation.framework */,
+				D36A654720D39C9C00CEDA57 /* Security.framework */,
+				D36A652A20D3888800CEDA57 /* QuartzCore.framework */,
+				D36A620420D21EDD00CEDA57 /* SmartHomeSDK.framework */,
+				223FACE0A202D55B65688FDA /* libPods-KIWIKSDKDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D36A633320D247F600CEDA57 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				D3D3EC3120EF0EEC00549AEC /* jwt */,
+				D344BC0420D8F57500332FAD /* WTReTextField */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		D3D3EC3120EF0EEC00549AEC /* jwt */ = {
+			isa = PBXGroup;
+			children = (
+				D3D3EC3220EF0EEC00549AEC /* Algorithm.h */,
+				D3D3EC3320EF0EEC00549AEC /* Algorithm.m */,
+				D3D3EC3420EF0EEC00549AEC /* Jwt.h */,
+				D3D3EC3520EF0EEC00549AEC /* Jwt.m */,
+			);
+			path = jwt;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D36A61E920D21E8C00CEDA57 /* KIWIKSDKDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D36A620020D21E8D00CEDA57 /* Build configuration list for PBXNativeTarget "KIWIKSDKDemo" */;
+			buildPhases = (
+				CE1B66E56828C1AA96211A0A /* [CP] Check Pods Manifest.lock */,
+				D36A61E620D21E8C00CEDA57 /* Sources */,
+				D36A61E720D21E8C00CEDA57 /* Frameworks */,
+				D36A61E820D21E8C00CEDA57 /* Resources */,
+				2243000D05EA9F5BF181E3A1 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KIWIKSDKDemo;
+			productName = SmartHomeDemo;
+			productReference = D36A61EA20D21E8C00CEDA57 /* KIWIKSDKDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D36A61E220D21E8C00CEDA57 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Levy Xu";
+				TargetAttributes = {
+					D36A61E920D21E8C00CEDA57 = {
+						CreatedOnToolsVersion = 9.4;
+					};
+				};
+			};
+			buildConfigurationList = D36A61E520D21E8C00CEDA57 /* Build configuration list for PBXProject "KIWIKSDKDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D36A61E120D21E8C00CEDA57;
+			productRefGroup = D36A61EB20D21E8C00CEDA57 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D36A61E920D21E8C00CEDA57 /* KIWIKSDKDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D36A61E820D21E8C00CEDA57 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D344BC0220D8D85C00332FAD /* Localizable.strings in Resources */,
+				D36A61FA20D21E8D00CEDA57 /* LaunchScreen.storyboard in Resources */,
+				D36A61F720D21E8D00CEDA57 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2243000D05EA9F5BF181E3A1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/../Pods/Target Support Files/Pods-KIWIKSDKDemo/Pods-KIWIKSDKDemo-resources.sh",
+				"${PODS_ROOT}/AXStretchableHeaderTabViewController/Classes/AXStretchableHeaderTabViewController.xib",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FFToast/FFToast.bundle",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AXStretchableHeaderTabViewController.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FFToast.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-KIWIKSDKDemo/Pods-KIWIKSDKDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE1B66E56828C1AA96211A0A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KIWIKSDKDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D36A61E620D21E8C00CEDA57 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D344BBFA20D8B2CF00332FAD /* MethodButton.m in Sources */,
+				D344BBD220D8AA4B00332FAD /* KIWIKBaseViewController.m in Sources */,
+				D344BBDE20D8AC1B00332FAD /* WifiTextField.m in Sources */,
+				D344BBF720D8B1BE00332FAD /* KIWIKAddKit.m in Sources */,
+				D344BC2820D9069A00332FAD /* KIWIKHistoryViewController.m in Sources */,
+				D344BBEA20D8B06F00332FAD /* KIWIKConnectViewController.m in Sources */,
+				D344BBE720D8B05A00332FAD /* KIWIKHotspotViewController.m in Sources */,
+				D344BBCF20D8AA3D00332FAD /* KIWIKWifiViewController.m in Sources */,
+				D344BC7420DA2A9000332FAD /* KIWIKUsersViewController.m in Sources */,
+				D344BC9620DCE0DC00332FAD /* KIWIKEvent+UI.m in Sources */,
+				D344BBFD20D8B4AB00332FAD /* CALayer+Animation.m in Sources */,
+				D344BC0A20D8F57500332FAD /* WTReTextField.m in Sources */,
+				D344BBDB20D8ABC200332FAD /* KIWIKSSID.m in Sources */,
+				D344BC2920D9069A00332FAD /* KIWIKHistoryCell.m in Sources */,
+				D30AF2B420EA6886000D5BFB /* KIWIKSettingsViewController.m in Sources */,
+				D36A635720D255AE00CEDA57 /* KIWIKUtils.m in Sources */,
+				D344BC9D20DD7DE000332FAD /* KIWIKUser.m in Sources */,
+				D344BC0020D8B58300332FAD /* KIWIKResultViewController.m in Sources */,
+				D344BC1120D8F85600332FAD /* KIWIKPasswordView.m in Sources */,
+				D344BBE120D8AEA600332FAD /* UILabel+KIWIK.m in Sources */,
+				D344BC7920DA6E0B00332FAD /* UITableView+KIWIK.m in Sources */,
+				D36A61F220D21E8C00CEDA57 /* KIWIKDevicesViewController.m in Sources */,
+				D3D3EC3720EF0EED00549AEC /* Jwt.m in Sources */,
+				D344BC0920D8F57500332FAD /* WTReParser.m in Sources */,
+				D344BC1420D9061F00332FAD /* KIWIKLockViewController.m in Sources */,
+				D344BBE420D8B03400332FAD /* NSString+Category.m in Sources */,
+				D3D3EC3620EF0EED00549AEC /* Algorithm.m in Sources */,
+				D344BBD620D8AAC300332FAD /* UIButton+LXMImagePosition.m in Sources */,
+				D36A61FD20D21E8D00CEDA57 /* main.m in Sources */,
+				D344BC8C20DCDA1900332FAD /* KIWIKLockService.m in Sources */,
+				D36A61EF20D21E8C00CEDA57 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D36A61F820D21E8D00CEDA57 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D36A61F920D21E8D00CEDA57 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D36A61FE20D21E8D00CEDA57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "SmartHomeDemo/SmartHome-prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D36A61FF20D21E8D00CEDA57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "SmartHomeDemo/SmartHome-prefix.pch";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D36A620120D21E8D00CEDA57 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73D93598689FD892A84C734C /* Pods-KIWIKSDKDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SEBX8SBS54;
+				INFOPLIST_FILE = SmartHomeDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.levy.SmartHomeDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D36A620220D21E8D00CEDA57 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6ABC3CE0C7355FCC0B7D6CB2 /* Pods-KIWIKSDKDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SEBX8SBS54;
+				INFOPLIST_FILE = SmartHomeDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.levy.SmartHomeDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D36A61E520D21E8C00CEDA57 /* Build configuration list for PBXProject "KIWIKSDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D36A61FE20D21E8D00CEDA57 /* Debug */,
+				D36A61FF20D21E8D00CEDA57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D36A620020D21E8D00CEDA57 /* Build configuration list for PBXNativeTarget "KIWIKSDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D36A620120D21E8D00CEDA57 /* Debug */,
+				D36A620220D21E8D00CEDA57 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D36A61E220D21E8C00CEDA57 /* Project object */;
+}

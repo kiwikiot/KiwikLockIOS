@@ -1,0 +1,12 @@
+# Xcode
+.DS_Store
+
+#CocoaPods
+Pods
+!Podfile
+!Podfile.lock
+
+#Other
+SmartHomeSDK
+Project-SDK
+scripts
