@@ -99,19 +99,46 @@
     
     NSString *ssid = self.textSsid.text;
     NSString *key = self.textKey.text;
+    
     if (ssid.length == 0) {
         [[KIWIKUtils alertWithTitle:@"请连接Wi-Fi" msg:@"暂不支持5G频段的热点，请使用2.4G频段的热点" ok:^(FRAlertController *al) {
             [KIWIKUtils go2Wifi];
         }] show];
-    } else {
-        GKIWIKAddKit.key = key;
-        GKIWIKAddKit.ssid = ssid;
-        
-        [GKIWIKSSID saveSsid:ssid andKey:key];
-        
-        KIWIKHotspotViewController *addwifi = [[KIWIKHotspotViewController alloc] init];
-        [self.navigationController pushViewController:addwifi animated:YES];
+        return;
     }
+    
+    if ([[ssid uppercaseString] rangeOfString:@"5G"].length > 0) {
+        [[KIWIKUtils alertWithTitle:@"检测到你可能连接了5G的热点" msg:@"暂不支持5G频段的热点，请使用2.4G频段的热点" ok:^(FRAlertController *al) {
+            [KIWIKUtils go2Wifi];
+        }] show];
+        return;
+    }
+    
+    NSData *ssidData = [ssid dataUsingEncoding:NSUTF8StringEncoding];
+    if (ssidData.length > 32) {
+        [[KIWIKUtils alertWithTitle:@"WiFi名字过长" msg:@"请更改Wi-Fi名字在英文32个字符，中文10个字符以内" ok:^(FRAlertController *al) {
+            [KIWIKUtils go2Wifi];
+        }] show];
+        return;
+    }
+    
+    NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
+    if (keyData.length > 64) {
+        [[KIWIKUtils alertWithTitle:@"WiFi密码过长" msg:@"请缩短Wi-Fi密码在64个字符以内" ok:^(FRAlertController *al) {
+            [KIWIKUtils go2Wifi];
+        }] show];
+        return;
+    }
+    
+    NSLog(@"%s ssid length %lu key length %lu", __func__, (unsigned long)ssidData.length, (unsigned long)keyData.length);
+    
+    GKIWIKAddKit.key = key;
+    GKIWIKAddKit.ssid = ssid;
+    
+    [GKIWIKSSID saveSsid:ssid andKey:key];
+    
+    KIWIKHotspotViewController *addwifi = [[KIWIKHotspotViewController alloc] init];
+    [self.navigationController pushViewController:addwifi animated:YES];
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

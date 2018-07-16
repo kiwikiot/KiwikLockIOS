@@ -58,7 +58,7 @@ SingletonM(KIWIKLockService,)
                     [self makeToast:event device:device];
                     return;
                 }
-                NSString *devName = device.name ? device.name : [NSString stringWithFormat:@"Lock%@", device.did];
+                NSString *devName = device.name.length ? device.name : [NSString stringWithFormat:@"Lock%@", device.did];
                 NSString *title = [NSString stringWithFormat:@"%@-%@", devName, [event title]];
                 _alert = [KIWIKUtils alertWithTitle:title msg:@"请确认安全后输入密码进行开锁"cancel:^(FRAlertController *al) {
                     weakSelf.alert = nil;

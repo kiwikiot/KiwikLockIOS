@@ -73,6 +73,9 @@ typedef NS_ENUM(NSInteger, DoorLockUserType) {
 //由DoorLockCmd定义
 @property(nonatomic, assign) NSInteger cmd;
 
+//由DoorLockCmd定义
+@property(nonatomic, assign) NSInteger length;
+
 //版本0
 @property(nonatomic, assign) NSInteger version;
 

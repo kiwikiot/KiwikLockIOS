@@ -105,7 +105,7 @@
     }
     KIWIKDevice *device = GKIWIKSocket.deviceList[indexPath.row];
     cell.imageView.image = [[UIImage imageNamed:@"DoorLock_White"] imageWithTintColor:MAIN_THEME_COLOR];
-    cell.textLabel.text = device.verify ? device.name : [NSString stringWithFormat:@"%@[未验证]", device.name ? device.name : @"LOCK"];
+    cell.textLabel.text = device.name.length ? device.name : @"LOCK";
     cell.detailTextLabel.text = device.did;
     return cell;
 }

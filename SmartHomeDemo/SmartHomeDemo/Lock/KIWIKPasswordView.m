@@ -272,6 +272,8 @@
 }
 
 -(void)dismiss:(PWDFinish)finish {
+    [_textFiled resignFirstResponder];
+    
     [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.top = SCREEN_HEIGHT;
     } completion:^(BOOL finished) {

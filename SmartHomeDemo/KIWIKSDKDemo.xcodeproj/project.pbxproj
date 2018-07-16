@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D30AF2B420EA6886000D5BFB /* KIWIKSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30AF2B320EA6886000D5BFB /* KIWIKSettingsViewController.m */; };
-		D32F0DD720E0AAAD0057C442 /* KIWIKSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D32F0DD620E0AAAD0057C442 /* KIWIKSDK.framework */; };
 		D344BBCF20D8AA3D00332FAD /* KIWIKWifiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBCE20D8AA3D00332FAD /* KIWIKWifiViewController.m */; };
 		D344BBD220D8AA4B00332FAD /* KIWIKBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBD120D8AA4B00332FAD /* KIWIKBaseViewController.m */; };
 		D344BBD620D8AAC300332FAD /* UIButton+LXMImagePosition.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBD420D8AAC300332FAD /* UIButton+LXMImagePosition.m */; };
@@ -34,6 +33,7 @@
 		D344BC8C20DCDA1900332FAD /* KIWIKLockService.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC8B20DCDA1900332FAD /* KIWIKLockService.m */; };
 		D344BC9620DCE0DC00332FAD /* KIWIKEvent+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC9520DCE0DC00332FAD /* KIWIKEvent+UI.m */; };
 		D344BC9D20DD7DE000332FAD /* KIWIKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC9C20DD7DE000332FAD /* KIWIKUser.m */; };
+		D349816320F5490F005039E1 /* KIWIKSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D349816220F5490F005039E1 /* KIWIKSDK.framework */; };
 		D36A61EF20D21E8C00CEDA57 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D36A61EE20D21E8C00CEDA57 /* AppDelegate.m */; };
 		D36A61F220D21E8C00CEDA57 /* KIWIKDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D36A61F120D21E8C00CEDA57 /* KIWIKDevicesViewController.m */; };
 		D36A61F720D21E8D00CEDA57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36A61F620D21E8D00CEDA57 /* Assets.xcassets */; };
@@ -55,7 +55,6 @@
 		73D93598689FD892A84C734C /* Pods-KIWIKSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KIWIKSDKDemo.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-KIWIKSDKDemo/Pods-KIWIKSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		D30AF2B220EA6886000D5BFB /* KIWIKSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KIWIKSettingsViewController.h; sourceTree = "<group>"; };
 		D30AF2B320EA6886000D5BFB /* KIWIKSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KIWIKSettingsViewController.m; sourceTree = "<group>"; };
-		D32F0DD620E0AAAD0057C442 /* KIWIKSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KIWIKSDK.framework; path = ../../../build/KIWIKSDK.framework; sourceTree = "<group>"; };
 		D344BBCD20D8AA3C00332FAD /* KIWIKWifiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKWifiViewController.h; sourceTree = "<group>"; };
 		D344BBCE20D8AA3D00332FAD /* KIWIKWifiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKWifiViewController.m; sourceTree = "<group>"; };
 		D344BBD020D8AA4B00332FAD /* KIWIKBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKBaseViewController.h; sourceTree = "<group>"; };
@@ -107,6 +106,7 @@
 		D344BC9520DCE0DC00332FAD /* KIWIKEvent+UI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "KIWIKEvent+UI.m"; sourceTree = "<group>"; };
 		D344BC9B20DD7DE000332FAD /* KIWIKUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KIWIKUser.h; sourceTree = "<group>"; };
 		D344BC9C20DD7DE000332FAD /* KIWIKUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KIWIKUser.m; sourceTree = "<group>"; };
+		D349816220F5490F005039E1 /* KIWIKSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KIWIKSDK.framework; path = ../../../sdk/KIWIKSDK.framework; sourceTree = "<group>"; };
 		D36A61EA20D21E8C00CEDA57 /* KIWIKSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KIWIKSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36A61ED20D21E8C00CEDA57 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D36A61EE20D21E8C00CEDA57 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D36A654E20D39D5300CEDA57 /* libicucore.tbd in Frameworks */,
-				D32F0DD720E0AAAD0057C442 /* KIWIKSDK.framework in Frameworks */,
+				D349816320F5490F005039E1 /* KIWIKSDK.framework in Frameworks */,
 				D36A654A20D39CFD00CEDA57 /* Foundation.framework in Frameworks */,
 				D36A654820D39C9D00CEDA57 /* Security.framework in Frameworks */,
 				D36A652B20D3888800CEDA57 /* QuartzCore.framework in Frameworks */,
@@ -168,7 +168,7 @@
 		D344BBA720D5FA1300332FAD /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				D32F0DD620E0AAAD0057C442 /* KIWIKSDK.framework */,
+				D349816220F5490F005039E1 /* KIWIKSDK.framework */,
 			);
 			path = SDK;
 			sourceTree = "<group>";
@@ -401,7 +401,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/../Pods/Target Support Files/Pods-KIWIKSDKDemo/Pods-KIWIKSDKDemo-resources.sh",
+				"${SRCROOT}/../Project-SDK/Pods/Target Support Files/Pods-KIWIKSDKDemo/Pods-KIWIKSDKDemo-resources.sh",
 				"${PODS_ROOT}/AXStretchableHeaderTabViewController/Classes/AXStretchableHeaderTabViewController.xib",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FFToast/FFToast.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
@@ -416,7 +416,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-KIWIKSDKDemo/Pods-KIWIKSDKDemo-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Project-SDK/Pods/Target Support Files/Pods-KIWIKSDKDemo/Pods-KIWIKSDKDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CE1B66E56828C1AA96211A0A /* [CP] Check Pods Manifest.lock */ = {

@@ -45,7 +45,7 @@
         self.edgesForExtendedLayout = UIRectEdgeBottom | UIRectEdgeLeft | UIRectEdgeRight;
     }
     
-    self.title = self.device.name ? self.device.name : @"LOCK";
+    self.title = self.device.name.length ? self.device.name : @"LOCK";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"More", nil) style:UIBarButtonItemStylePlain target:self action:@selector(onNavButtonTapped:event:)];
     
     AXStretchableHeaderView *headerView = [[AXStretchableHeaderView alloc]initWithFrame:CGRectMake(0, 0.0f, SCREEN_WIDTH, 180.0f)];
@@ -182,7 +182,7 @@
         }
         [weakSelf.device setDeviceName:name block:^(id response, NSError *error) {
             if (!error) {
-                self.title = name ? name : @"LOCK";
+                self.title = name.length ? name : @"LOCK";
                 [SVProgressHUD showSuccessWithStatus:@"修改成功"];
             } else {
                 [SVProgressHUD showErrorWithStatus:@"修改失败"];
