@@ -14,8 +14,7 @@ target 'KIWIKSDKDemo' do
     pod 'UIView+Positioning', '1.1'
     pod 'FTPopOverMenu'
     pod 'FFToast'
-    pod 'FRAlertController', :git => "https://github.com/fanrongQu/FRAlertController.git"
-    pod 'Masonry'
+    pod 'FRAlertController', :git => "https://github.com/Loongwoo/FRAlertController.git"
     pod 'SVProgressHUD'
     pod 'MJRefresh'
     pod 'MDRadialProgress'

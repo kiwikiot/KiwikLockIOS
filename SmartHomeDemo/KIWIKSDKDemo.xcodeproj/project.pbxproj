@@ -401,7 +401,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/../../KiwikLockSDK/Pods/Target Support Files/Pods-KIWIKSDKDemo/Pods-KIWIKSDKDemo-resources.sh",
+				"${SRCROOT}/../Pods/Target Support Files/Pods-KIWIKSDKDemo/Pods-KIWIKSDKDemo-resources.sh",
 				"${PODS_ROOT}/AXStretchableHeaderTabViewController/Classes/AXStretchableHeaderTabViewController.xib",
 				"${PODS_CONFIGURATION_BUILD_DIR}/FFToast/FFToast.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
@@ -416,7 +416,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../../KiwikLockSDK/Pods/Target Support Files/Pods-KIWIKSDKDemo/Pods-KIWIKSDKDemo-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-KIWIKSDKDemo/Pods-KIWIKSDKDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CE1B66E56828C1AA96211A0A /* [CP] Check Pods Manifest.lock */ = {

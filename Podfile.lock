@@ -2,7 +2,8 @@ PODS:
   - AXStretchableHeaderTabViewController (0.2.0)
   - CocoaAsyncSocket (7.6.3)
   - FFToast (1.2.0)
-  - FRAlertController (1.0.3)
+  - FRAlertController (1.0.3):
+    - Masonry (~> 1.1.0)
   - FTPopOverMenu (1.3.6)
   - JLCategorys (0.2.64):
     - JLCategorys/Core (= 0.2.64)
@@ -20,10 +21,9 @@ DEPENDENCIES:
   - AXStretchableHeaderTabViewController
   - CocoaAsyncSocket (= 7.6.3)
   - FFToast
-  - FRAlertController (from `https://github.com/fanrongQu/FRAlertController.git`)
+  - FRAlertController (from `https://github.com/Loongwoo/FRAlertController.git`)
   - FTPopOverMenu
   - JLCategorys
-  - Masonry
   - MDRadialProgress
   - MJExtension (= 3.0.13)
   - MJRefresh
@@ -50,18 +50,18 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   FRAlertController:
-    :git: https://github.com/fanrongQu/FRAlertController.git
+    :git: https://github.com/Loongwoo/FRAlertController.git
 
 CHECKOUT OPTIONS:
   FRAlertController:
-    :commit: 12a33cbacec25506a369dd482fc1c046065200e6
-    :git: https://github.com/fanrongQu/FRAlertController.git
+    :commit: 6a43ff184ae59c1d8934c941d95e393c147ca367
+    :git: https://github.com/Loongwoo/FRAlertController.git
 
 SPEC CHECKSUMS:
   AXStretchableHeaderTabViewController: 37c56211c98d3e823ecf7493d68f5ee8fa7028e1
   CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
   FFToast: 60e0f3c9fd8fc473205015055ee39cd200404e01
-  FRAlertController: 3561e77b7808c898de9eb2cf07be2cc7644dc921
+  FRAlertController: ff78886cec0df078e177e544004fbd3cf94b6c81
   FTPopOverMenu: da4b2df7ae3341478e129a2585542f6e70cd67ec
   JLCategorys: e01a8d50138c5df18a5aa6cdc7145576f1592d45
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -73,6 +73,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   "UIView+Positioning": e93fe9e3186d1ed7d60e344aa12787911e902056
 
-PODFILE CHECKSUM: 9c38ec7f0362d18040ff63bf1d8496621d92704e
+PODFILE CHECKSUM: 7bd3a48073a085ce70b573e663059e12c7d6536a
 
 COCOAPODS: 1.5.3
