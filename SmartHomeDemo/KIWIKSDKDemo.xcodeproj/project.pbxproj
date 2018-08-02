@@ -44,6 +44,7 @@
 		D36A654820D39C9D00CEDA57 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D36A654720D39C9C00CEDA57 /* Security.framework */; };
 		D36A654A20D39CFD00CEDA57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D36A654920D39CFC00CEDA57 /* Foundation.framework */; };
 		D36A654E20D39D5300CEDA57 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D36A654D20D39D5300CEDA57 /* libicucore.tbd */; };
+		D3AFE29C2112A7A1006D8F63 /* KIWIKUserAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3AFE29B2112A7A1006D8F63 /* KIWIKUserAddViewController.m */; };
 		D3D3EC3620EF0EED00549AEC /* Algorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D3EC3320EF0EEC00549AEC /* Algorithm.m */; };
 		D3D3EC3720EF0EED00549AEC /* Jwt.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D3EC3520EF0EEC00549AEC /* Jwt.m */; };
 		FC193E3561A012FC0660F0CC /* libPods-KIWIKSDKDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 223FACE0A202D55B65688FDA /* libPods-KIWIKSDKDemo.a */; };
@@ -124,6 +125,8 @@
 		D36A654720D39C9C00CEDA57 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D36A654920D39CFC00CEDA57 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D36A654D20D39D5300CEDA57 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		D3AFE29A2112A7A1006D8F63 /* KIWIKUserAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KIWIKUserAddViewController.h; sourceTree = "<group>"; };
+		D3AFE29B2112A7A1006D8F63 /* KIWIKUserAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KIWIKUserAddViewController.m; sourceTree = "<group>"; };
 		D3D3EC3220EF0EEC00549AEC /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Algorithm.h; sourceTree = "<group>"; };
 		D3D3EC3320EF0EEC00549AEC /* Algorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Algorithm.m; sourceTree = "<group>"; };
 		D3D3EC3420EF0EEC00549AEC /* Jwt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jwt.h; sourceTree = "<group>"; };
@@ -231,6 +234,8 @@
 				D344BC2620D9069A00332FAD /* KIWIKHistoryViewController.m */,
 				D344BC6E20DA2A8E00332FAD /* KIWIKUsersViewController.h */,
 				D344BC6F20DA2A8E00332FAD /* KIWIKUsersViewController.m */,
+				D3AFE29A2112A7A1006D8F63 /* KIWIKUserAddViewController.h */,
+				D3AFE29B2112A7A1006D8F63 /* KIWIKUserAddViewController.m */,
 			);
 			path = Lock;
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 				D3D3EC3620EF0EED00549AEC /* Algorithm.m in Sources */,
 				D344BBD620D8AAC300332FAD /* UIButton+LXMImagePosition.m in Sources */,
 				D36A61FD20D21E8D00CEDA57 /* main.m in Sources */,
+				D3AFE29C2112A7A1006D8F63 /* KIWIKUserAddViewController.m in Sources */,
 				D344BC8C20DCDA1900332FAD /* KIWIKLockService.m in Sources */,
 				D36A61EF20D21E8C00CEDA57 /* AppDelegate.m in Sources */,
 			);

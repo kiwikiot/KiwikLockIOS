@@ -7,6 +7,7 @@
 //
 
 #import "KIWIKUsersViewController.h"
+#import "KIWIKUserAddViewController.h"
 #import "KIWIKUser.h"
 
 @interface KIWIKUsersViewController ()<KIWIKDeviceDelegate>
@@ -77,43 +78,16 @@
     if ([GKIWIKSocket.userDict objectForKey:_device.did]) {
         NSDictionary *users = [GKIWIKSocket.userDict objectForKey:_device.did];
         for (NSString *key in users.allKeys) {
-            KIWIKUser *user = [[KIWIKUser alloc] init];
-            user.userNo = key;
-            user.userName = users[key];
+            KIWIKUser *user = [[KIWIKUser alloc] initWithId:[key integerValue] name:users[key]];
             [_userArray addSafeObject:user];
         }
     }
-    [_userArray sortUsingComparator:^NSComparisonResult(KIWIKUser* _Nonnull obj1, KIWIKUser* _Nonnull obj2) {
-        return [obj1.userNo integerValue] > [obj2.userNo integerValue];
-    }];
     [self.tableView reloadData];
 }
 
 -(void)addAction:(id)sender {
-    __weak __typeof(self)weakSelf = self;
-    FRAlertController *alert = [KIWIKUtils alertWithTitle:@"设置用户备注名字" msg:@"请输入用户编号和用户名字" ok:^(FRAlertController *al) {
-        UITextField *textField1 = [al.textFields objectAtIndex:0];
-        UITextField *textField2 = [al.textFields objectAtIndex:1];
-        NSInteger userId = [textField1.text integerValue];
-        NSString *userName = textField2.text;
-        
-        [SVProgressHUD showWithStatus:@"稍等..."];
-        [weakSelf.device setUserId:userId name:userName block:^(id response, NSError *error) {
-            if (!error) {
-                [SVProgressHUD showSuccessWithStatus:@"添加成功"];
-            } else {
-                [SVProgressHUD showErrorWithStatus:@"添加失败"];
-            }
-        }];
-    }];
-    [alert addTextFieldConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.placeholder = NSLocalizedString(@"UserNo", nil);
-        textField.keyboardType = UIKeyboardTypeNumberPad;
-    }];
-    [alert addTextFieldConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.placeholder = NSLocalizedString(@"UserName", nil);
-    }];
-    [alert show];
+    KIWIKUserAddViewController *addVC = [[KIWIKUserAddViewController alloc] initWithDevice:self.device];
+    [self.navigationController pushViewController:addVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -147,8 +121,9 @@
     }
     
     KIWIKUser *user = [self.userArray objectAtIndex:indexPath.row];
+    cell.imageView.image = [user userImage];
     cell.textLabel.text = user.userName;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %@",NSLocalizedString(@"UserNo", nil), user.userNo];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %ld",NSLocalizedString(@"UserNo", nil), (long)user.userNo];
     return cell;
 }
 
@@ -167,7 +142,7 @@
         __weak __typeof(self)weakSelf = self;
         [[KIWIKUtils alertWithTitle:@"温馨提示" msg:@"你确定要删除该备注名吗？" ok:^(FRAlertController *al) {
             [SVProgressHUD showWithStatus:@"稍等..."];
-            [weakSelf.device deleteUserId:[user.userNo integerValue] block:^(id response, NSError *error) {
+            [weakSelf.device deleteUserId:user.userId block:^(id response, NSError *error) {
                 if (!error) {
                     [SVProgressHUD showSuccessWithStatus:@"删除成功"];
                 } else {

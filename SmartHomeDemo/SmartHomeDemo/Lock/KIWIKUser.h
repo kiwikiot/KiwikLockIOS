@@ -10,8 +10,16 @@
 
 @interface KIWIKUser : NSObject
 
-@property(nonatomic, strong) NSString *userNo;
+@property(nonatomic, assign) NSInteger userId;
+
+@property(nonatomic, assign) NSInteger userType;
+
+@property(nonatomic, assign) NSInteger userNo;
 
 @property(nonatomic, strong) NSString *userName;
+
+- (instancetype)initWithId:(NSInteger)userId name:(NSString *)name;
+
+- (UIImage *)userImage;
 
 @end

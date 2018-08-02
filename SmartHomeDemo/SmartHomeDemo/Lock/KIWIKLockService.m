@@ -100,14 +100,14 @@ SingletonM(KIWIKLockService,)
 }
 
 -(NSString *)userName:(KIWIKEvent *)event device:(KIWIKDevice *)device {
-    NSString *userName = [@(event.userNo) stringValue];
+    NSString *userId = [@(event.userType * 65536 + event.userNo) stringValue];
     if ([GKIWIKSocket.userDict objectForKey:device.did]) {
         NSDictionary *users = [GKIWIKSocket.userDict objectForKey:device.did];
-        if ([users objectForKey:userName]) {
-            return [users objectForKey:userName];
+        if ([users objectForKey:userId]) {
+            return [users objectForKey:userId];
         }
     }
-    return [NSString stringWithFormat:@"%@:%@", NSLocalizedString(@"UserNo", nil), userName];
+    return [NSString stringWithFormat:@"%@:%ld", NSLocalizedString(@"UserNo", nil), (long)event.userNo];
 }
 
 -(void)makeToast:(KIWIKEvent *)event device:(KIWIKDevice *)device {
