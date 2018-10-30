@@ -48,9 +48,22 @@ typedef void(^KIWIKFinishBlock)(KIWIKDevice_Add *device);
 -(BOOL)tokenIsValid;
 
 /*
+ * 网页登录
+ *
  * 如果token过期，调用打开登录页面
  */
 -(void)openKIWIKLoginPage:(void(^)(KIWIKToken *accessToken))loginBlock;
+
+
+/*
+ * 接口登录
+ *
+ * @param identifier    用户账号
+ * @param clientSecret  跟clientId配套分配的密钥，请注意保存
+ */
+-(void)loginWithIdentifier:(NSString *)identifier
+              clientSecret:(NSString *)secret
+                     block:(void(^)(KIWIKToken *accessToken, NSError *error))block;
 
 /*
  * 退出登录，清空token

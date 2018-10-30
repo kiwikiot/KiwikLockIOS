@@ -10,11 +10,9 @@
 #import "KIWIKDevicesViewController.h"
 #import "KIWIKLockService.h"
 #import "KIWIKSettingsViewController.h"
-#import "Jwt.h"
-#import <CommonCrypto/CommonHMAC.h>
 
 #define kAccessToken  @"kiwikAccessToken"
-#define kClientId     @"your client id"
+#define kClientId     @"igxknDUbISY3XAcBYJT9SIegd31sPu7B"
 #define kClientSecret @"your client secret"
 
 @interface AppDelegate ()
@@ -33,7 +31,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     FTPopOverMenuConfiguration *configuration = [FTPopOverMenuConfiguration defaultConfiguration];
-    configuration.tintColor = [UIColor whiteColor];
+    configuration.backgroundColor = [UIColor whiteColor];
     configuration.textFont = [UIFont systemFontOfSize:16];
     configuration.textAlignment = NSTextAlignmentCenter;
     configuration.textColor = [UIColor blackColor];

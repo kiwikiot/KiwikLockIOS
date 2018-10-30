@@ -8,15 +8,15 @@ target 'KIWIKSDKDemo' do
     pod 'SocketRocket', '0.5.1'
     pod 'CocoaAsyncSocket', '7.6.3'
     pod 'Reachability', '3.2'
-    pod 'MJExtension', '3.0.13'
+    pod 'MJExtension', '3.0.15.1'
     
     pod 'JLCategorys'
     pod 'UIView+Positioning', '1.1'
-    pod 'FTPopOverMenu'
+    pod 'FTPopOverMenu', '2.0.1'
     pod 'FFToast'
     pod 'FRAlertController', :git => "https://github.com/Loongwoo/FRAlertController.git"
     pod 'SVProgressHUD'
-    pod 'MJRefresh'
+    pod 'MJRefresh', '3.1.15.7'
     pod 'MDRadialProgress'
     pod 'AXStretchableHeaderTabViewController'
 end

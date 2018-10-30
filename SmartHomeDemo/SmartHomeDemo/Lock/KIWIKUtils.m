@@ -11,6 +11,7 @@
 
 @implementation KIWIKUtils
 
+// 正式版会被拒，请避开这个方法
 + (void)go2Wifi {
     NSURL *url = [NSURL URLWithString:@"App-Prefs:root=WIFI"];
     if ([[UIApplication sharedApplication] canOpenURL:url]) {

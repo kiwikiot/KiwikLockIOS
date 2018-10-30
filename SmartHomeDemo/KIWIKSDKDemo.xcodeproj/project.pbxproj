@@ -33,7 +33,6 @@
 		D344BC8C20DCDA1900332FAD /* KIWIKLockService.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC8B20DCDA1900332FAD /* KIWIKLockService.m */; };
 		D344BC9620DCE0DC00332FAD /* KIWIKEvent+UI.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC9520DCE0DC00332FAD /* KIWIKEvent+UI.m */; };
 		D344BC9D20DD7DE000332FAD /* KIWIKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC9C20DD7DE000332FAD /* KIWIKUser.m */; };
-		D3612E1B20FD8D170040B6B1 /* KIWIKSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3612E1A20FD8D160040B6B1 /* KIWIKSDK.framework */; };
 		D36A61EF20D21E8C00CEDA57 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D36A61EE20D21E8C00CEDA57 /* AppDelegate.m */; };
 		D36A61F220D21E8C00CEDA57 /* KIWIKDevicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D36A61F120D21E8C00CEDA57 /* KIWIKDevicesViewController.m */; };
 		D36A61F720D21E8D00CEDA57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36A61F620D21E8D00CEDA57 /* Assets.xcassets */; };
@@ -45,8 +44,7 @@
 		D36A654A20D39CFD00CEDA57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D36A654920D39CFC00CEDA57 /* Foundation.framework */; };
 		D36A654E20D39D5300CEDA57 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D36A654D20D39D5300CEDA57 /* libicucore.tbd */; };
 		D3AFE29C2112A7A1006D8F63 /* KIWIKUserAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3AFE29B2112A7A1006D8F63 /* KIWIKUserAddViewController.m */; };
-		D3D3EC3620EF0EED00549AEC /* Algorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D3EC3320EF0EEC00549AEC /* Algorithm.m */; };
-		D3D3EC3720EF0EED00549AEC /* Jwt.m in Sources */ = {isa = PBXBuildFile; fileRef = D3D3EC3520EF0EEC00549AEC /* Jwt.m */; };
+		D3DAA0FB2186B0EC00F3A785 /* KIWIKSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3DAA0FA2186B0EC00F3A785 /* KIWIKSDK.framework */; };
 		FC193E3561A012FC0660F0CC /* libPods-KIWIKSDKDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 223FACE0A202D55B65688FDA /* libPods-KIWIKSDKDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -107,7 +105,6 @@
 		D344BC9520DCE0DC00332FAD /* KIWIKEvent+UI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "KIWIKEvent+UI.m"; sourceTree = "<group>"; };
 		D344BC9B20DD7DE000332FAD /* KIWIKUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KIWIKUser.h; sourceTree = "<group>"; };
 		D344BC9C20DD7DE000332FAD /* KIWIKUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KIWIKUser.m; sourceTree = "<group>"; };
-		D3612E1A20FD8D160040B6B1 /* KIWIKSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KIWIKSDK.framework; sourceTree = "<group>"; };
 		D36A61EA20D21E8C00CEDA57 /* KIWIKSDKDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KIWIKSDKDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36A61ED20D21E8C00CEDA57 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D36A61EE20D21E8C00CEDA57 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -117,7 +114,6 @@
 		D36A61F920D21E8D00CEDA57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D36A61FB20D21E8D00CEDA57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D36A61FC20D21E8D00CEDA57 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D36A620420D21EDD00CEDA57 /* SmartHomeSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SmartHomeSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36A635420D2484000CEDA57 /* SmartHome-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartHome-prefix.pch"; sourceTree = "<group>"; };
 		D36A635520D255AE00CEDA57 /* KIWIKUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KIWIKUtils.h; sourceTree = "<group>"; };
 		D36A635620D255AE00CEDA57 /* KIWIKUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KIWIKUtils.m; sourceTree = "<group>"; };
@@ -127,10 +123,7 @@
 		D36A654D20D39D5300CEDA57 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		D3AFE29A2112A7A1006D8F63 /* KIWIKUserAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KIWIKUserAddViewController.h; sourceTree = "<group>"; };
 		D3AFE29B2112A7A1006D8F63 /* KIWIKUserAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KIWIKUserAddViewController.m; sourceTree = "<group>"; };
-		D3D3EC3220EF0EEC00549AEC /* Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Algorithm.h; sourceTree = "<group>"; };
-		D3D3EC3320EF0EEC00549AEC /* Algorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Algorithm.m; sourceTree = "<group>"; };
-		D3D3EC3420EF0EEC00549AEC /* Jwt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Jwt.h; sourceTree = "<group>"; };
-		D3D3EC3520EF0EEC00549AEC /* Jwt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Jwt.m; sourceTree = "<group>"; };
+		D3DAA0FA2186B0EC00F3A785 /* KIWIKSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KIWIKSDK.framework; path = ../../../sdk/KIWIKSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,7 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D36A654E20D39D5300CEDA57 /* libicucore.tbd in Frameworks */,
-				D3612E1B20FD8D170040B6B1 /* KIWIKSDK.framework in Frameworks */,
+				D3DAA0FB2186B0EC00F3A785 /* KIWIKSDK.framework in Frameworks */,
 				D36A654A20D39CFD00CEDA57 /* Foundation.framework in Frameworks */,
 				D36A654820D39C9D00CEDA57 /* Security.framework in Frameworks */,
 				D36A652B20D3888800CEDA57 /* QuartzCore.framework in Frameworks */,
@@ -254,7 +247,7 @@
 		D3612E1920FD8D160040B6B1 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
-				D3612E1A20FD8D160040B6B1 /* KIWIKSDK.framework */,
+				D3DAA0FA2186B0EC00F3A785 /* KIWIKSDK.framework */,
 			);
 			path = sdk;
 			sourceTree = "<group>";
@@ -306,7 +299,6 @@
 				D36A654920D39CFC00CEDA57 /* Foundation.framework */,
 				D36A654720D39C9C00CEDA57 /* Security.framework */,
 				D36A652A20D3888800CEDA57 /* QuartzCore.framework */,
-				D36A620420D21EDD00CEDA57 /* SmartHomeSDK.framework */,
 				223FACE0A202D55B65688FDA /* libPods-KIWIKSDKDemo.a */,
 			);
 			name = Frameworks;
@@ -315,21 +307,9 @@
 		D36A633320D247F600CEDA57 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				D3D3EC3120EF0EEC00549AEC /* jwt */,
 				D344BC0420D8F57500332FAD /* WTReTextField */,
 			);
 			path = Vendor;
-			sourceTree = "<group>";
-		};
-		D3D3EC3120EF0EEC00549AEC /* jwt */ = {
-			isa = PBXGroup;
-			children = (
-				D3D3EC3220EF0EEC00549AEC /* Algorithm.h */,
-				D3D3EC3320EF0EEC00549AEC /* Algorithm.m */,
-				D3D3EC3420EF0EEC00549AEC /* Jwt.h */,
-				D3D3EC3520EF0EEC00549AEC /* Jwt.m */,
-			);
-			path = jwt;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -471,11 +451,9 @@
 				D344BBE120D8AEA600332FAD /* UILabel+KIWIK.m in Sources */,
 				D344BC7920DA6E0B00332FAD /* UITableView+KIWIK.m in Sources */,
 				D36A61F220D21E8C00CEDA57 /* KIWIKDevicesViewController.m in Sources */,
-				D3D3EC3720EF0EED00549AEC /* Jwt.m in Sources */,
 				D344BC0920D8F57500332FAD /* WTReParser.m in Sources */,
 				D344BC1420D9061F00332FAD /* KIWIKLockViewController.m in Sources */,
 				D344BBE420D8B03400332FAD /* NSString+Category.m in Sources */,
-				D3D3EC3620EF0EED00549AEC /* Algorithm.m in Sources */,
 				D344BBD620D8AAC300332FAD /* UIButton+LXMImagePosition.m in Sources */,
 				D36A61FD20D21E8D00CEDA57 /* main.m in Sources */,
 				D3AFE29C2112A7A1006D8F63 /* KIWIKUserAddViewController.m in Sources */,
