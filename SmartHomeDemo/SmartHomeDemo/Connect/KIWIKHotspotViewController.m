@@ -7,7 +7,7 @@
 //
 
 #import "KIWIKHotspotViewController.h"
-#import "KIWIKConnectViewController.h"
+#import "KIWIKWIFIListViewController.h"
 #import "MethodButton.h"
 
 @interface KIWIKHotspotViewController ()
@@ -17,14 +17,9 @@
 
 @implementation KIWIKHotspotViewController
 
--(BOOL)networkStateValid {
-    NSString *ssid = [KIWIKUtils getSSID];
-    if (ssid && [ssid hasPrefix:@"CloudHome"]) {
-        _wifiLabel.text = [NSString stringWithFormat:@"以连接%@", ssid];
-        return YES;
-    }
-    _wifiLabel.text = @"";
-    return NO;
+-(void)networkStateValid {
+    NSString *ssid = [KIWIKUtils getLockAP];
+    _wifiLabel.text = ssid ? [NSString stringWithFormat:@"以连接%@", ssid] : @"";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -69,14 +64,14 @@
 }
 
 -(void)nextAction:(id)sender {
-    if (![self networkStateValid]) {
-        [[KIWIKUtils alertWithTitle:@"请连接设备热点" msg:@"请进入‘设置’-‘Wi-Fi’，连接CloudHome开头的热点" ok:^(FRAlertController *al) {
+    if (![KIWIKUtils getLockAP]) {
+        [[KIWIKUtils alertWithTitle:@"请连接设备热点" msg:NSLocalizedString(@"HotspotTips2", nil) ok:^(FRAlertController *al) {
             [KIWIKUtils go2Wifi];
         }] show];
         return;
     }
     
-    KIWIKConnectViewController *addconnect = [[KIWIKConnectViewController alloc] init];
+    KIWIKWIFIListViewController *addconnect = [[KIWIKWIFIListViewController alloc] init];
     [self.navigationController pushViewController:addconnect animated:NO];
 }
 

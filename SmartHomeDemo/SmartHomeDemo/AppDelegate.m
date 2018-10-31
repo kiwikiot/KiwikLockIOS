@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "KIWIKDevicesViewController.h"
 #import "KIWIKLockService.h"
-#import "KIWIKSettingsViewController.h"
 
 #define kAccessToken  @"kiwikAccessToken"
 #define kClientId     @"igxknDUbISY3XAcBYJT9SIegd31sPu7B"
@@ -30,13 +29,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    FTPopOverMenuConfiguration *configuration = [FTPopOverMenuConfiguration defaultConfiguration];
-    configuration.backgroundColor = [UIColor whiteColor];
-    configuration.textAlignment = NSTextAlignmentCenter;
-    configuration.textFont = [UIFont systemFontOfSize:16];
-    configuration.textAlignment = NSTextAlignmentCenter;
-    configuration.textColor = [UIColor blackColor];
-    
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
     [SVProgressHUD setMinimumDismissTimeInterval:1.2f];
@@ -45,15 +37,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     KIWIKDevicesViewController *listVC = [[KIWIKDevicesViewController alloc] init];
     UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:listVC];
-    KIWIKSettingsViewController *settingsVC = [[KIWIKSettingsViewController alloc] initWithStyle:UITableViewStyleGrouped];
-    UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:settingsVC];
-    UITabBarController *tabVC = [[UITabBarController alloc] init];
-    tabVC.viewControllers = @[nav1, nav2];
-    UITabBarItem *item0 = [tabVC.tabBar.items objectAtIndex:0];
-    [item0 setImage:[UIImage imageNamed:@"icon_settings"]];
-    UITabBarItem *item1 = [tabVC.tabBar.items objectAtIndex:1];
-    [item1 setImage:[UIImage imageNamed:@"icon_settings"]];
-    self.window.rootViewController = tabVC;
+    self.window.rootViewController = nav1;
     [self.window makeKeyAndVisible];
     
     //初始化SDK
@@ -78,16 +62,22 @@
 }
 
 -(void)setToken:(KIWIKToken *)token {
-    GKIWIKSDK.accessToken = token;
-    
-    [NDSUD setObject:token.mj_keyValues forKey:kAccessToken];
-    
-    if (_timer) {
-        [_timer invalidate];
-        _timer = nil;
-    }
-    NSTimeInterval timeInterval = token.expires_at - [[NSDate date] timeIntervalSince1970] - 10 * 60;//提前10分钟刷新token
-    _timer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(timeout) userInfo:nil repeats:NO];
+    __weak __typeof(self)weakSelf = self;
+    [GKIWIKSDK setToken:token block:^(BOOL success, NSError *error) {
+        if (success) {
+            NSLog(@"uid, %@", GKIWIKSDK.uid);
+            [NDSUD setObject:token.mj_keyValues forKey:kAccessToken];
+            
+            if (weakSelf.timer) {
+                [weakSelf.timer invalidate];
+                weakSelf.timer = nil;
+            }
+            NSTimeInterval timeInterval = token.expires_at - [[NSDate date] timeIntervalSince1970] - 10 * 60;//提前10分钟刷新token
+            weakSelf.timer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(timeout) userInfo:nil repeats:NO];
+        } else {
+            NSLog(@"error %@", error);
+        }
+    }];
 }
 
 -(void)login {

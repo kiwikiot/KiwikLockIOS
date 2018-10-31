@@ -15,6 +15,8 @@
 
 + (NSString *)getSSID;
 
++ (NSString *)getLockAP;
+
 + (NSArray *)allSubviews:(UIView *)aView;
 
 + (FRAlertController *)alertWithTitle:(NSString *)title msg:(NSString *)msg ok:(void(^)(FRAlertController *al))ok;

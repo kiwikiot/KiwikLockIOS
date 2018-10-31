@@ -10,4 +10,6 @@
 
 @interface KIWIKWifiViewController : KIWIKBaseViewController
 
+@property(nonatomic, strong) NSString *ssid;
+
 @end

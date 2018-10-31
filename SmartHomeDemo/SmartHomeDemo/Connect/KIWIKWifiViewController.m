@@ -7,64 +7,22 @@
 //
 
 #import "KIWIKWifiViewController.h"
-#import <SystemConfiguration/CaptiveNetwork.h>
 #import "KIWIKSSID.h"
 #import "WifiTextField.h"
-#import "KIWIKHotspotViewController.h"
-#import "KIWIKAddKit.h"
-#import "Reachability.h"
+#import "KIWIKConnectViewController.h"
 
 @interface KIWIKWifiViewController ()
-@property (nonatomic, strong) Reachability *reachability;
 @property (nonatomic, strong) WifiTextField *textSsid;
 @property (nonatomic, strong) WifiTextField *textKey;
 @end
 
 @implementation KIWIKWifiViewController
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.reachability = [Reachability reachabilityForLocalWiFi];
-        [self.reachability startNotifier];
-        [NNCDC addObserver:self selector:@selector(checkWifi) name:kReachabilityChangedNotification object:nil];
-    }
-    return self;
-}
-
-- (void)dealloc {
-    [self.reachability stopNotifier];
-    [NNCDC removeObserver:self];
-}
-
--(BOOL)checkWifi {
-    NSString *ssid = [KIWIKUtils getSSID];
-    if (ssid){
-        self.textSsid.text = ssid;
-        self.textKey.text = [GKIWIKSSID getKeyBySsid:ssid];
-        return YES;
-    } else {
-        self.textSsid.text = @"";
-        self.textKey.text = @"";
-        return NO;
-    }
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    if (![self checkWifi]) {
-        [[KIWIKUtils alertWithTitle:@"请连接Wi-Fi" msg:@"暂不支持5G频段的热点，请使用2.4G频段的热点" ok:^(FRAlertController *al) {
-            [KIWIKUtils go2Wifi];
-        }] show];
-    }
-}
-
 - (void)viewDidLoad{
     [super viewDidLoad];
-    self.titleLabel.text = NSLocalizedString(@"ConnectWifi", nil);
+    self.titleLabel.text = @"请输入Wi-Fi密码";
     
-    self.tishiLabel.text = NSLocalizedString(@"WifiTips", nil);
+    self.tishiLabel.text = @"隐藏的Wi-Fi请手动输入名字和密码";
     [self.tishiLabel kw_fitSize];
     
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(30, self.tishiLabel.bottom + 30, SCREEN_WIDTH - 60, 81)];
@@ -85,13 +43,10 @@
     self.textKey.fieldType = WifiTextFieldTypePassword;
     [bgView addSubview:self.textKey];
     
-    UILabel *bandLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, bgView.bottom + 5, SCREEN_WIDTH - 20, 20)];
-    bandLabel.textAlignment = NSTextAlignmentCenter;
-    bandLabel.textColor = [UIColor whiteColor];
-    bandLabel.font = [UIFont systemFontOfSize:14];
-    bandLabel.adjustsFontSizeToFitWidth = YES;
-    bandLabel.text = NSLocalizedString(@"WiFiBandTips", nil);
-    [self.view addSubview:bandLabel];
+    if (_ssid.length > 0) {
+        self.textSsid.text = _ssid;
+        self.textKey.text = [GKIWIKSSID getKeyBySsid:_ssid];
+    }
 }
 
 -(void)nextAction:(id)sender {
@@ -101,44 +56,47 @@
     NSString *key = self.textKey.text;
     
     if (ssid.length == 0) {
-        [[KIWIKUtils alertWithTitle:@"请连接Wi-Fi" msg:@"暂不支持5G频段的热点，请使用2.4G频段的热点" ok:^(FRAlertController *al) {
-            [KIWIKUtils go2Wifi];
-        }] show];
-        return;
-    }
-    
-    if ([[ssid uppercaseString] rangeOfString:@"5G"].length > 0) {
-        [[KIWIKUtils alertWithTitle:@"检测到你可能连接了5G的热点" msg:@"暂不支持5G频段的热点，请使用2.4G频段的热点" ok:^(FRAlertController *al) {
-            [KIWIKUtils go2Wifi];
-        }] show];
+        [SVProgressHUD showErrorWithStatus:@"Wi-Fi名字不能为空"];
         return;
     }
     
     NSData *ssidData = [ssid dataUsingEncoding:NSUTF8StringEncoding];
     if (ssidData.length > 32) {
-        [[KIWIKUtils alertWithTitle:@"WiFi名字过长" msg:@"请更改Wi-Fi名字在英文32个字符，中文10个字符以内" ok:^(FRAlertController *al) {
-            [KIWIKUtils go2Wifi];
-        }] show];
+        [SVProgressHUD showErrorWithStatus:@"WiFi名字过长，请更改Wi-Fi名字在英文32个字符，中文10个字符以内"];
         return;
     }
     
     NSData *keyData = [key dataUsingEncoding:NSUTF8StringEncoding];
     if (keyData.length > 64) {
-        [[KIWIKUtils alertWithTitle:@"WiFi密码过长" msg:@"请缩短Wi-Fi密码在64个字符以内" ok:^(FRAlertController *al) {
-            [KIWIKUtils go2Wifi];
-        }] show];
+        [SVProgressHUD showErrorWithStatus:@"WiFi密码过长，请缩短Wi-Fi密码在64个字符以内"];
         return;
     }
     
     NSLog(@"%s ssid length %lu key length %lu", __func__, (unsigned long)ssidData.length, (unsigned long)keyData.length);
     
-    GKIWIKAddKit.key = key;
-    GKIWIKAddKit.ssid = ssid;
-    
     [GKIWIKSSID saveSsid:ssid andKey:key];
     
-    KIWIKHotspotViewController *addwifi = [[KIWIKHotspotViewController alloc] init];
-    [self.navigationController pushViewController:addwifi animated:YES];
+    if (![KIWIKUtils getLockAP]) {
+        [[KIWIKUtils alertWithTitle:@"请连接设备热点" msg:NSLocalizedString(@"HotspotTips2", nil) ok:^(FRAlertController *al) {
+            [KIWIKUtils go2Wifi];
+        }] show];
+        return;
+    }
+    
+    [SVProgressHUD showWithStatus:@"稍等..."];
+    [KIWIKConnect settingWifi:ssid pwd:key block:^(KIWIKDevice_Add * _Nonnull dev, NSError * _Nonnull error) {
+        NSLog(@"%s %@ %@", __func__, dev, error);
+        if (dev) {
+            [SVProgressHUD dismiss];
+            
+            [NSThread mainTask:^{
+                KIWIKConnectViewController *conVC = [[KIWIKConnectViewController alloc] initWithDevice:dev];
+                [self.navigationController pushViewController:conVC animated:YES];
+            }];
+        } else {
+            [SVProgressHUD showErrorWithStatus:@"Error"];
+        }
+    }];
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

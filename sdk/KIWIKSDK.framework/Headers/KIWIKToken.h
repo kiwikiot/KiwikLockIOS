@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define GKIWIKTokenMgr [KIWIKTokenMgr shareInstance]
+
 
 @interface KIWIKToken : NSObject
 
@@ -39,5 +41,14 @@
 
 
 -(BOOL)isValid;
+
+@end
+
+
+@interface KIWIKTokenMgr : NSObject
+
+@property(nonatomic, strong) KIWIKToken *token;
+
++(KIWIKTokenMgr *)shareInstance;
 
 @end

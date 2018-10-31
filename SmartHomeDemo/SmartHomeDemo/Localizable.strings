@@ -9,7 +9,7 @@
 "ap_link_step_1" = "一，开启设备热点";
 "ap_link_step_2" = "二，手机连接热点";
 "HotspotTips1" = "进入设备管理页面，选择热点联网模式";
-"HotspotTips2" = "请前往手机‘设置’-‘Wi-Fi’，搜索并连接以CloudHome开头的热点，默认密码是11223344.";
+"HotspotTips2" = "请前往手机‘设置’-‘Wi-Fi’，搜索并连接以CloudHome开头，以16结尾的热点";
 "Connecting" = "连接中...";
 "InputPassword" = "输入密码";
 "ConfirmPassword" = "再次确认密码";

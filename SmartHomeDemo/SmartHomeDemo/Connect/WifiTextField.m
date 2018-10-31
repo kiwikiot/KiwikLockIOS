@@ -57,9 +57,7 @@
 }
 
 -(void)touchUp:(UIButton *)sender {
-    if (_fieldType == WifiTextFieldTypeWifi) {
-        [KIWIKUtils go2Wifi];
-    } else {
+    if (_fieldType == WifiTextFieldTypePassword) {
         self.secureTextEntry = !self.secureTextEntry;
         sender.selected = !sender.selected;
     }

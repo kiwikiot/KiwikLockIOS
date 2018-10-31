@@ -7,7 +7,7 @@
 //
 
 #import "KIWIKDevicesViewController.h"
-#import "KIWIKWifiViewController.h"
+#import "KIWIKHotspotViewController.h"
 #import "KIWIKLockViewController.h"
 #import "FRAlertController.h"
 #import "KIWIKPasswordView.h"
@@ -70,7 +70,7 @@
 }
 
 -(void)addAction:(id)sender {
-    KIWIKWifiViewController *hotspotVC = [[KIWIKWifiViewController alloc] init];
+    KIWIKHotspotViewController *hotspotVC = [[KIWIKHotspotViewController alloc] init];
     [self.navigationController pushViewController:hotspotVC animated:YES];
 }
 

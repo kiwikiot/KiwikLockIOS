@@ -77,7 +77,7 @@
  *  @param data       控制数据
  *  @param block      回调
  */
--(void)ctrl:(NSString *)password data:(NSData *)data block:(void(^)(id response, NSError *error))block;
+-(void)ctrl:(NSData *)data block:(void(^)(id response, NSError *error))block;
 
 
 /*
@@ -100,17 +100,16 @@
 /*
  * 读取设备事件记录
  *
- *  @param idMin      最小消息ID
- *  @param diMax      最大消息ID，为-1是表示取最新的消息
- *  @param count      消息数量
+ *  @param start      当前分页ID，最小为1，默认为1
+ *  @param limit      分页大小，最大限制为100，默认为30
  *  @param block      回调
  */
--(void)getRecords:(NSInteger)idMin idMax:(NSInteger)idMax count:(NSInteger)count block:(void(^)(id response, NSError *error))block;
+-(void)getRecords:(NSInteger)start limit:(NSInteger)limit block:(void(^)(id response, NSError *error))block;
 
 /*
  * 设置事件用户ID备注
  *
- *  @param userType   用户k类型
+ *  @param userType   用户类型
  *  @param userNo     用户编号
  *  @param name       用户名
  *  @param block      回调

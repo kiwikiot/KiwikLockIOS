@@ -10,4 +10,6 @@
 
 @interface KIWIKConnectViewController : KIWIKBaseViewController
 
+-(instancetype)initWithDevice:(KIWIKDevice_Add *)device;
+
 @end

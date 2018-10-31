@@ -34,6 +34,14 @@
     return nil;
 }
 
++ (NSString *)getLockAP {
+    NSString *ssid = [self getSSID];
+    if (ssid && [ssid hasPrefix:@"CloudHome-"] && [ssid hasSuffix:@"-16"]) {
+        return ssid;
+    }
+    return nil;
+}
+
 + (NSArray *)allSubviews:(UIView *)aView {
     NSArray *results = [aView subviews];
     for (UIView *eachView in aView.subviews) {

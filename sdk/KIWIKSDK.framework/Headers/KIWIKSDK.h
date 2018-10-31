@@ -12,18 +12,10 @@
 #import "KIWIKEvent.h"
 #import "KIWIKDevice_Add.h"
 #import "KIWIKToken.h"
+#import "KIWIKWifi.h"
+#import "KIWIKConnect.h"
 
 #define GKIWIKSDK [KIWIKSDK shareInstance]
-
-/*
- * 进度回调
- */
-typedef void(^KIWIKProgressBlock)(float progress);
-
-/*
- * 连接回调，device为优智云家兼容设备
- */
-typedef void(^KIWIKFinishBlock)(KIWIKDevice_Add *device);
 
 
 @interface KIWIKSDK : NSObject
@@ -35,10 +27,14 @@ typedef void(^KIWIKFinishBlock)(KIWIKDevice_Add *device);
 @property(nonatomic, strong) NSString *clientId;
 
 
-@property(nonatomic, strong) KIWIKToken *accessToken;
+// 用户ID，设置accessToken的时候自动获取
+@property(nonatomic, strong, readonly) NSString *uid;
 
 
 +(KIWIKSDK *)shareInstance;
+
+
+-(void)setToken:(KIWIKToken *)accessToken block:(void(^)(BOOL success, NSError *error))block;
 
 
 #pragma mark - Token
@@ -54,76 +50,20 @@ typedef void(^KIWIKFinishBlock)(KIWIKDevice_Add *device);
  */
 -(void)openKIWIKLoginPage:(void(^)(KIWIKToken *accessToken))loginBlock;
 
-
-/*
- * 接口登录
- *
- * @param identifier    用户账号
- * @param clientSecret  跟clientId配套分配的密钥，请注意保存
- */
--(void)loginWithIdentifier:(NSString *)identifier
-              clientSecret:(NSString *)secret
-                     block:(void(^)(KIWIKToken *accessToken, NSError *error))block;
-
 /*
  * 退出登录，清空token
  */
 -(void)logout;
 
 
-#pragma mark - Connect
-
-/*
- * 热点连接的方法
- *
- *  @param ssid        目标热点名字
- *  @param key         目标热点密码
- *  @param isLock      添加锁的时候传入YES，其他的为NO
- *  @param progressBlock  进度回调
- *  @param finishBlock  结果回调
- */
--(void)connectWithSSID:(NSString *)ssid
-                   key:(NSString *)key
-                isLock:(NSInteger)isLock
-         progressBlock:(KIWIKProgressBlock)progressBlock
-           finishBlock:(KIWIKFinishBlock)finishBlock;
-
-/*
- * 热点连接的方法（需要固件的支持）
- *
- *  @param ssid        目标热点名字
- *  @param key         目标热点密码
- *  @param progressBlock  进度回调
- *  @param finishBlock  结果回调
- */
--(void)connectWithSSID:(NSString *)ssid
-                   key:(NSString *)key
-         progressBlock:(KIWIKProgressBlock)progressBlock
-           finishBlock:(KIWIKFinishBlock)finishBlock;
-
-/*
- * 停止连接
- */
--(void)stop;
-
-
 /*
  * 刷新token
  *
- *  @param token     旧的token，如果GKIWIKSDK.accessToken已经设置，这里可以不传
+ *  @param token     旧的token，如果已经设置，这里可以不传
  *  @param block     新的token回调
  */
 -(void)refreshToken:(KIWIKToken *)token
               block:(void(^)(KIWIKToken *newToken, NSError *error))block;
-
-/*
- * 设置设备密码
- *
- *  @param password  密码
- *  @param block     结果回调
- */
--(void)setDevicePassword:(NSString *)password
-                   block:(void(^)(id response, NSError *error))block;
 
 @end
 

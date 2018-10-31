@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D30AF2B420EA6886000D5BFB /* KIWIKSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D30AF2B320EA6886000D5BFB /* KIWIKSettingsViewController.m */; };
 		D344BBCF20D8AA3D00332FAD /* KIWIKWifiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBCE20D8AA3D00332FAD /* KIWIKWifiViewController.m */; };
 		D344BBD220D8AA4B00332FAD /* KIWIKBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBD120D8AA4B00332FAD /* KIWIKBaseViewController.m */; };
 		D344BBD620D8AAC300332FAD /* UIButton+LXMImagePosition.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBD420D8AAC300332FAD /* UIButton+LXMImagePosition.m */; };
@@ -17,7 +16,6 @@
 		D344BBE420D8B03400332FAD /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBE220D8B03400332FAD /* NSString+Category.m */; };
 		D344BBE720D8B05A00332FAD /* KIWIKHotspotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBE620D8B05A00332FAD /* KIWIKHotspotViewController.m */; };
 		D344BBEA20D8B06F00332FAD /* KIWIKConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBE820D8B06F00332FAD /* KIWIKConnectViewController.m */; };
-		D344BBF720D8B1BE00332FAD /* KIWIKAddKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBF620D8B1BE00332FAD /* KIWIKAddKit.m */; };
 		D344BBFA20D8B2CF00332FAD /* MethodButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBF820D8B2CE00332FAD /* MethodButton.m */; };
 		D344BBFD20D8B4AB00332FAD /* CALayer+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBFC20D8B4AB00332FAD /* CALayer+Animation.m */; };
 		D344BC0020D8B58300332FAD /* KIWIKResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BBFF20D8B58300332FAD /* KIWIKResultViewController.m */; };
@@ -46,6 +44,8 @@
 		D3AFE29C2112A7A1006D8F63 /* KIWIKUserAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3AFE29B2112A7A1006D8F63 /* KIWIKUserAddViewController.m */; };
 		D3DAA0FB2186B0EC00F3A785 /* KIWIKSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3DAA0FA2186B0EC00F3A785 /* KIWIKSDK.framework */; };
 		D3DAA11721899C6300F3A785 /* Pagination.m in Sources */ = {isa = PBXBuildFile; fileRef = D3DAA11621899C6300F3A785 /* Pagination.m */; };
+		D3DAA11D2189B5D500F3A785 /* KIWIKWIFIListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3DAA11C2189B5D500F3A785 /* KIWIKWIFIListViewController.m */; };
+		D3DAA12A2189D21700F3A785 /* KIWIKWifiListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3DAA1292189D21700F3A785 /* KIWIKWifiListCell.m */; };
 		FC193E3561A012FC0660F0CC /* libPods-KIWIKSDKDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 223FACE0A202D55B65688FDA /* libPods-KIWIKSDKDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -53,8 +53,6 @@
 		223FACE0A202D55B65688FDA /* libPods-KIWIKSDKDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KIWIKSDKDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ABC3CE0C7355FCC0B7D6CB2 /* Pods-KIWIKSDKDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KIWIKSDKDemo.release.xcconfig"; path = "../Pods/Target Support Files/Pods-KIWIKSDKDemo/Pods-KIWIKSDKDemo.release.xcconfig"; sourceTree = "<group>"; };
 		73D93598689FD892A84C734C /* Pods-KIWIKSDKDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KIWIKSDKDemo.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-KIWIKSDKDemo/Pods-KIWIKSDKDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		D30AF2B220EA6886000D5BFB /* KIWIKSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KIWIKSettingsViewController.h; sourceTree = "<group>"; };
-		D30AF2B320EA6886000D5BFB /* KIWIKSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KIWIKSettingsViewController.m; sourceTree = "<group>"; };
 		D344BBCD20D8AA3C00332FAD /* KIWIKWifiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKWifiViewController.h; sourceTree = "<group>"; };
 		D344BBCE20D8AA3D00332FAD /* KIWIKWifiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKWifiViewController.m; sourceTree = "<group>"; };
 		D344BBD020D8AA4B00332FAD /* KIWIKBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKBaseViewController.h; sourceTree = "<group>"; };
@@ -75,8 +73,6 @@
 		D344BBE620D8B05A00332FAD /* KIWIKHotspotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKHotspotViewController.m; sourceTree = "<group>"; };
 		D344BBE820D8B06F00332FAD /* KIWIKConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKConnectViewController.m; sourceTree = "<group>"; };
 		D344BBE920D8B06F00332FAD /* KIWIKConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKConnectViewController.h; sourceTree = "<group>"; };
-		D344BBF520D8B1BD00332FAD /* KIWIKAddKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKAddKit.h; sourceTree = "<group>"; };
-		D344BBF620D8B1BE00332FAD /* KIWIKAddKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKAddKit.m; sourceTree = "<group>"; };
 		D344BBF820D8B2CE00332FAD /* MethodButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MethodButton.m; sourceTree = "<group>"; };
 		D344BBF920D8B2CE00332FAD /* MethodButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MethodButton.h; sourceTree = "<group>"; };
 		D344BBFB20D8B4AB00332FAD /* CALayer+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Animation.h"; sourceTree = "<group>"; };
@@ -127,6 +123,11 @@
 		D3DAA0FA2186B0EC00F3A785 /* KIWIKSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KIWIKSDK.framework; path = ../../../sdk/KIWIKSDK.framework; sourceTree = "<group>"; };
 		D3DAA11521899C6300F3A785 /* Pagination.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pagination.h; sourceTree = "<group>"; };
 		D3DAA11621899C6300F3A785 /* Pagination.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pagination.m; sourceTree = "<group>"; };
+		D3DAA1182189B12F00F3A785 /* KIWIKSDKDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KIWIKSDKDemo.entitlements; sourceTree = "<group>"; };
+		D3DAA11B2189B5D500F3A785 /* KIWIKWIFIListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KIWIKWIFIListViewController.h; sourceTree = "<group>"; };
+		D3DAA11C2189B5D500F3A785 /* KIWIKWIFIListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KIWIKWIFIListViewController.m; sourceTree = "<group>"; };
+		D3DAA1282189D21700F3A785 /* KIWIKWifiListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KIWIKWifiListCell.h; sourceTree = "<group>"; };
+		D3DAA1292189D21700F3A785 /* KIWIKWifiListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KIWIKWifiListCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,15 +156,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		D30AF2B120EA6869000D5BFB /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				D30AF2B220EA6886000D5BFB /* KIWIKSettingsViewController.h */,
-				D30AF2B320EA6886000D5BFB /* KIWIKSettingsViewController.m */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
 		D344BBAA20D5FE8300332FAD /* Connect */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,16 +163,18 @@
 				D344BBDA20D8ABC200332FAD /* KIWIKSSID.m */,
 				D344BBDC20D8AC1B00332FAD /* WifiTextField.h */,
 				D344BBDD20D8AC1B00332FAD /* WifiTextField.m */,
-				D344BBF520D8B1BD00332FAD /* KIWIKAddKit.h */,
-				D344BBF620D8B1BE00332FAD /* KIWIKAddKit.m */,
 				D344BBF920D8B2CE00332FAD /* MethodButton.h */,
 				D344BBF820D8B2CE00332FAD /* MethodButton.m */,
+				D3DAA1282189D21700F3A785 /* KIWIKWifiListCell.h */,
+				D3DAA1292189D21700F3A785 /* KIWIKWifiListCell.m */,
 				D344BBD020D8AA4B00332FAD /* KIWIKBaseViewController.h */,
 				D344BBD120D8AA4B00332FAD /* KIWIKBaseViewController.m */,
-				D344BBCD20D8AA3C00332FAD /* KIWIKWifiViewController.h */,
-				D344BBCE20D8AA3D00332FAD /* KIWIKWifiViewController.m */,
 				D344BBE520D8B05900332FAD /* KIWIKHotspotViewController.h */,
 				D344BBE620D8B05A00332FAD /* KIWIKHotspotViewController.m */,
+				D3DAA11B2189B5D500F3A785 /* KIWIKWIFIListViewController.h */,
+				D3DAA11C2189B5D500F3A785 /* KIWIKWIFIListViewController.m */,
+				D344BBCD20D8AA3C00332FAD /* KIWIKWifiViewController.h */,
+				D344BBCE20D8AA3D00332FAD /* KIWIKWifiViewController.m */,
 				D344BBE920D8B06F00332FAD /* KIWIKConnectViewController.h */,
 				D344BBE820D8B06F00332FAD /* KIWIKConnectViewController.m */,
 				D344BBFE20D8B58200332FAD /* KIWIKResultViewController.h */,
@@ -260,6 +254,7 @@
 		D36A61E120D21E8C00CEDA57 = {
 			isa = PBXGroup;
 			children = (
+				D3DAA1182189B12F00F3A785 /* KIWIKSDKDemo.entitlements */,
 				D36A61EC20D21E8C00CEDA57 /* SmartHomeDemo */,
 				D36A61EB20D21E8C00CEDA57 /* Products */,
 				D36A620320D21EDD00CEDA57 /* Frameworks */,
@@ -281,7 +276,6 @@
 				D36A61ED20D21E8C00CEDA57 /* AppDelegate.h */,
 				D36A61EE20D21E8C00CEDA57 /* AppDelegate.m */,
 				D3612E1920FD8D160040B6B1 /* sdk */,
-				D30AF2B120EA6869000D5BFB /* Settings */,
 				D344BC0320D8F18E00332FAD /* Lock */,
 				D344BBAA20D5FE8300332FAD /* Connect */,
 				D36A633320D247F600CEDA57 /* Vendor */,
@@ -350,6 +344,11 @@
 				TargetAttributes = {
 					D36A61E920D21E8C00CEDA57 = {
 						CreatedOnToolsVersion = 9.4;
+						SystemCapabilities = {
+							com.apple.AccessWiFi = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -438,7 +437,6 @@
 				D344BBFA20D8B2CF00332FAD /* MethodButton.m in Sources */,
 				D344BBD220D8AA4B00332FAD /* KIWIKBaseViewController.m in Sources */,
 				D344BBDE20D8AC1B00332FAD /* WifiTextField.m in Sources */,
-				D344BBF720D8B1BE00332FAD /* KIWIKAddKit.m in Sources */,
 				D344BC2820D9069A00332FAD /* KIWIKHistoryViewController.m in Sources */,
 				D344BBEA20D8B06F00332FAD /* KIWIKConnectViewController.m in Sources */,
 				D344BBE720D8B05A00332FAD /* KIWIKHotspotViewController.m in Sources */,
@@ -449,7 +447,6 @@
 				D344BC0A20D8F57500332FAD /* WTReTextField.m in Sources */,
 				D344BBDB20D8ABC200332FAD /* KIWIKSSID.m in Sources */,
 				D344BC2920D9069A00332FAD /* KIWIKHistoryCell.m in Sources */,
-				D30AF2B420EA6886000D5BFB /* KIWIKSettingsViewController.m in Sources */,
 				D36A635720D255AE00CEDA57 /* KIWIKUtils.m in Sources */,
 				D344BC9D20DD7DE000332FAD /* KIWIKUser.m in Sources */,
 				D344BC0020D8B58300332FAD /* KIWIKResultViewController.m in Sources */,
@@ -458,6 +455,8 @@
 				D344BC7920DA6E0B00332FAD /* UITableView+KIWIK.m in Sources */,
 				D36A61F220D21E8C00CEDA57 /* KIWIKDevicesViewController.m in Sources */,
 				D344BC0920D8F57500332FAD /* WTReParser.m in Sources */,
+				D3DAA11D2189B5D500F3A785 /* KIWIKWIFIListViewController.m in Sources */,
+				D3DAA12A2189D21700F3A785 /* KIWIKWifiListCell.m in Sources */,
 				D344BC1420D9061F00332FAD /* KIWIKLockViewController.m in Sources */,
 				D344BBE420D8B03400332FAD /* NSString+Category.m in Sources */,
 				D344BBD620D8AAC300332FAD /* UIButton+LXMImagePosition.m in Sources */,
@@ -599,6 +598,7 @@
 			baseConfigurationReference = 73D93598689FD892A84C734C /* Pods-KIWIKSDKDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KIWIKSDKDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SEBX8SBS54;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -622,6 +622,7 @@
 			baseConfigurationReference = 6ABC3CE0C7355FCC0B7D6CB2 /* Pods-KIWIKSDKDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KIWIKSDKDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SEBX8SBS54;
 				FRAMEWORK_SEARCH_PATHS = (

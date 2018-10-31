@@ -134,7 +134,15 @@
 -(void)onNavButtonTapped:(UIBarButtonItem *)sender event:(UIEvent *)event {
     __weak __typeof(self)weakSelf = self;
     NSArray *array = @[ NSLocalizedString(@"Rename", nil), NSLocalizedString(@"UserInfo", nil), NSLocalizedString(@"DeleteDevice", nil) ];
-    [FTPopOverMenu showFromEvent:event withMenuArray:array doneBlock:^(NSInteger selectedIndex) {
+    
+    FTPopOverMenuConfiguration *config = [FTPopOverMenuConfiguration defaultConfiguration];
+    config.backgroundColor = [UIColor whiteColor];
+    config.textAlignment = NSTextAlignmentCenter;
+    config.textFont = [UIFont systemFontOfSize:16];
+    config.textAlignment = NSTextAlignmentCenter;
+    config.textColor = [UIColor blackColor];
+    
+    [FTPopOverMenu showFromEvent:event withMenuArray:array imageArray:nil configuration:config doneBlock:^(NSInteger selectedIndex) {
         if (selectedIndex == 0) {
             [weakSelf renameAction];
         } else if (selectedIndex == 1) {

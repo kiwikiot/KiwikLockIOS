@@ -12,14 +12,23 @@
 #import "MDRadialProgressLabel.h"
 #import "CALayer+Animation.h"
 #import "KIWIKResultViewController.h"
-#import "KIWIKAddKit.h"
 
 @interface KIWIKConnectViewController()<UIGestureRecognizerDelegate>
+@property (nonatomic, strong) KIWIKDevice_Add *device;
 @property (nonatomic, strong) NSTimer *timer;
-@property (nonatomic, strong) MDRadialProgressView *radialView2;
+@property (nonatomic, assign) NSInteger times;
+@property (nonatomic, strong) MDRadialProgressView *radialView;
 @end
 
 @implementation KIWIKConnectViewController
+
+-(instancetype)initWithDevice:(KIWIKDevice_Add *)device {
+    self = [super init];
+    if(self){
+        self.device = device;
+    }
+    return self;
+}
 
 -(void)dealloc{
     [self.timer invalidate];
@@ -48,55 +57,41 @@
     [super viewDidLoad];
     self.titleLabel.text = NSLocalizedString(@"Connecting", nil);
     self.tishiLabel.hidden = YES;
+    
+    [self.nextBtn setTitle:@"重试" forState:UIControlStateNormal];
     self.nextBtn.hidden = YES;
     
     self.imageView.image = [UIImage imageNamed:@"DoorLock_White"];
     
-    float y = (self.imageView.bottom + SCREEN_HEIGHT) / 2.0f + 30.0f;
+    float y = (self.imageView.bottom + SCREEN_HEIGHT - 60.0f - SafeInsets_1.bottom) / 2 - 30.0f;
     
-    self.radialView2 = [[MDRadialProgressView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2.0 - 30, y, 60, 60)];
-    self.radialView2.progressTotal = 100;
-    self.radialView2.progressCounter = 0;
-    self.radialView2.theme.thickness = 10;
-    self.radialView2.theme.incompletedColor = [UIColor colorWithWhite:0.8 alpha:0.3];
-    self.radialView2.theme.completedColor = [UIColor whiteColor];
-    self.radialView2.theme.sliceDividerHidden = YES;
-    self.radialView2.label.textColor = [UIColor whiteColor];
-    self.radialView2.label.shadowColor = [UIColor clearColor];
-    [self.view addSubview:self.radialView2];
+    _radialView = [[MDRadialProgressView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2.0 - 30, y, 60, 60)];
+    _radialView.progressTotal = 100;
+    _radialView.progressCounter = 0;
+    _radialView.theme.thickness = 10;
+    _radialView.theme.incompletedColor = [UIColor colorWithWhite:0.8 alpha:0.3];
+    _radialView.theme.completedColor = [UIColor whiteColor];
+    _radialView.theme.sliceDividerHidden = YES;
+    _radialView.label.textColor = [UIColor whiteColor];
+    _radialView.label.shadowColor = [UIColor clearColor];
+    [self.view addSubview:_radialView];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
-    [self searchDevice];
-    
+    [self nextAction:nil];
+}
+
+-(void)nextAction:(id)sender {
+    self.times = 0;
+    self.nextBtn.hidden = YES;
     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(timerFire) userInfo:nil repeats:YES];
 }
 
--(void)backClicked:(id)sender {
-    __weak __typeof(self)weakSelf = self;
-    [[KIWIKUtils alertWithTitle:@"温馨提示" msg:@"您确定要停止添加吗？" ok:^(FRAlertController *al) {
-        [GKIWIKSDK stop];
-        [weakSelf.navigationController popViewControllerAnimated:YES];
-    }] show];
-}
-
--(void)searchDevice {
-    __weak __typeof(self)weakSelf = self;
-    [GKIWIKSDK connectWithSSID:GKIWIKAddKit.ssid key:GKIWIKAddKit.key isLock:YES progressBlock:^(float progress) {
-//    [GKIWIKSDK connectWithSSID:GKIWIKAddKit.ssid key:GKIWIKAddKit.key progressBlock:^(float progress) {
-        [NSThread mainTask:^{
-            weakSelf.radialView2.progressCounter = 100 * progress;
-        }];
-    } finishBlock:^(KIWIKDevice_Add *device) {
-        [NSThread mainTask:^{
-            KIWIKResultViewController *resultVC = [[KIWIKResultViewController alloc] initWithDevice:device];
-            [weakSelf gotoVC:resultVC];
-        }];
-    }];
-}
-
--(void)gotoVC:(UIViewController *)viewController {
-    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:self.navigationController.viewControllers];
-    [array replaceObjectAtIndex:array.count - 1 withObject:viewController];
-    self.navigationController.viewControllers = array;
+-(void)stopTimer {
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 -(void)timerFire {
@@ -107,6 +102,38 @@
     waveLayer.cornerRadius = 60.0;
     [self.imageView.layer addSublayer:waveLayer];
     [waveLayer begainScale];
+    
+    _radialView.progressCounter = 100 * _times / 60.0;
+    
+    if (_times >= 60) {
+        self.nextBtn.hidden = NO;
+        [self stopTimer];
+    }
+    
+    if (_times % 8 == 0) {
+        __weak __typeof(self) weakSelf = self;
+        [_device bind:^(id response, NSError *error) {
+            if (response) {
+                KIWIKResultViewController *resultVC = [[KIWIKResultViewController alloc] initWithDevice:weakSelf.device];
+                [weakSelf gotoVC:resultVC];
+            }
+        }];
+    }
+    _times += 1;
+}
+
+-(void)backClicked:(id)sender {
+    __weak __typeof(self)weakSelf = self;
+    [[KIWIKUtils alertWithTitle:@"温馨提示" msg:@"您确定要停止添加吗？" ok:^(FRAlertController *al) {
+        [weakSelf stopTimer];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    }] show];
+}
+
+-(void)gotoVC:(UIViewController *)viewController {
+    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:self.navigationController.viewControllers];
+    [array replaceObjectAtIndex:array.count - 1 withObject:viewController];
+    self.navigationController.viewControllers = array;
 }
 
 - (void)didReceiveMemoryWarning {
