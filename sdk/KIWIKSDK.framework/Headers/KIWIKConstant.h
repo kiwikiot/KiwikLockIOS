@@ -44,11 +44,12 @@ extern NSString * const KIWIKCtrlResponse;
 extern NSString * const KIWIKGetRecords;
 extern NSString * const KIWIKGetRecordsResponse;
 
-extern NSString * const KIWIKSetUserId;
-extern NSString * const KIWIKSetUserIdResponse;
 
-extern NSString * const KIWIKDeleteUserId;
-extern NSString * const KIWIKDeleteUserIdResponse;
-
-extern NSString * const KIWIKGetUserIds;
-extern NSString * const KIWIKGetUserIdsResponse;
+extern NSString * const KIWIKSetDataItem;
+extern NSString * const KIWIKSetDataItemResponse;
+extern NSString * const KIWIKDeleteDataItem;
+extern NSString * const KIWIKDeleteDataItemResponse;
+extern NSString * const KIWIKGetDataItems;
+extern NSString * const KIWIKGetDataItemsResponse;
+extern NSString * const KIWIKGetDataItem;
+extern NSString * const KIWIKGetDataItemResponse;

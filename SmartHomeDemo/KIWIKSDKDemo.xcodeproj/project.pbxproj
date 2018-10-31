@@ -45,6 +45,7 @@
 		D36A654E20D39D5300CEDA57 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D36A654D20D39D5300CEDA57 /* libicucore.tbd */; };
 		D3AFE29C2112A7A1006D8F63 /* KIWIKUserAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3AFE29B2112A7A1006D8F63 /* KIWIKUserAddViewController.m */; };
 		D3DAA0FB2186B0EC00F3A785 /* KIWIKSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3DAA0FA2186B0EC00F3A785 /* KIWIKSDK.framework */; };
+		D3DAA11721899C6300F3A785 /* Pagination.m in Sources */ = {isa = PBXBuildFile; fileRef = D3DAA11621899C6300F3A785 /* Pagination.m */; };
 		FC193E3561A012FC0660F0CC /* libPods-KIWIKSDKDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 223FACE0A202D55B65688FDA /* libPods-KIWIKSDKDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +125,8 @@
 		D3AFE29A2112A7A1006D8F63 /* KIWIKUserAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KIWIKUserAddViewController.h; sourceTree = "<group>"; };
 		D3AFE29B2112A7A1006D8F63 /* KIWIKUserAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KIWIKUserAddViewController.m; sourceTree = "<group>"; };
 		D3DAA0FA2186B0EC00F3A785 /* KIWIKSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KIWIKSDK.framework; path = ../../../sdk/KIWIKSDK.framework; sourceTree = "<group>"; };
+		D3DAA11521899C6300F3A785 /* Pagination.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pagination.h; sourceTree = "<group>"; };
+		D3DAA11621899C6300F3A785 /* Pagination.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Pagination.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +232,8 @@
 				D344BC6F20DA2A8E00332FAD /* KIWIKUsersViewController.m */,
 				D3AFE29A2112A7A1006D8F63 /* KIWIKUserAddViewController.h */,
 				D3AFE29B2112A7A1006D8F63 /* KIWIKUserAddViewController.m */,
+				D3DAA11521899C6300F3A785 /* Pagination.h */,
+				D3DAA11621899C6300F3A785 /* Pagination.m */,
 			);
 			path = Lock;
 			sourceTree = "<group>";
@@ -429,6 +434,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3DAA11721899C6300F3A785 /* Pagination.m in Sources */,
 				D344BBFA20D8B2CF00332FAD /* MethodButton.m in Sources */,
 				D344BBD220D8AA4B00332FAD /* KIWIKBaseViewController.m in Sources */,
 				D344BBDE20D8AC1B00332FAD /* WifiTextField.m in Sources */,

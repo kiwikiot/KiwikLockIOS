@@ -32,6 +32,7 @@
     
     FTPopOverMenuConfiguration *configuration = [FTPopOverMenuConfiguration defaultConfiguration];
     configuration.backgroundColor = [UIColor whiteColor];
+    configuration.textAlignment = NSTextAlignmentCenter;
     configuration.textFont = [UIFont systemFontOfSize:16];
     configuration.textAlignment = NSTextAlignmentCenter;
     configuration.textColor = [UIColor blackColor];

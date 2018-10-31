@@ -10,23 +10,24 @@
 #import "KIWIKHistoryCell.h"
 #import "KIWIKEvent+UI.h"
 #import "KIWIKLockService.h"
+#import "Pagination.h"
 
 @interface KIWIKHistoryViewController ()<UITableViewDelegate, UITableViewDataSource>
-@property NSInteger selectedIndex;
 @property (nonatomic, strong) KIWIKDevice *device;
-@property (nonatomic, assign) HistoryType type;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) Pagination *pagination;
 @end
 
 @implementation KIWIKHistoryViewController
 
-- (instancetype)initWithDevice:(KIWIKDevice *)device type:(HistoryType)type {
+- (instancetype)initWithDevice:(KIWIKDevice *)device {
     self = [super init];
     if (self) {
+        self.title = @"消息记录";
         self.device = device;
-        self.type = type;
         self.dataArray = [NSMutableArray array];
+        self.pagination = [[Pagination alloc] init];
     }
     return self;
 }
@@ -45,12 +46,6 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
-    if (_type == HistoryTypeAlarm) {
-        self.title = NSLocalizedString(@"AlarmRecords", nil);
-    } else {
-        self.title = NSLocalizedString(@"UnlockRecords", nil);
-    }
-    
     CGRect frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 180 - SafeInsets_2.top - SafeInsets_2.bottom);
     self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -62,13 +57,36 @@
     
     __weak __typeof(self)weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf.device getRecords:0 idMax:-1 count:10000 block:^(id response, NSError *error) {
+        [weakSelf.device getRecords:1 limit:30 block:^(id response, NSError *error) {
             [weakSelf.tableView.mj_header endRefreshing];
             if (!error) {
-                NSDictionary *list = [response objectForKey:@"list"];
-                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(eventListChanged:)]) {
-                    [weakSelf.delegate eventListChanged:list];
+                [weakSelf.dataArray removeAllObjects];
+                
+                if ([response objectForKey:@"messages"]) {
+                    NSArray *messages = [response objectForKey:@"messages"];
+                    for (NSString *str in messages) {
+                        KIWIKEvent *event = [[KIWIKEvent alloc] initWithString:str];
+                        [weakSelf.dataArray addObject:event];
+                    }
                 }
+                if (weakSelf.dataArray.count == 0) {
+                    [self.tableView showTips:NSLocalizedString(@"NoRecords", nil) centerY:self.tableView.boundsHeight * 0.5 - SafeInsets_1.bottom];
+                } else {
+                    [self.tableView hideTips];
+                }
+                [self.tableView reloadData];
+                
+                if ([response objectForKey:@"_pagination"]) {
+                    NSDictionary *dict = [response objectForKey:@"_pagination"];
+                    weakSelf.pagination = [Pagination mj_objectWithKeyValues:dict];
+                }
+                
+                [weakSelf.tableView.mj_footer resetNoMoreData];
+                
+//                NSDictionary *list = [response objectForKey:@"list"];
+//                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(eventListChanged:)]) {
+//                    [weakSelf.delegate eventListChanged:list];
+//                }
             } else {
                 NSLog(@"getRecords error %@", error.description);
             }
@@ -76,107 +94,43 @@
     }];
     self.tableView.mj_header.automaticallyChangeAlpha = YES;
     [self.tableView.mj_header beginRefreshing];
-}
-
--(void)setEventList:(NSArray *)events {
-    [_dataArray removeAllObjects];
-    NSMutableArray *tmp = [NSMutableArray array];
-    NSString *string = nil;
-    for (int i = 0; i < events.count; i++) {
-        KIWIKEvent *model = events[i];
-        NSString *str = [model dayString];
-        
-        if (![str isEqualToString:string]) {
-            if (tmp.count > 0) {
-                NSArray *array = [[NSArray alloc]initWithArray:tmp];
-                [_dataArray addObject:array];
-                [tmp removeAllObjects];
-            }
-            string = str;
-            [tmp addObject:model];
-        }else{
-            [tmp addObject:model];
-        }
-        
-        if (i == events.count - 1) {
-            if (tmp.count > 0) {
-                NSArray *array = [[NSArray alloc]initWithArray:tmp];
-                [_dataArray addObject:array];
-                [tmp removeAllObjects];
-            }
-        }
-    }
     
-    if (events.count == 0) {
-        [self.tableView showTips:NSLocalizedString(@"NoRecords", nil) centerY:self.tableView.boundsHeight * 0.5 - SafeInsets_1.bottom];
-    }else{
-        [self.tableView hideTips];
-    }
-    [self.tableView reloadData];
-}
-
--(void)reload {
-    [self.tableView reloadData];
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        if (weakSelf.pagination.hasMore) {
+            [weakSelf.device getRecords:weakSelf.pagination.start + 1 limit:weakSelf.pagination.limit block:^(id response, NSError *error) {
+                [weakSelf.tableView.mj_footer endRefreshing];
+                
+                if ([response objectForKey:@"messages"]) {
+                    NSArray *messages = [response objectForKey:@"messages"];
+                    for (NSString *str in messages) {
+                        KIWIKEvent *event = [[KIWIKEvent alloc] initWithString:str];
+                        [weakSelf.dataArray addObject:event];
+                    }
+                }
+                [self.tableView reloadData];
+                
+                if ([response objectForKey:@"_pagination"]) {
+                    NSDictionary *dict = [response objectForKey:@"_pagination"];
+                    weakSelf.pagination = [Pagination mj_objectWithKeyValues:dict];
+                }
+            }];
+        } else {
+            [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+    }];
 }
 
 #pragma mark - uitableviewdelegate
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.dataArray.count;
-}
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (self.selectedIndex == section) {
-        return [self.dataArray[section] count];
-    } else {
-        return 0;
-    }
+    return [_dataArray count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 50;
+    return CGFLOAT_MIN;
 }
 
--(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    KIWIKEvent *event = self.dataArray[section][0];
-    NSDate *date = [event dateTime];
-    
-    UIColor *color = [UIColor colorWithWhite:0.4 alpha:0.8];
-    UIButton *view = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
-    view.backgroundColor = [UIColor whiteColor];
-    
-    UILabel *ymLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, SCREEN_WIDTH - 30, 30)];
-    ymLabel.font = [UIFont systemFontOfSize:20];
-    ymLabel.textColor = color;
-    ymLabel.text = [NSString stringWithFormat:@"%d/%02d/%02d", (int)date.year, (int)date.month, (int)date.day];
-    [view addSubview:ymLabel];
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 40, 10, 30, 30)];
-    [view addSubview:imageView];
-    if (section == self.selectedIndex) {
-        imageView.image = [[UIImage imageNamed:@"arrow_down"] imageWithTintColor:color];
-    } else {
-        imageView.image = [[UIImage imageNamed:@"arrow_right"] imageWithTintColor:color];
-    }
-    
-    CALayer *layer = [CALayer layer];
-    layer.frame = CGRectMake(0, 50 - PixelOne, SCREEN_WIDTH, PixelOne);
-    layer.backgroundColor = [UIColor lightGrayColor].CGColor;
-    [view.layer addSublayer:layer];
-    
-    view.tag = section;
-    [view addTarget:self action:@selector(headClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
-    return view;
-}
-
--(void)headClicked:(id)sender {
-    UIButton *button = (UIButton *)sender;
-    if (self.selectedIndex == button.tag) {
-        self.selectedIndex = -1;
-    } else {
-        self.selectedIndex = button.tag;
-    }
-    [self.tableView reloadData];
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return [UIView new];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
@@ -197,10 +151,8 @@
     if (!cell) {
         cell = [[KIWIKHistoryCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identity];
     }
-    NSArray *tmp = self.dataArray[indexPath.section];
-    KIWIKEvent *event = tmp[indexPath.row];
+    KIWIKEvent *event = self.dataArray[indexPath.row];
     cell.event = event;
-    
     cell.detailTextLabel.text = [GKIWIKLockService userName:event device:self.device];
     return cell;
 }

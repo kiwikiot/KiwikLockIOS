@@ -44,7 +44,7 @@
     
     __weak __typeof(self)weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf.device getUserIds:^(id response, NSError *error) {
+        [weakSelf.device getUsers:^(id response, NSError *error) {
             [weakSelf.tableView.mj_header endRefreshing];
             if (!error) {
                 [weakSelf rerfreshTableView];
@@ -75,12 +75,10 @@
 
 -(void)rerfreshTableView {
     [_userArray removeAllObjects];
-    if ([GKIWIKSocket.userDict objectForKey:_device.did]) {
-        NSDictionary *users = [GKIWIKSocket.userDict objectForKey:_device.did];
-        for (NSString *key in users.allKeys) {
-            KIWIKUser *user = [[KIWIKUser alloc] initWithId:[key integerValue] name:users[key]];
-            [_userArray addSafeObject:user];
-        }
+    NSDictionary *users = _device.userDict;
+    for (NSString *key in users.allKeys) {
+        KIWIKUser *user = [[KIWIKUser alloc] initWithId:[key integerValue] name:users[key]];
+        [_userArray addSafeObject:user];
     }
     [self.tableView reloadData];
 }
@@ -106,7 +104,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 45.0f;
+    return 50.0f;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -114,7 +112,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identity];
     if (! cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identity];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = [UIColor whiteColor];
         cell.textLabel.font = [UIFont systemFontOfSize:16];
         cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
@@ -125,6 +122,14 @@
     cell.textLabel.text = user.userName;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@: %ld",NSLocalizedString(@"UserNo", nil), (long)user.userNo];
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    KIWIKUserAddViewController *addVC = [[KIWIKUserAddViewController alloc] initWithDevice:self.device];
+    addVC.user = [self.userArray objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:addVC animated:YES];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -142,7 +147,7 @@
         __weak __typeof(self)weakSelf = self;
         [[KIWIKUtils alertWithTitle:@"温馨提示" msg:@"你确定要删除该备注名吗？" ok:^(FRAlertController *al) {
             [SVProgressHUD showWithStatus:@"稍等..."];
-            [weakSelf.device deleteUserId:user.userId block:^(id response, NSError *error) {
+            [weakSelf.device deleteUser:user.userType userNo:user.userNo block:^(id response, NSError *error) {
                 if (!error) {
                     [SVProgressHUD showSuccessWithStatus:@"删除成功"];
                 } else {

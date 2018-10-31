@@ -18,7 +18,6 @@
 @property (nonatomic, strong) UIImageView *circleImageView2;
 @property (nonatomic, strong) UIImageView *shadowImage;
 @property (nonatomic, strong) KIWIKHistoryViewController *vc1;
-@property (nonatomic, strong) KIWIKHistoryViewController *vc2;
 @property (nonatomic, strong) KIWIKEvent *eventLatest;
 @end
 
@@ -66,11 +65,9 @@
     _circleImageView2.image = [UIImage imageNamed:@"DoorCircle2"];
     [headerView addSubview:_circleImageView2];
     
-    _vc1 = [[KIWIKHistoryViewController alloc] initWithDevice:self.device type:HistoryTypeUnlocking];
+    _vc1 = [[KIWIKHistoryViewController alloc] initWithDevice:self.device];
     _vc1.delegate = self;
-    _vc2 = [[KIWIKHistoryViewController alloc] initWithDevice:self.device type:HistoryTypeAlarm];
-    _vc2.delegate = self;
-    self.viewControllers = @[ _vc1, _vc2 ];
+    self.viewControllers = @[ _vc1];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -116,40 +113,19 @@
 
 #pragma mark - KIWIKDeviceDelegate
 -(void)device:(KIWIKDevice *)device usersChanged:(NSDictionary *)users {
-    if (self.selectedIndex == 1) {
-        [self.vc2 reload];
-    } else {
-        [self.vc1 reload];
-    }
+//    [self.vc1 reload];
 }
 
 #pragma mark - KIWIKHistoryDelegate
 -(void)eventListChanged:(NSDictionary *)list {
-    NSMutableArray *eventArray = [NSMutableArray array];
-    NSMutableArray *alarmArray = [NSMutableArray array];
-    
     _eventLatest = nil;
     for (NSString *key in list.allKeys) {
         NSString *str = [list objectForKey:key];
         KIWIKEvent *event = [[KIWIKEvent alloc] initWithString:str];
-        if ([event isLockWarning]) {
-            [alarmArray addObject:event];
-        } else {
-            [eventArray addObject:event];
-        }
         if (!_eventLatest || _eventLatest.time < event.time) {
             _eventLatest = event;
         }
     }
-    [eventArray sortUsingComparator:^NSComparisonResult(KIWIKEvent* _Nonnull obj1, KIWIKEvent* _Nonnull obj2) {
-        return obj1.time < obj2.time;
-    }];
-    [_vc1 setEventList:eventArray];
-    
-    [alarmArray sortUsingComparator:^NSComparisonResult(KIWIKEvent* _Nonnull obj1, KIWIKEvent* _Nonnull obj2) {
-        return obj1.time < obj2.time;
-    }];
-    [_vc2 setEventList:alarmArray];
     
     [self updateTopView];
 }

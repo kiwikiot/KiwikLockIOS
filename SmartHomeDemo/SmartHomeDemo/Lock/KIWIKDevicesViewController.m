@@ -49,7 +49,7 @@
     
     __weak __typeof(self)weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [GKIWIKSocket getDevices:^(id response, NSError *error) {
+        [GKIWIKSocket getLocks:^(id response, NSError *error) {
             NSLog(@"response %@ error %@", response, error);
             [weakSelf.tableView.mj_header endRefreshing];
             if (error) {

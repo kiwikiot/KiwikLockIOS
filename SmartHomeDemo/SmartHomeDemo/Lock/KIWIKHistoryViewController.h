@@ -8,11 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum : NSUInteger {
-    HistoryTypeUnlocking,
-    HistoryTypeAlarm
-} HistoryType;
-
 @protocol KIWIKHistoryDelegate <NSObject>
 -(void)eventListChanged:(NSDictionary *)list;
 @end
@@ -21,10 +16,6 @@ typedef enum : NSUInteger {
 
 @property(nonatomic, assign) id<KIWIKHistoryDelegate> delegate;
 
-- (instancetype)initWithDevice:(KIWIKDevice *)device type:(HistoryType)type;
-
--(void)setEventList:(NSArray *)events;
-
--(void)reload;
+- (instancetype)initWithDevice:(KIWIKDevice *)device;
 
 @end

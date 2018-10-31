@@ -224,16 +224,9 @@
     }
 }
 
--(NSString *)dayString {
-    NSDateFormatter *monthAndYearFormatter = [[NSDateFormatter alloc] init];
-    NSString *dateFormat = [NSDateFormatter dateFormatFromTemplate:@"yMMMMd" options:0 locale:[NSLocale currentLocale]];
-    monthAndYearFormatter.dateFormat = dateFormat;
-    return [monthAndYearFormatter stringFromDate:[self dateTime]];
-}
-
 -(NSString *)timeString {
     NSDateFormatter *formatter1 = [[NSDateFormatter alloc] init];
-    [formatter1 setDateFormat:@"HH:mm ss"];
+    [formatter1 setDateFormat:@"y-MM-d HH:mm ss"];
     return [formatter1 stringFromDate:[self dateTime]];
 }
 

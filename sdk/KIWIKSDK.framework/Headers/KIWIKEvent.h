@@ -106,6 +106,7 @@ typedef NS_ENUM(NSInteger, DoorLockUserType) {
 
 -(NSDate *)dateTime;
 
+-(NSInteger)userId;
 
 -(BOOL)remoteRequestValid;
 

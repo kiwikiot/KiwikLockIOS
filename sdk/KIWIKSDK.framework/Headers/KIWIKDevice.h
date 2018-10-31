@@ -39,6 +39,11 @@
 
 @property(nonatomic, assign) id<KIWIKDeviceDelegate> delegate;
 
+/**
+ * 用户备注信息
+ */
+@property(nonatomic, strong) NSMutableDictionary *userDict;
+
 
 /*
  * 设置设备名
@@ -105,25 +110,36 @@
 /*
  * 设置事件用户ID备注
  *
- *  @param userId     用户ID
+ *  @param userType   用户k类型
+ *  @param userNo     用户编号
  *  @param name       用户名
  *  @param block      回调
  */
--(void)setUserId:(NSInteger)userId name:(NSString *)name block:(void(^)(id response, NSError *error))block;
+-(void)setUser:(NSInteger)userType userNo:(NSInteger)userNo name:(NSString *)name block:(void(^)(id response, NSError *error))block;
 
 /*
  * 删除事件用户ID备注
  *
- *  @param userId     用户ID
+ *  @param userType   用户类型
+ *  @param userNo     用户编号
  *  @param block      回调
  */
--(void)deleteUserId:(NSInteger)userId block:(void(^)(id response, NSError *error))block;
+-(void)deleteUser:(NSInteger)userType userNo:(NSInteger)userNo block:(void(^)(id response, NSError *error))block;
 
 /*
  * 读取事件用户ID备注列表
  *
  *  @param block      回调
  */
--(void)getUserIds:(void(^)(id response, NSError *error))block;
+-(void)getUsers:(void(^)(id response, NSError *error))block;
+
+/*
+ * 读取单个用户ID备注
+ *
+ *  @param userType   用户类型
+ *  @param userNo     用户编号
+ *  @param block      回调
+ */
+-(void)getUser:(NSInteger)userType userNo:(NSInteger)userNo block:(void(^)(id response, NSError *error))block;
 
 @end

@@ -40,11 +40,6 @@ typedef void(^KIWIKResponseBlock)(id response, NSError *error);
  */
 @property(nonatomic, strong) NSArray *deviceList;
 
-/**
- * 所有设备的用户
- */
-@property(nonatomic, strong) NSMutableDictionary *userDict;
-
 
 @property(nonatomic, assign) id<KIWIKSocketDelegate> delegate;
 
@@ -60,19 +55,11 @@ typedef void(^KIWIKResponseBlock)(id response, NSError *error);
 
 
 /*
- * 获取设备列表
+ * 获取门锁列表
  *
  *  @param block   回调，与其他接口不同的是response是设备列表
  */
--(void)getDevices:(KIWIKResponseBlock)block;
-
-/*
- * 获取多个设备用户列表
- *
- *  @param didArray  设备ID列表
- *  @param block     回调
- */
--(void)getMultiUserIds:(NSArray *)didArray block:(KIWIKResponseBlock)block;
+-(void)getLocks:(KIWIKResponseBlock)block;
 
 
 /*

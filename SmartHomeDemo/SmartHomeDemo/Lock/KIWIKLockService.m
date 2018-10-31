@@ -100,12 +100,9 @@ SingletonM(KIWIKLockService,)
 }
 
 -(NSString *)userName:(KIWIKEvent *)event device:(KIWIKDevice *)device {
-    NSString *userId = [@(event.userType * 65536 + event.userNo) stringValue];
-    if ([GKIWIKSocket.userDict objectForKey:device.did]) {
-        NSDictionary *users = [GKIWIKSocket.userDict objectForKey:device.did];
-        if ([users objectForKey:userId]) {
-            return [users objectForKey:userId];
-        }
+    NSInteger userId = [event userId];
+    if ([device.userDict objectForKey:@(userId)]) {
+        return [device.userDict objectForKey:@(userId)];
     }
     return [NSString stringWithFormat:@"%@:%ld", NSLocalizedString(@"UserNo", nil), (long)event.userNo];
 }

@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KIWIKUser.h"
 
 @interface KIWIKUserAddViewController : UIViewController
+
+@property(nonatomic, strong) KIWIKUser *user;
 
 - (instancetype)initWithDevice:(KIWIKDevice *)device;
 

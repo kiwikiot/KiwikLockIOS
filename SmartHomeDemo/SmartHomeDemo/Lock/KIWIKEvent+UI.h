@@ -16,8 +16,6 @@
 
 -(UIImage *)image;
 
--(NSString *)dayString;
-
 -(NSString *)timeString;
 
 -(NSString *)title;
