@@ -159,26 +159,10 @@
 		D344BBAA20D5FE8300332FAD /* Connect */ = {
 			isa = PBXGroup;
 			children = (
-				D344BBD920D8ABC200332FAD /* KIWIKSSID.h */,
-				D344BBDA20D8ABC200332FAD /* KIWIKSSID.m */,
-				D344BBDC20D8AC1B00332FAD /* WifiTextField.h */,
-				D344BBDD20D8AC1B00332FAD /* WifiTextField.m */,
-				D344BBF920D8B2CE00332FAD /* MethodButton.h */,
-				D344BBF820D8B2CE00332FAD /* MethodButton.m */,
-				D3DAA1282189D21700F3A785 /* KIWIKWifiListCell.h */,
-				D3DAA1292189D21700F3A785 /* KIWIKWifiListCell.m */,
-				D344BBD020D8AA4B00332FAD /* KIWIKBaseViewController.h */,
-				D344BBD120D8AA4B00332FAD /* KIWIKBaseViewController.m */,
-				D344BBE520D8B05900332FAD /* KIWIKHotspotViewController.h */,
-				D344BBE620D8B05A00332FAD /* KIWIKHotspotViewController.m */,
-				D3DAA11B2189B5D500F3A785 /* KIWIKWIFIListViewController.h */,
-				D3DAA11C2189B5D500F3A785 /* KIWIKWIFIListViewController.m */,
-				D344BBCD20D8AA3C00332FAD /* KIWIKWifiViewController.h */,
-				D344BBCE20D8AA3D00332FAD /* KIWIKWifiViewController.m */,
-				D344BBE920D8B06F00332FAD /* KIWIKConnectViewController.h */,
-				D344BBE820D8B06F00332FAD /* KIWIKConnectViewController.m */,
-				D344BBFE20D8B58200332FAD /* KIWIKResultViewController.h */,
-				D344BBFF20D8B58300332FAD /* KIWIKResultViewController.m */,
+				D3DAA13F218B2BFC00F3A785 /* Utils */,
+				D3DAA13E218B2BC800F3A785 /* Cell */,
+				D3DAA13D218B2BAB00F3A785 /* View */,
+				D3DAA13C218B2BA100F3A785 /* ViewControllers */,
 			);
 			path = Connect;
 			sourceTree = "<group>";
@@ -204,30 +188,14 @@
 		D344BC0320D8F18E00332FAD /* Lock */ = {
 			isa = PBXGroup;
 			children = (
+				D3DAA140218B2C0900F3A785 /* Utils */,
+				D3DAA13B218B2B5100F3A785 /* Model */,
+				D3DAA13A218B2B1600F3A785 /* ViewController */,
+				D3DAA139218B2B0700F3A785 /* Cell */,
 				D344BC8A20DCDA1900332FAD /* KIWIKLockService.h */,
 				D344BC8B20DCDA1900332FAD /* KIWIKLockService.m */,
 				D344BC1020D8F85600332FAD /* KIWIKPasswordView.h */,
 				D344BC0F20D8F85500332FAD /* KIWIKPasswordView.m */,
-				D344BC2520D9069900332FAD /* KIWIKHistoryCell.h */,
-				D344BC2720D9069A00332FAD /* KIWIKHistoryCell.m */,
-				D36A635520D255AE00CEDA57 /* KIWIKUtils.h */,
-				D36A635620D255AE00CEDA57 /* KIWIKUtils.m */,
-				D344BC9420DCE0DC00332FAD /* KIWIKEvent+UI.h */,
-				D344BC9520DCE0DC00332FAD /* KIWIKEvent+UI.m */,
-				D344BC9B20DD7DE000332FAD /* KIWIKUser.h */,
-				D344BC9C20DD7DE000332FAD /* KIWIKUser.m */,
-				D36A61F020D21E8C00CEDA57 /* KIWIKDevicesViewController.h */,
-				D36A61F120D21E8C00CEDA57 /* KIWIKDevicesViewController.m */,
-				D344BC1320D9061F00332FAD /* KIWIKLockViewController.h */,
-				D344BC1220D9061F00332FAD /* KIWIKLockViewController.m */,
-				D344BC2420D9069900332FAD /* KIWIKHistoryViewController.h */,
-				D344BC2620D9069A00332FAD /* KIWIKHistoryViewController.m */,
-				D344BC6E20DA2A8E00332FAD /* KIWIKUsersViewController.h */,
-				D344BC6F20DA2A8E00332FAD /* KIWIKUsersViewController.m */,
-				D3AFE29A2112A7A1006D8F63 /* KIWIKUserAddViewController.h */,
-				D3AFE29B2112A7A1006D8F63 /* KIWIKUserAddViewController.m */,
-				D3DAA11521899C6300F3A785 /* Pagination.h */,
-				D3DAA11621899C6300F3A785 /* Pagination.m */,
 			);
 			path = Lock;
 			sourceTree = "<group>";
@@ -309,6 +277,102 @@
 				D344BC0420D8F57500332FAD /* WTReTextField */,
 			);
 			path = Vendor;
+			sourceTree = "<group>";
+		};
+		D3DAA139218B2B0700F3A785 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D344BC2520D9069900332FAD /* KIWIKHistoryCell.h */,
+				D344BC2720D9069A00332FAD /* KIWIKHistoryCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D3DAA13A218B2B1600F3A785 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D36A61F020D21E8C00CEDA57 /* KIWIKDevicesViewController.h */,
+				D36A61F120D21E8C00CEDA57 /* KIWIKDevicesViewController.m */,
+				D344BC1320D9061F00332FAD /* KIWIKLockViewController.h */,
+				D344BC1220D9061F00332FAD /* KIWIKLockViewController.m */,
+				D344BC2420D9069900332FAD /* KIWIKHistoryViewController.h */,
+				D344BC2620D9069A00332FAD /* KIWIKHistoryViewController.m */,
+				D344BC6E20DA2A8E00332FAD /* KIWIKUsersViewController.h */,
+				D344BC6F20DA2A8E00332FAD /* KIWIKUsersViewController.m */,
+				D3AFE29A2112A7A1006D8F63 /* KIWIKUserAddViewController.h */,
+				D3AFE29B2112A7A1006D8F63 /* KIWIKUserAddViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D3DAA13B218B2B5100F3A785 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D344BC9420DCE0DC00332FAD /* KIWIKEvent+UI.h */,
+				D344BC9520DCE0DC00332FAD /* KIWIKEvent+UI.m */,
+				D344BC9B20DD7DE000332FAD /* KIWIKUser.h */,
+				D344BC9C20DD7DE000332FAD /* KIWIKUser.m */,
+				D3DAA11521899C6300F3A785 /* Pagination.h */,
+				D3DAA11621899C6300F3A785 /* Pagination.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D3DAA13C218B2BA100F3A785 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D344BBD020D8AA4B00332FAD /* KIWIKBaseViewController.h */,
+				D344BBD120D8AA4B00332FAD /* KIWIKBaseViewController.m */,
+				D344BBE520D8B05900332FAD /* KIWIKHotspotViewController.h */,
+				D344BBE620D8B05A00332FAD /* KIWIKHotspotViewController.m */,
+				D3DAA11B2189B5D500F3A785 /* KIWIKWIFIListViewController.h */,
+				D3DAA11C2189B5D500F3A785 /* KIWIKWIFIListViewController.m */,
+				D344BBCD20D8AA3C00332FAD /* KIWIKWifiViewController.h */,
+				D344BBCE20D8AA3D00332FAD /* KIWIKWifiViewController.m */,
+				D344BBE920D8B06F00332FAD /* KIWIKConnectViewController.h */,
+				D344BBE820D8B06F00332FAD /* KIWIKConnectViewController.m */,
+				D344BBFE20D8B58200332FAD /* KIWIKResultViewController.h */,
+				D344BBFF20D8B58300332FAD /* KIWIKResultViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D3DAA13D218B2BAB00F3A785 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D344BBDC20D8AC1B00332FAD /* WifiTextField.h */,
+				D344BBDD20D8AC1B00332FAD /* WifiTextField.m */,
+				D344BBF920D8B2CE00332FAD /* MethodButton.h */,
+				D344BBF820D8B2CE00332FAD /* MethodButton.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D3DAA13E218B2BC800F3A785 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D3DAA1282189D21700F3A785 /* KIWIKWifiListCell.h */,
+				D3DAA1292189D21700F3A785 /* KIWIKWifiListCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D3DAA13F218B2BFC00F3A785 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D344BBD920D8ABC200332FAD /* KIWIKSSID.h */,
+				D344BBDA20D8ABC200332FAD /* KIWIKSSID.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D3DAA140218B2C0900F3A785 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D36A635520D255AE00CEDA57 /* KIWIKUtils.h */,
+				D36A635620D255AE00CEDA57 /* KIWIKUtils.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

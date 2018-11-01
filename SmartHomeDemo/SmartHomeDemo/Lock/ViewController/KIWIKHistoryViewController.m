@@ -118,6 +118,7 @@
             [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
         }
     }];
+    self.tableView.mj_footer.automaticallyChangeAlpha = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

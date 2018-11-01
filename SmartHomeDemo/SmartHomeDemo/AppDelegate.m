@@ -82,7 +82,7 @@
 
 -(void)login {
     __weak __typeof(self)weakSelf = self;
-    [GKIWIKSDK openKIWIKLoginPage:^(KIWIKToken *accessToken) {
+    [GKIWIKSDK openLoginWebPage:^(KIWIKToken *accessToken) {
         if (accessToken) {
             [weakSelf setToken:accessToken];
         } else {

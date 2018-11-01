@@ -33,8 +33,7 @@
     [self.navigationController.navigationBar setTranslucent:NO];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
-    NSString *leftTitle = GKIWIKSDK.tokenIsValid ? @"退出登录" : @"登入";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:leftTitle style:UIBarButtonItemStyleDone target:self action:@selector(loginAction:)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"退出登录" style:UIBarButtonItemStyleDone target:self action:@selector(loginAction:)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction:)];
     
     __weak __typeof(self)weakSelf = self;
@@ -65,11 +64,11 @@
 }
 
 -(void)loginAction:(id)sender {
-    if (GKIWIKSDK.tokenIsValid) {
-        [GKIWIKSDK logout];
-    } else {
-        [APPDelegate login];
-    }
+//    if (GKIWIKSDK.tokenIsValid) {
+//        [GKIWIKSDK logout];
+//    } else {
+//        [APPDelegate login];
+//    }
 }
 
 -(void)addAction:(id)sender {
