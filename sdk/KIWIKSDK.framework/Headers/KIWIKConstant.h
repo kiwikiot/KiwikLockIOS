@@ -24,8 +24,8 @@ extern NSString * const KIWIKGetDevicesResponse;
 extern NSString * const KIWIKSetDeviceName;
 extern NSString * const KIWIKSetDeviceNameResponse;
 
-extern NSString * const KIWIKSetDeviceSecurity;
-extern NSString * const KIWIKSetDeviceSecurityResponse;
+extern NSString * const KIWIKGetDevicesAbility;
+extern NSString * const KIWIKGetDevicesAbilityResponse;
 
 extern NSString * const KIWIKAddDevice;
 extern NSString * const KIWIKAddDeviceResponse;

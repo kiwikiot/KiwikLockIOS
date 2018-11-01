@@ -44,7 +44,9 @@
     [self.navigationController.navigationBar setTitleTextAttributes:dict];
     [self.navigationController.navigationBar setTranslucent:NO];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-
+    
+    NSString *leftTitle = GKIWIKSDK.tokenIsValid ? @"Logout" : @"Login";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:leftTitle style:UIBarButtonItemStyleDone target:self action:@selector(loginAction:)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction:)];
     
     __weak __typeof(self)weakSelf = self;
@@ -67,6 +69,14 @@
     self.tabBarController.tabBar.hidden = NO;
     self.navigationController.navigationBar.barTintColor = MAIN_THEME_COLOR;
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+}
+
+-(void)loginAction:(id)sender {
+    if (GKIWIKSDK.tokenIsValid) {
+        [GKIWIKSDK logout];
+    } else {
+         [APPDelegate login];
+    }
 }
 
 -(void)addAction:(id)sender {

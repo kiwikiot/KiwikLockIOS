@@ -68,11 +68,10 @@
         [[KIWIKUtils alertWithTitle:@"请连接设备热点" msg:NSLocalizedString(@"HotspotTips2", nil) ok:^(FRAlertController *al) {
             [KIWIKUtils go2Wifi];
         }] show];
-        return;
+    } else {
+        KIWIKWIFIListViewController *addconnect = [[KIWIKWIFIListViewController alloc] init];
+        [self.navigationController pushViewController:addconnect animated:NO];
     }
-    
-    KIWIKWIFIListViewController *addconnect = [[KIWIKWIFIListViewController alloc] init];
-    [self.navigationController pushViewController:addconnect animated:NO];
 }
 
 - (void)didReceiveMemoryWarning {

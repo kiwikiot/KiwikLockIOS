@@ -54,13 +54,11 @@
 -(void)setDeviceName:(NSString *)name block:(void(^)(id response, NSError *error))block;
 
 /*
- * 开启或关闭验证
+ * 获取设备能力集
  *
- *  @param verify     YES / NO
- *  @param password   验证密码
  *  @param block      回调
  */
--(void)setDeviceSecurity:(BOOL)verify password:(NSString *)password block:(void(^)(id response, NSError *error))block;
+-(void)getDeviceAblility:(void(^)(id response, NSError *error))block;
 
 /*
  * 获取设备详情
@@ -73,7 +71,6 @@
 /*
  * 设备控制数据
  *
- *  @param password   设备密码
  *  @param data       控制数据
  *  @param block      回调
  */
@@ -83,7 +80,6 @@
 /*
  * 开关锁接口
  *
- *  @param password   设备密码
  *  @param state      1表示开锁，0表示关锁
  *  @param block      回调
  */
@@ -92,10 +88,9 @@
 /*
  * 删除设备
  *
- *  @param password   设备密码
  *  @param block      回调
  */
--(void)deleteDevice:(NSString *)password block:(void(^)(id response, NSError *error))block;
+-(void)deleteDevice:(void(^)(id response, NSError *error))block;
 
 /*
  * 读取设备事件记录

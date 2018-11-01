@@ -43,12 +43,3 @@
 -(BOOL)isValid;
 
 @end
-
-
-@interface KIWIKTokenMgr : NSObject
-
-@property(nonatomic, strong) KIWIKToken *token;
-
-+(KIWIKTokenMgr *)shareInstance;
-
-@end

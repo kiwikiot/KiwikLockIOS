@@ -47,6 +47,7 @@
     if([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.delegate = nil;
     }
+    [self stopTimer];
 }
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer*)gestureRecognizer {
@@ -113,9 +114,12 @@
     if (_times % 8 == 0) {
         __weak __typeof(self) weakSelf = self;
         [_device bind:^(id response, NSError *error) {
-            if (response) {
+            NSLog(@"%s %@ %@", __func__, response, error.localizedDescription);
+            if (response || (error && [error.localizedDescription isEqualToString:@"ALREADY_EXISTED"])) {
                 KIWIKResultViewController *resultVC = [[KIWIKResultViewController alloc] initWithDevice:weakSelf.device];
                 [weakSelf gotoVC:resultVC];
+            } else {
+                
             }
         }];
     }
@@ -125,7 +129,6 @@
 -(void)backClicked:(id)sender {
     __weak __typeof(self)weakSelf = self;
     [[KIWIKUtils alertWithTitle:@"温馨提示" msg:@"您确定要停止添加吗？" ok:^(FRAlertController *al) {
-        [weakSelf stopTimer];
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }] show];
 }

@@ -183,18 +183,13 @@
 -(void)deleteAction {
     __weak __typeof(self)weakSelf = self;
     [[KIWIKUtils alertWithTitle:@"删除设备" msg:@"你确定要删除设备吗？" ok:^(FRAlertController *al){
-        [KIWIKPasswordView showWithTimes:PasswordOnce pwdBlock:^(KIWIKPasswordView *pwdView, NSString *password) {
-            [pwdView waitingWith:@"稍等..."];
-            [weakSelf.device deleteDevice:password block:^(id response, NSError *error) {
-                if (!error) {
-                    [pwdView dismiss:^{
-                        [SVProgressHUD showSuccessWithStatus:@"删除成功"];
-                        [weakSelf.navigationController popViewControllerAnimated:YES];
-                    }];
-                } else {
-                    [pwdView showErrorWith:@"删除失败"];
-                }
-            }];
+        [weakSelf.device deleteDevice:^(id response, NSError *error) {
+            if (!error) {
+                [SVProgressHUD showSuccessWithStatus:@"删除成功"];
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            } else {
+                [SVProgressHUD showSuccessWithStatus:@"删除失败"];
+            }
         }];
     }] show];
 }

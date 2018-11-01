@@ -11,8 +11,8 @@
 #import "KIWIKLockService.h"
 
 #define kAccessToken  @"kiwikAccessToken"
-#define kClientId     @"igxknDUbISY3XAcBYJT9SIegd31sPu7B"
-#define kClientSecret @"your client secret"
+#define kClientId     @"gC62dG7sVdgvgKG2l5ZGydQO7lQIBSeC"
+//#define kClientId     @"igxknDUbISY3XAcBYJT9SIegd31sPu7B"
 
 @interface AppDelegate ()
 @property(nonatomic, strong) NSTimer *timer;
@@ -42,6 +42,7 @@
     
     //初始化SDK
     GKIWIKSDK.debug = YES;
+    GKIWIKSDK.isTest = YES;
     GKIWIKSDK.clientId = kClientId;
     
     if ([NDSUD objectForKey:kAccessToken]) {
@@ -65,7 +66,6 @@
     __weak __typeof(self)weakSelf = self;
     [GKIWIKSDK setToken:token block:^(BOOL success, NSError *error) {
         if (success) {
-            NSLog(@"uid, %@", GKIWIKSDK.uid);
             [NDSUD setObject:token.mj_keyValues forKey:kAccessToken];
             
             if (weakSelf.timer) {
@@ -75,7 +75,7 @@
             NSTimeInterval timeInterval = token.expires_at - [[NSDate date] timeIntervalSince1970] - 10 * 60;//提前10分钟刷新token
             weakSelf.timer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(timeout) userInfo:nil repeats:NO];
         } else {
-            NSLog(@"error %@", error);
+            NSLog(@"setToken error %@", error);
         }
     }];
 }

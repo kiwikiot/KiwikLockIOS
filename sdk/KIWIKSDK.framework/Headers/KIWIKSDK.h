@@ -27,10 +27,6 @@
 @property(nonatomic, strong) NSString *clientId;
 
 
-// 用户ID，设置accessToken的时候自动获取
-@property(nonatomic, strong, readonly) NSString *uid;
-
-
 +(KIWIKSDK *)shareInstance;
 
 
@@ -39,7 +35,7 @@
 
 #pragma mark - Token
 /*
- * SDK里面会对token持久化，该方法判断token是否过期
+ * 判断token是否过期
  */
 -(BOOL)tokenIsValid;
 

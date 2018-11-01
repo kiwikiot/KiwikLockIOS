@@ -49,7 +49,7 @@ typedef void(^KIWIKResponseBlock)(id response, NSError *error);
 - (void)openSocket;
 
 /**
- * 关闭websocket，一般不需要关闭
+ * 关闭websocket
  */
 - (void)closeSocket;
 
