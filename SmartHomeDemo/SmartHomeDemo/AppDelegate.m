@@ -66,6 +66,8 @@
     __weak __typeof(self)weakSelf = self;
     [GKIWIKSDK setToken:token block:^(BOOL success, NSError *error) {
         if (success) {
+            weakSelf.isLogin = YES;
+            
             [NDSUD setObject:token.mj_keyValues forKey:kAccessToken];
             
             if (weakSelf.timer) {

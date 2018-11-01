@@ -12,7 +12,7 @@
 #import "FRAlertController.h"
 
 @interface KIWIKDevicesViewController ()<KIWIKSocketDelegate>
-
+@property(nonatomic, strong) UIBarButtonItem *leftItem;
 @end
 
 @implementation KIWIKDevicesViewController
@@ -33,7 +33,8 @@
     [self.navigationController.navigationBar setTranslucent:NO];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"退出登录" style:UIBarButtonItemStyleDone target:self action:@selector(loginAction:)];
+    self.leftItem = [[UIBarButtonItem alloc] initWithTitle:@"登录" style:UIBarButtonItemStyleDone target:self action:@selector(loginAction:)];
+    self.navigationItem.leftBarButtonItem = self.leftItem;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addAction:)];
     
     __weak __typeof(self)weakSelf = self;
@@ -55,6 +56,14 @@
     self.tabBarController.tabBar.hidden = NO;
     self.navigationController.navigationBar.barTintColor = MAIN_THEME_COLOR;
     [self.navigationController setNavigationBarHidden:NO animated:NO];
+    
+    [APPDelegate addObserver:self forKeyPath:@"isLogin" options:NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    [APPDelegate removeObserver:self forKeyPath:@"isLogin"];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -64,11 +73,18 @@
 }
 
 -(void)loginAction:(id)sender {
-//    if (GKIWIKSDK.tokenIsValid) {
-//        [GKIWIKSDK logout];
-//    } else {
-//        [APPDelegate login];
-//    }
+    if (APPDelegate.isLogin) {
+        [GKIWIKSDK logout];
+        APPDelegate.isLogin = NO;
+    } else {
+        [APPDelegate login];
+    }
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    [NSThread mainTask:^{
+        self.leftItem.title = APPDelegate.isLogin ? @"退出登录" : @"登录";
+    }];
 }
 
 -(void)addAction:(id)sender {
