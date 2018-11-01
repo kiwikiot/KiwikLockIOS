@@ -10,7 +10,7 @@
 #import "KIWIKUserAddViewController.h"
 #import "KIWIKUser.h"
 
-@interface KIWIKUsersViewController ()<KIWIKDeviceDelegate>
+@interface KIWIKUsersViewController ()
 @property (nonatomic, strong) KIWIKDevice *device;
 @property (nonatomic, strong) NSMutableArray *userArray;
 @end
@@ -47,7 +47,7 @@
         [weakSelf.device getUsers:^(id response, NSError *error) {
             [weakSelf.tableView.mj_header endRefreshing];
             if (!error) {
-                [weakSelf rerfreshTableView];
+                [weakSelf refreshTableView];
             } else {
                 NSLog(@"error %@", error.description);
             }
@@ -60,26 +60,27 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     self.navigationController.navigationBar.barTintColor = MAIN_THEME_COLOR;
-    [self rerfreshTableView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.device.delegate = self;
+    [self refreshTableView];
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.device.delegate = nil;
-}
-
--(void)rerfreshTableView {
+-(void)refreshTableView {
     [_userArray removeAllObjects];
     NSDictionary *users = _device.userDict;
     for (NSString *key in users.allKeys) {
         KIWIKUser *user = [[KIWIKUser alloc] initWithId:[key integerValue] name:users[key]];
         [_userArray addSafeObject:user];
     }
+    
+    if (_userArray.count == 0) {
+        [self.tableView showTips:NSLocalizedString(@"NoRecords", nil)];
+    } else {
+        [self.tableView hideTips];
+    }
+    
     [self.tableView reloadData];
 }
 
@@ -90,11 +91,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-}
-
-#pragma mark - KIWIKDeviceDelegate
--(void)device:(KIWIKDevice *)device usersChanged:(NSDictionary *)users {
-    [self rerfreshTableView];
 }
 
 #pragma mark - Table view data source

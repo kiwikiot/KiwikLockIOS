@@ -18,7 +18,7 @@
 @implementation UITableView (KIWIK)
 
 -(void)showTips:(NSString *)tips {
-    [self showTips:tips centerY:0.3 * self.boundsHeight];
+    [self showTips:tips centerY:0.4 * self.boundsHeight];
 }
 
 -(void)showTips:(NSString *)tips centerY:(CGFloat)centerY {

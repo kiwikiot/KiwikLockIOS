@@ -83,10 +83,10 @@
                 
                 [weakSelf.tableView.mj_footer resetNoMoreData];
                 
-//                NSDictionary *list = [response objectForKey:@"list"];
-//                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(eventListChanged:)]) {
-//                    [weakSelf.delegate eventListChanged:list];
-//                }
+                KIWIKEvent *latest = [weakSelf.dataArray count] > 0 ? weakSelf.dataArray[0] : nil;
+                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(latestEventChanged:)]) {
+                    [weakSelf.delegate latestEventChanged:latest];
+                }
             } else {
                 NSLog(@"getRecords error %@", error.description);
             }
@@ -118,6 +118,34 @@
             [weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
         }
     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [NNCDC addObserver:self selector:@selector(eventReceived:) name:kLockEventReceivedNotification object:nil];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.tableView reloadData];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [NNCDC removeObserver:self];
+}
+
+-(void)eventReceived:(NSNotification *)noti {
+    KIWIKEvent *event = noti.object;
+    NSString *did = [noti.userInfo objectForKey:@"did"];
+    if ([_device.did isEqualToString:did]) {
+        [_dataArray insertObject:event atIndex:0];
+        [_tableView reloadData];
+        
+        if (self.delegate && [self.delegate respondsToSelector:@selector(latestEventChanged:)]) {
+            [self.delegate latestEventChanged:event];
+        }
+    }
 }
 
 #pragma mark - uitableviewdelegate

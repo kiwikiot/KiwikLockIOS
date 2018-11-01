@@ -35,7 +35,7 @@
     [SVProgressHUD setMinimumSize:CGSizeMake(120, 120)];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    KIWIKDevicesViewController *listVC = [[KIWIKDevicesViewController alloc] init];
+    KIWIKDevicesViewController *listVC = [[KIWIKDevicesViewController alloc] initWithStyle:UITableViewStyleGrouped];
     UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:listVC];
     self.window.rootViewController = nav1;
     [self.window makeKeyAndVisible];

@@ -15,15 +15,7 @@
 }
 
 -(UIImage *)headerImage {
-    if (self.type == DoorLockTypeDoorSensor) {
-        switch (self.status) {
-            case DoorLockStatusUnlocked:
-                return [UIImage imageNamed:@"DoorSensor_Open"];
-            default:
-                return [UIImage imageNamed:@"DoorSensor_Close"];
-        }
-    }
-    else if(self.type == DoorLockTypeDoorLock) {
+    if(self.type == DoorLockTypeDoorLock) {
         switch (self.status) {
             case DoorLockStatusWarning:
                 if (self.statusInfo == DoorLockWarningLowVoltage) {
@@ -43,9 +35,6 @@
                 return [UIImage imageNamed:@"Door_Lock"];
         }
     }
-    else if (self.type == DoorLockTypeCustomNotification) {
-        return [UIImage imageNamed:@"TaskNotification"];
-    }
     return nil;
 }
 
@@ -63,15 +52,7 @@
 }
 
 -(UIImage*)image {
-    if (self.type == DoorLockTypeDoorSensor) {
-        switch (self.status) {
-            case DoorLockStatusUnlocked:
-                return [UIImage imageNamed:@"DoorSensorOpened"];
-            default:
-                return [UIImage imageNamed:@"DoorSensorClosed"];
-        }
-    }
-    else if(self.type == DoorLockTypeDoorLock) {
+    if(self.type == DoorLockTypeDoorLock) {
         switch (self.status) {
             case DoorLockStatusUnlocked:
                 return [UIImage imageNamed:@"doorStateUnlock"];
@@ -93,22 +74,11 @@
                 return [UIImage imageNamed:@"doorStateLocked"];
         }
     }
-    else if (self.type == DoorLockTypeCustomNotification) {
-        return [UIImage imageNamed:@"TaskNotification1"];
-    }
     return nil;
 }
 
 -(NSString *)title {
-    if (self.type == DoorLockTypeDoorSensor) {
-        switch (self.status) {
-            case DoorLockStatusUnlocked:
-                return NSLocalizedString(@"DoorSensorOpened", nil);
-            default:
-                return NSLocalizedString(@"DoorSensorClosed", nil);;
-        }
-    }
-    else if(self.type == DoorLockTypeDoorLock) {
+    if(self.type == DoorLockTypeDoorLock) {
         switch (self.status) {
             case DoorLockStatusUnlocked:
                 return NSLocalizedString(@"DoorUnlock", nil);
@@ -121,9 +91,6 @@
             default:
                 return NSLocalizedString(@"DoorLocked", nil);;
         }
-    }
-    else if (self.type == DoorLockTypeCustomNotification) {
-        return nil;
     }
     return nil;
 }

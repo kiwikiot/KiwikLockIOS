@@ -36,5 +36,6 @@
 #define MAIN_THEME_COLOR   [UIColor colorWithHex:@"#008CFF"]
 #define MAIN_THEME_BG_COLOR   RGB(240, 240, 240)
 #define PixelOne           (1 / [[UIScreen mainScreen] scale])
+#define kLockEventReceivedNotification   @"kLockEventReceivedNotification"
 
 #endif /* SmartHome_prefix_pch */

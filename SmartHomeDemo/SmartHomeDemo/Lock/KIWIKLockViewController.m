@@ -9,16 +9,14 @@
 #import "KIWIKLockViewController.h"
 #import "KIWIKHistoryViewController.h"
 #import "KIWIKUsersViewController.h"
-#import "KIWIKPasswordView.h"
 #import "KIWIKEvent+UI.h"
 
-@interface KIWIKLockViewController ()<KIWIKHistoryDelegate, KIWIKDeviceDelegate>
+@interface KIWIKLockViewController ()<KIWIKHistoryDelegate>
 @property (nonatomic, strong) KIWIKDevice *device;
 @property (nonatomic, strong) UIImageView *lockImageView;
 @property (nonatomic, strong) UIImageView *circleImageView2;
 @property (nonatomic, strong) UIImageView *shadowImage;
 @property (nonatomic, strong) KIWIKHistoryViewController *vc1;
-@property (nonatomic, strong) KIWIKEvent *eventLatest;
 @end
 
 @implementation KIWIKLockViewController
@@ -83,51 +81,26 @@
             break;
         }
     }
-    
-    [self updateTopView];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    self.device.delegate = self;
+    [self latestEventChanged:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.device.delegate = nil;
     self.shadowImage.hidden = NO;//恢复导航栏下的线
 }
 
--(void)updateTopView {
-    if (_eventLatest) {
-        UIColor *color = [_eventLatest headerColor];
+#pragma mark - KIWIKHistoryDelegate
+-(void)latestEventChanged:(KIWIKEvent *)event {
+    if (event) {
+        UIColor *color = [event headerColor];
         self.navigationController.navigationBar.barTintColor = color;
         self.headerView.backgroundColor = color;
-        self.lockImageView.image = [_eventLatest headerImage];
+        self.lockImageView.image = [event headerImage];
     } else {
         self.navigationController.navigationBar.barTintColor = MAIN_THEME_COLOR;
         self.headerView.backgroundColor = MAIN_THEME_COLOR;
         self.lockImageView.image = [UIImage imageNamed:@"Door_Lock"];
     }
-}
-
-#pragma mark - KIWIKDeviceDelegate
--(void)device:(KIWIKDevice *)device usersChanged:(NSDictionary *)users {
-//    [self.vc1 reload];
-}
-
-#pragma mark - KIWIKHistoryDelegate
--(void)eventListChanged:(NSDictionary *)list {
-    _eventLatest = nil;
-    for (NSString *key in list.allKeys) {
-        NSString *str = [list objectForKey:key];
-        KIWIKEvent *event = [[KIWIKEvent alloc] initWithString:str];
-        if (!_eventLatest || _eventLatest.time < event.time) {
-            _eventLatest = event;
-        }
-    }
-    
-    [self updateTopView];
 }
 
 #pragma mark - Menu

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol KIWIKHistoryDelegate <NSObject>
--(void)eventListChanged:(NSDictionary *)list;
+-(void)latestEventChanged:(KIWIKEvent *)event;
 @end
 
 @interface KIWIKHistoryViewController : UIViewController

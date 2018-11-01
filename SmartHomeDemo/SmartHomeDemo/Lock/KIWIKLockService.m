@@ -53,6 +53,9 @@ SingletonM(KIWIKLockService,)
         NSLog(@"event %@", event.mj_keyValues);
         __weak __typeof(self)weakSelf = self;
         if (event.cmd == DoorLockCmdNotification && event.type == DoorLockTypeDoorLock) {
+            
+            [NNCDC postNotificationName:kLockEventReceivedNotification object:event userInfo:@{@"did": did}];
+            
             if (event.status == DoorLockStatusRemoteUnlock) {//远程请求开锁
                 if (_alert || [KIWIKPasswordView isShown] || ![event remoteRequestValid]) {
                     [self makeToast:event device:device];
