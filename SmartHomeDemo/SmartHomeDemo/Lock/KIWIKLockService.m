@@ -54,6 +54,7 @@ SingletonM(KIWIKLockService,)
             [NNCDC postNotificationName:kLockEventReceivedNotification object:event userInfo:@{@"did": did}];
             
             if (event.status == DoorLockStatusRemoteUnlock) {//远程请求开锁
+                NSLog(@"lockState %ld", (long)_lockState);
                 if ([event remoteRequestValid] && _lockState == 0) {
                     [self remoteUnlock:device event:event];
                 } else {
@@ -83,15 +84,16 @@ SingletonM(KIWIKLockService,)
     __weak __typeof(self)weakSelf = self;
     NSString *devName = device.name.length ? device.name : [NSString stringWithFormat:@"Lock%@", device.did];
     NSString *title = [NSString stringWithFormat:@"%@-%@", devName, [event title]];
-    [[KIWIKUtils alertWithTitle:title msg:@"请确认安全后输入密码进行开锁"cancel:^(FRAlertController *al) {
+    [[KIWIKUtils alertWithTitle:title msg:@"点击确定马上开锁"cancel:^(FRAlertController *al) {
         weakSelf.lockState = 0;
     } ok:^(FRAlertController *al){
         weakSelf.lockState = 2;
-        weakSelf.selectedDevice = device;
+        
         [SVProgressHUD showWithStatus:@"开锁中..."];
         [device unlock:YES block:^(id response, NSError *error) {
             if (!error) {
                 weakSelf.lockState = 3;
+                weakSelf.selectedDevice = device;
                 weakSelf.timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(timeout) userInfo:nil repeats:NO];
             } else {
                 [SVProgressHUD showErrorWithStatus:@"开锁失败"];

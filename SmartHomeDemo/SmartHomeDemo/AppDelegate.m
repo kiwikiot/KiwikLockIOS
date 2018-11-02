@@ -100,7 +100,7 @@
     }
     
     [GKIWIKLockService stop];
-    [GKIWIKSDK logout];
+    [GKIWIKSDK clearToken];
     [NDSUD removeObjectForKey:kAccessToken];
     
     self.isLogin = NO;
