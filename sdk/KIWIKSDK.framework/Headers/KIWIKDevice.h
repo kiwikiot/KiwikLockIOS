@@ -8,11 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class KIWIKDevice;
-@protocol KIWIKDeviceDelegate <NSObject>
-@optional
--(void)device:(KIWIKDevice *)device usersChanged:(NSDictionary *)users;
-@end
 
 @interface KIWIKDevice : NSObject
 
@@ -35,9 +30,6 @@
  * 是否需要密码验证，门锁建议必须密码验证
  */
 @property(nonatomic, assign) BOOL verify;
-
-
-@property(nonatomic, assign) id<KIWIKDeviceDelegate> delegate;
 
 /**
  * 用户备注信息
@@ -83,7 +75,7 @@
  *  @param state      1表示开锁，0表示关锁
  *  @param block      回调
  */
--(void)unlock:(NSString *)password state:(BOOL)state block:(void(^)(id response, NSError *error))block;
+-(void)unlock:(BOOL)state block:(void(^)(id response, NSError *error))block;
 
 /*
  * 删除设备

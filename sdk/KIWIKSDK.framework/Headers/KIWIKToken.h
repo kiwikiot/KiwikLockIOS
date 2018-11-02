@@ -39,7 +39,7 @@
  */
 @property(nonatomic, assign) NSInteger expires_at;
 
-
+// 是否已经过期
 -(BOOL)isValid;
 
 @end

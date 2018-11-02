@@ -24,6 +24,9 @@
 @property(nonatomic, assign) BOOL debug;
 
 
+@property(nonatomic, assign) BOOL isTest;
+
+
 @property(nonatomic, strong) NSString *clientId;
 
 
@@ -32,25 +35,10 @@
 
 -(void)setToken:(KIWIKToken *)accessToken block:(void(^)(BOOL success, NSError *error))block;
 
-
-#pragma mark - Token
 /*
- * 判断token是否过期
+ * 清空token
  */
--(BOOL)tokenIsValid;
-
-/*
- * 网页登录
- *
- * 如果token过期，调用打开登录页面
- */
--(void)openKIWIKLoginPage:(void(^)(KIWIKToken *accessToken))loginBlock;
-
-/*
- * 退出登录，清空token
- */
--(void)logout;
-
+-(void)clearToken;
 
 /*
  * 刷新token
@@ -62,4 +50,3 @@
               block:(void(^)(KIWIKToken *newToken, NSError *error))block;
 
 @end
-

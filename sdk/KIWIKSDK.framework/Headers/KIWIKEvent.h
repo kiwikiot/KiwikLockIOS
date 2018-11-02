@@ -100,14 +100,13 @@ typedef NS_ENUM(NSInteger, DoorLockUserType) {
 
 -(instancetype)initWithString:(NSString *)string;
 
-
--(NSString *)generateData;
-
-
+// 时间
 -(NSDate *)dateTime;
 
+// 用户Id
 -(NSInteger)userId;
 
+// 远程开锁请求90秒有效
 -(BOOL)remoteRequestValid;
 
 @end
