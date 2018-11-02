@@ -15,25 +15,40 @@
 #import "KIWIKWifi.h"
 #import "KIWIKConnect.h"
 
-#define GKIWIKSDK [KIWIKSDK shareInstance]
+#define GKIWIKSDK          [KIWIKSDK shareInstance]
 
 
 @interface KIWIKSDK : NSObject
 
-
+// Log开关
 @property(nonatomic, assign) BOOL debug;
 
-
+// 设为NO即可
 @property(nonatomic, assign) BOOL isTest;
 
-
+// 请联系我们提供
 @property(nonatomic, strong) NSString *clientId;
 
 
 +(KIWIKSDK *)shareInstance;
 
 
+/*
+ * 设置token
+ *
+ *
+ *  @param accessToken     token，通过服务器对接获取得到
+ *  @param block           回调
+ */
 -(void)setToken:(KIWIKToken *)accessToken block:(void(^)(BOOL success, NSError *error))block;
+
+
+/*
+ * 网页登录
+ *
+ * 如果token过期，调用打开登录页面
+ */
+-(void)openLoginWebPage:(void(^)(KIWIKToken *accessToken))loginBlock;
 
 /*
  * 清空token
