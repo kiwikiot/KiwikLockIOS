@@ -16,5 +16,7 @@
 
 -(void)login;
 
+-(void)logout;
+
 @end
 

@@ -7,14 +7,12 @@
 //
 
 #import "KIWIKLockService.h"
-#import "KIWIKPasswordView.h"
 #import "KIWIKUtils.h"
 #import "KIWIKEvent+UI.h"
 
 @interface KIWIKLockService()
 @property(nonatomic, strong) KIWIKDevice *selectedDevice;
-@property(nonatomic, strong) FRAlertController *alert;
-@property(nonatomic, strong) KIWIKPasswordView *passwordView;
+@property(nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation KIWIKLockService
@@ -51,31 +49,22 @@ SingletonM(KIWIKLockService,)
         NSString *data = [payload objectForKey:@"data"];
         KIWIKEvent *event = [[KIWIKEvent alloc] initWithString:data];
         NSLog(@"event %@", event.mj_keyValues);
-        __weak __typeof(self)weakSelf = self;
         if (event.cmd == DoorLockCmdNotification && event.type == DoorLockTypeDoorLock) {
             
             [NNCDC postNotificationName:kLockEventReceivedNotification object:event userInfo:@{@"did": did}];
             
             if (event.status == DoorLockStatusRemoteUnlock) {//远程请求开锁
-                if (_alert || [KIWIKPasswordView isShown] || ![event remoteRequestValid]) {
+                if ([event remoteRequestValid] && _lockState == 0) {
+                    [self remoteUnlock:device event:event];
+                } else {
                     [self makeToast:event device:device];
-                    return;
                 }
-                NSString *devName = device.name.length ? device.name : [NSString stringWithFormat:@"Lock%@", device.did];
-                NSString *title = [NSString stringWithFormat:@"%@-%@", devName, [event title]];
-                _alert = [KIWIKUtils alertWithTitle:title msg:@"请确认安全后输入密码进行开锁"cancel:^(FRAlertController *al) {
-                    weakSelf.alert = nil;
-                } ok:^(FRAlertController *al){
-                    weakSelf.alert = nil;
-                    [weakSelf unlock:device];
-                }];
-                [_alert show];
             } else if (event.status == DoorLockStatusUnlocked) {//开锁成功
-                if ([KIWIKPasswordView isShown] && _selectedDevice == device) {
-                    [_passwordView stopUnlock:^{
-                        [SVProgressHUD showSuccessWithStatus:@"开锁成功"];
-                        weakSelf.selectedDevice = nil;
-                    }];
+                if (_lockState == 3 && _selectedDevice == device) {
+                    [SVProgressHUD showSuccessWithStatus:@"开锁成功"];
+                    self.lockState = 0;
+                    [self.timer invalidate];
+                    self.timer = nil;
                 } else {
                     [self makeToast:event device:device];
                 }
@@ -88,18 +77,33 @@ SingletonM(KIWIKLockService,)
     }
 }
 
--(void)unlock:(KIWIKDevice *)device {
-    _selectedDevice = device;
-    _passwordView = [KIWIKPasswordView showWithTimes:PasswordOnce pwdBlock:^(KIWIKPasswordView *pwdView, NSString *password) {
-        [pwdView waitingWith:@"稍等..."];
-        [device unlock:password state:YES block:^(id response, NSError *error) {
+-(void)remoteUnlock:(KIWIKDevice *)device event:(KIWIKEvent *)event {
+    self.lockState = 1;
+
+    __weak __typeof(self)weakSelf = self;
+    NSString *devName = device.name.length ? device.name : [NSString stringWithFormat:@"Lock%@", device.did];
+    NSString *title = [NSString stringWithFormat:@"%@-%@", devName, [event title]];
+    [[KIWIKUtils alertWithTitle:title msg:@"请确认安全后输入密码进行开锁"cancel:^(FRAlertController *al) {
+        weakSelf.lockState = 0;
+    } ok:^(FRAlertController *al){
+        weakSelf.lockState = 2;
+        weakSelf.selectedDevice = device;
+        [SVProgressHUD showWithStatus:@"开锁中..."];
+        [device unlock:YES block:^(id response, NSError *error) {
             if (!error) {
-                [pwdView startUnlock];
+                weakSelf.lockState = 3;
+                weakSelf.timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(timeout) userInfo:nil repeats:NO];
             } else {
-                [pwdView showErrorWith:@"开锁失败"];
+                [SVProgressHUD showErrorWithStatus:@"开锁失败"];
+                weakSelf.lockState = 0;
             }
         }];
-    }];
+    }] show];
+}
+
+-(void)timeout {
+    [SVProgressHUD showSuccessWithStatus:@"开锁失败"];
+    self.lockState = 0;
 }
 
 -(NSString *)userName:(KIWIKEvent *)event device:(KIWIKDevice *)device {

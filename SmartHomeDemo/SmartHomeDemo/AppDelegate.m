@@ -11,8 +11,7 @@
 #import "KIWIKLockService.h"
 
 #define kAccessToken  @"kiwikAccessToken"
-#define kClientId     @"gC62dG7sVdgvgKG2l5ZGydQO7lQIBSeC"
-//#define kClientId     @"igxknDUbISY3XAcBYJT9SIegd31sPu7B"
+#define kClientId     @"gC62dG7sVdgvgKG2l5ZGydQO7lQIBSeC"  // 这个是测试用的
 
 @interface AppDelegate ()
 @property(nonatomic, strong) NSTimer *timer;
@@ -42,16 +41,15 @@
     
     //初始化SDK
     GKIWIKSDK.debug = YES;
-    GKIWIKSDK.isTest = YES;
+    GKIWIKSDK.isTest = YES; // 正式版请设为NO
     GKIWIKSDK.clientId = kClientId;
     
     if ([NDSUD objectForKey:kAccessToken]) {
         NSDictionary *dict = [NDSUD objectForKey:kAccessToken];
+        NSLog(@"%s oldToken %@",__func__, dict);
         KIWIKToken *token = [KIWIKToken mj_objectWithKeyValues:dict];
         if (token.isValid) {
             [self setToken:token];
-            
-            NSLog(@"%s oldToken %@",__func__, token.mj_keyValues);
         } else {
             [self refreshToken:token];
         }
@@ -74,8 +72,10 @@
                 [weakSelf.timer invalidate];
                 weakSelf.timer = nil;
             }
-            NSTimeInterval timeInterval = token.expires_at - [[NSDate date] timeIntervalSince1970] - 10 * 60;//提前10分钟刷新token
-            weakSelf.timer = [NSTimer scheduledTimerWithTimeInterval:timeInterval target:self selector:@selector(timeout) userInfo:nil repeats:NO];
+            NSTimeInterval interval = token.expires_at - [[NSDate date] timeIntervalSince1970] - 10 * 60;//提前10分钟刷新token
+            weakSelf.timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(timeout) userInfo:nil repeats:NO];
+            
+            [GKIWIKLockService start];
         } else {
             NSLog(@"setToken error %@", error);
         }
@@ -91,6 +91,19 @@
             NSLog(@"登录失败");
         }
     }];
+}
+
+-(void)logout {
+    if (self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+    
+    [GKIWIKLockService stop];
+    [GKIWIKSDK logout];
+    [NDSUD removeObjectForKey:kAccessToken];
+    
+    self.isLogin = NO;
 }
 
 -(void)refreshToken:(KIWIKToken *)accessToken  {
@@ -111,35 +124,5 @@
     //由于GKIWIKSDK.accessToken已经设置，可以不用再传入token
     [self refreshToken:nil];
 }
-
-- (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    [GKIWIKLockService stop];
-}
-
-
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-}
-
-
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-}
-
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    
-    [GKIWIKLockService start];
-}
-
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
 
 @end

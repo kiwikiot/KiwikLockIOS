@@ -10,6 +10,7 @@
 #import "KIWIKHistoryViewController.h"
 #import "KIWIKUsersViewController.h"
 #import "KIWIKEvent+UI.h"
+#import "KIWIKLockService.h"
 
 @interface KIWIKLockViewController ()<KIWIKHistoryDelegate>
 @property (nonatomic, strong) KIWIKDevice *device;
@@ -100,6 +101,10 @@
         self.navigationController.navigationBar.barTintColor = MAIN_THEME_COLOR;
         self.headerView.backgroundColor = MAIN_THEME_COLOR;
         self.lockImageView.image = [UIImage imageNamed:@"Door_Lock"];
+    }
+    
+    if ([event remoteRequestValid] && GKIWIKLockService.lockState == 0) {
+        [GKIWIKLockService remoteUnlock:self.device event:event];
     }
 }
 

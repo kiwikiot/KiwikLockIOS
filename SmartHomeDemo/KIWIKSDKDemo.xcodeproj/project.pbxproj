@@ -22,7 +22,6 @@
 		D344BC0220D8D85C00332FAD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D344BC0120D8D85C00332FAD /* Localizable.strings */; };
 		D344BC0920D8F57500332FAD /* WTReParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC0620D8F57500332FAD /* WTReParser.m */; };
 		D344BC0A20D8F57500332FAD /* WTReTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC0820D8F57500332FAD /* WTReTextField.m */; };
-		D344BC1120D8F85600332FAD /* KIWIKPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC0F20D8F85500332FAD /* KIWIKPasswordView.m */; };
 		D344BC1420D9061F00332FAD /* KIWIKLockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC1220D9061F00332FAD /* KIWIKLockViewController.m */; };
 		D344BC2820D9069A00332FAD /* KIWIKHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC2620D9069A00332FAD /* KIWIKHistoryViewController.m */; };
 		D344BC2920D9069A00332FAD /* KIWIKHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D344BC2720D9069A00332FAD /* KIWIKHistoryCell.m */; };
@@ -84,8 +83,6 @@
 		D344BC0620D8F57500332FAD /* WTReParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTReParser.m; sourceTree = "<group>"; };
 		D344BC0720D8F57500332FAD /* WTReTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTReTextField.h; sourceTree = "<group>"; };
 		D344BC0820D8F57500332FAD /* WTReTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTReTextField.m; sourceTree = "<group>"; };
-		D344BC0F20D8F85500332FAD /* KIWIKPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKPasswordView.m; sourceTree = "<group>"; };
-		D344BC1020D8F85600332FAD /* KIWIKPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKPasswordView.h; sourceTree = "<group>"; };
 		D344BC1220D9061F00332FAD /* KIWIKLockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIWIKLockViewController.m; sourceTree = "<group>"; };
 		D344BC1320D9061F00332FAD /* KIWIKLockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKLockViewController.h; sourceTree = "<group>"; };
 		D344BC2420D9069900332FAD /* KIWIKHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIWIKHistoryViewController.h; sourceTree = "<group>"; };
@@ -194,8 +191,6 @@
 				D3DAA139218B2B0700F3A785 /* Cell */,
 				D344BC8A20DCDA1900332FAD /* KIWIKLockService.h */,
 				D344BC8B20DCDA1900332FAD /* KIWIKLockService.m */,
-				D344BC1020D8F85600332FAD /* KIWIKPasswordView.h */,
-				D344BC0F20D8F85500332FAD /* KIWIKPasswordView.m */,
 			);
 			path = Lock;
 			sourceTree = "<group>";
@@ -514,7 +509,6 @@
 				D36A635720D255AE00CEDA57 /* KIWIKUtils.m in Sources */,
 				D344BC9D20DD7DE000332FAD /* KIWIKUser.m in Sources */,
 				D344BC0020D8B58300332FAD /* KIWIKResultViewController.m in Sources */,
-				D344BC1120D8F85600332FAD /* KIWIKPasswordView.m in Sources */,
 				D344BBE120D8AEA600332FAD /* UILabel+KIWIK.m in Sources */,
 				D344BC7920DA6E0B00332FAD /* UITableView+KIWIK.m in Sources */,
 				D36A61F220D21E8C00CEDA57 /* KIWIKDevicesViewController.m in Sources */,

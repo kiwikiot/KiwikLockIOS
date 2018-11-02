@@ -74,8 +74,9 @@
 
 -(void)loginAction:(id)sender {
     if (APPDelegate.isLogin) {
-        [GKIWIKSDK logout];
-        APPDelegate.isLogin = NO;
+        [[KIWIKUtils alertWithTitle:@"确定要退出登录吗？" msg:nil ok:^(FRAlertController *al) {
+            [APPDelegate logout];
+        }] show];
     } else {
         [APPDelegate login];
     }
@@ -105,10 +106,6 @@
 }
 
 #pragma mark - UITableViewDataSource & UITableViewDelegate
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [GKIWIKSocket.deviceList count];
 }
