@@ -13,6 +13,7 @@
 @interface KIWIKLockService()
 @property(nonatomic, strong) KIWIKDevice *selectedDevice;
 @property(nonatomic, strong) NSTimer *timer;
+@property(nonatomic, strong) FRAlertController *unlockAlert;
 @end
 
 @implementation KIWIKLockService
@@ -62,6 +63,10 @@ SingletonM(KIWIKLockService,)
                 }
             } else if (event.status == DoorLockStatusUnlocked) {//开锁成功
                 if (_lockState == 3 && _selectedDevice == device) {
+                    if (self.unlockAlert) {
+                        [self.unlockAlert dismissViewControllerAnimated:YES completion:nil];
+                        self.unlockAlert = nil;
+                    }
                     [SVProgressHUD showSuccessWithStatus:@"开锁成功"];
                     self.lockState = 0;
                     [self.timer invalidate];
@@ -84,7 +89,7 @@ SingletonM(KIWIKLockService,)
     __weak __typeof(self)weakSelf = self;
     NSString *devName = device.name.length ? device.name : [NSString stringWithFormat:@"Lock%@", device.did];
     NSString *title = [NSString stringWithFormat:@"%@-%@", devName, [event title]];
-    [[KIWIKUtils alertWithTitle:title msg:@"点击确定马上开锁"cancel:^(FRAlertController *al) {
+    self.unlockAlert = [KIWIKUtils alertWithTitle:title msg:@"点击确定马上开锁"cancel:^(FRAlertController *al) {
         weakSelf.lockState = 0;
     } ok:^(FRAlertController *al){
         weakSelf.lockState = 2;
@@ -100,7 +105,8 @@ SingletonM(KIWIKLockService,)
                 weakSelf.lockState = 0;
             }
         }];
-    }] show];
+    }];
+    [self.unlockAlert show];
 }
 
 -(void)timeout {

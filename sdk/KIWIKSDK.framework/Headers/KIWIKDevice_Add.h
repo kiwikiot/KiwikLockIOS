@@ -16,6 +16,8 @@
 
 @property(nonatomic, strong) NSString *pk;
 
+@property(nonatomic, assign) BOOL verify;
+
 /*
  * 绑定设备(AddDevice)
  *
