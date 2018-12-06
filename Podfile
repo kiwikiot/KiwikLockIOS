@@ -6,7 +6,6 @@ target 'KIWIKSDKDemo' do
     project 'SmartHomeDemo/KIWIKSDKDemo.xcodeproj'
     #以下4个库必须包含
     pod 'SocketRocket', '0.5.1'
-    pod 'CocoaAsyncSocket', '7.6.3'
     pod 'Reachability', '3.2'
     pod 'MJExtension', '3.0.15.1'
     

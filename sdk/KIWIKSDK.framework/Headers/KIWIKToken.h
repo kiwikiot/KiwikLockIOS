@@ -14,11 +14,6 @@
 @interface KIWIKToken : NSObject
 
 /*
- * 账号，一般是手机或邮箱，用户ID，保证同一个账号传入的一致就行
- */
-@property(nonatomic, strong) NSString *account;
-
-/*
  * access_token过期时，SDK会根据refresh_token和expires_at自动更新，请正确设置这两项
  */
 @property(nonatomic, strong) NSString *access_token;
