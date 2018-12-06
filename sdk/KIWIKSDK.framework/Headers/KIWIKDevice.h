@@ -17,9 +17,19 @@
 @property(nonatomic, strong) NSString *did;
 
 /**
+ * 房间ID
+ */
+@property(nonatomic, strong) NSString *gid;
+
+/**
  * 设备名
  */
 @property(nonatomic, strong) NSString *name;
+
+/**
+ * 产品key
+ */
+@property(nonatomic, strong) NSString *pk;
 
 /**
  * 设备类型

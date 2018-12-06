@@ -11,7 +11,8 @@
 typedef enum : NSUInteger {
     KIWIKNamepaceAPP,      //Iot.Application
     KIWIKNamepaceDevice,   //Iot.Device
-    KIWIKNamepaceMessage,  //Iot.Message
+    KIWIKNamepaceMessage,  //Iot.Device.Message
+    KIWIKNamepaceDeviceKV,   //Iot.Device.KV
 } KIWIKNamepace;
 
 extern NSString * const kSocketMessageReceivedNotification;
@@ -43,11 +44,11 @@ extern NSString * const KIWIKGetRecords;
 extern NSString * const KIWIKGetRecordsResponse;
 
 
-extern NSString * const KIWIKSetDataItem;
-extern NSString * const KIWIKSetDataItemResponse;
-extern NSString * const KIWIKDeleteDataItem;
-extern NSString * const KIWIKDeleteDataItemResponse;
-extern NSString * const KIWIKGetDataItems;
-extern NSString * const KIWIKGetDataItemsResponse;
-extern NSString * const KIWIKGetDataItem;
-extern NSString * const KIWIKGetDataItemResponse;
+extern NSString * const KIWIKSetItem;
+extern NSString * const KIWIKSetItemResponse;
+extern NSString * const KIWIKDeleteItem;
+extern NSString * const KIWIKDeleteItemResponse;
+extern NSString * const KIWIKGetCollection;
+extern NSString * const KIWIKGetCollectionResponse;
+extern NSString * const KIWIKGetItem;
+extern NSString * const KIWIKGetItemResponse;

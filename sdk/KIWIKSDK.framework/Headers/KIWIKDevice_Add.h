@@ -16,6 +16,8 @@
 
 @property(nonatomic, strong) NSString *pk;
 
+@property(nonatomic, strong) NSString *gid;
+
 @property(nonatomic, assign) BOOL verify;
 
 /*
