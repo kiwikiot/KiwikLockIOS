@@ -62,8 +62,8 @@
             if (!error) {
                 [weakSelf.dataArray removeAllObjects];
                 
-                if ([response objectForKey:@"messages"]) {
-                    NSArray *messages = [response objectForKey:@"messages"];
+                if ([response objectForKey:@"records"]) {
+                    NSArray *messages = [response objectForKey:@"records"];
                     for (NSString *str in messages) {
                         KIWIKEvent *event = [[KIWIKEvent alloc] initWithString:str];
                         [weakSelf.dataArray addObject:event];
@@ -100,8 +100,8 @@
             [weakSelf.device getRecords:weakSelf.pagination.start + 1 limit:weakSelf.pagination.limit block:^(id response, NSError *error) {
                 [weakSelf.tableView.mj_footer endRefreshing];
                 
-                if ([response objectForKey:@"messages"]) {
-                    NSArray *messages = [response objectForKey:@"messages"];
+                if ([response objectForKey:@"records"]) {
+                    NSArray *messages = [response objectForKey:@"records"];
                     for (NSString *str in messages) {
                         KIWIKEvent *event = [[KIWIKEvent alloc] initWithString:str];
                         [weakSelf.dataArray addObject:event];
