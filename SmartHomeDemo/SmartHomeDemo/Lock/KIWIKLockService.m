@@ -21,7 +21,7 @@
 SingletonM(KIWIKLockService,)
 
 -(void)start {
-    [NNCDC addObserver:self selector:@selector(messageReceived:) name:kSocketMessageReceivedNotification object:nil];
+    [NNCDC addObserver:self selector:@selector(messageReceived:) name:kEventNotifyNotification object:nil];
 }
 
 - (void)stop {
@@ -31,54 +31,47 @@ SingletonM(KIWIKLockService,)
 -(void)messageReceived:(NSNotification *)notification {
     NSDictionary *msg = [notification object];
     NSLog(@"msg %@", msg);
-    NSString *name = [msg objectForKey:@"name"];
-    if ([name isEqualToString:KIWIKCtrlResponse]) {
-        NSDictionary *payload = [msg objectForKey:@"payload"];
-        NSString *did = [payload objectForKey:@"did"];
-        KIWIKDevice *device = nil;
-        for (KIWIKDevice *dev in GKIWIKSocket.deviceList) {
-            NSLog(@"dev %@", dev.did);
-            if ([dev.did isEqualToString:did]) {
-                device = dev;
-                break;
+    NSString *did = [msg objectForKey:@"did"];
+    KIWIKDevice *device = nil;
+    for (KIWIKDevice *dev in GKIWIKSocket.deviceList) {
+        NSLog(@"dev %@", dev.did);
+        if ([dev.did isEqualToString:did]) {
+            device = dev;
+            break;
+        }
+    }
+    if (!device) {
+        NSLog(@"%@ is not exist", did);
+        return;
+    }
+    KIWIKEvent *event = [msg objectForKey:@"event"];
+    NSLog(@"event %@", event.mj_keyValues);
+    if (event.cmd == DoorLockCmdNotification && event.type == DoorLockTypeDoorLock) {
+        
+        [NNCDC postNotificationName:kLockEventReceivedNotification object:event userInfo:@{@"did": did}];
+        
+        if (event.status == DoorLockStatusRemoteUnlock) {//远程请求开锁
+            NSLog(@"lockState %ld", (long)_lockState);
+            if ([event remoteRequestValid] && _lockState == 0) {
+                [self remoteUnlock:device event:event];
+            } else {
+                [self makeToast:event device:device];
             }
-        }
-        if (!device) {
-            NSLog(@"%@ is not exist", did);
-            return;
-        }
-        NSString *data = [payload objectForKey:@"data"];
-        KIWIKEvent *event = [[KIWIKEvent alloc] initWithString:data];
-        NSLog(@"event %@", event.mj_keyValues);
-        if (event.cmd == DoorLockCmdNotification && event.type == DoorLockTypeDoorLock) {
-            
-            [NNCDC postNotificationName:kLockEventReceivedNotification object:event userInfo:@{@"did": did}];
-            
-            if (event.status == DoorLockStatusRemoteUnlock) {//远程请求开锁
-                NSLog(@"lockState %ld", (long)_lockState);
-                if ([event remoteRequestValid] && _lockState == 0) {
-                    [self remoteUnlock:device event:event];
-                } else {
-                    [self makeToast:event device:device];
+        } else if (event.status == DoorLockStatusUnlocked) {//开锁成功
+            if (_lockState == 3 && _selectedDevice == device) {
+                if (self.unlockAlert) {
+                    [self.unlockAlert dismissViewControllerAnimated:YES completion:nil];
+                    self.unlockAlert = nil;
                 }
-            } else if (event.status == DoorLockStatusUnlocked) {//开锁成功
-                if (_lockState == 3 && _selectedDevice == device) {
-                    if (self.unlockAlert) {
-                        [self.unlockAlert dismissViewControllerAnimated:YES completion:nil];
-                        self.unlockAlert = nil;
-                    }
-                    [SVProgressHUD showSuccessWithStatus:@"开锁成功"];
-                    self.lockState = 0;
-                    [self.timer invalidate];
-                    self.timer = nil;
-                } else {
-                    [self makeToast:event device:device];
-                }
+                [SVProgressHUD showSuccessWithStatus:@"开锁成功"];
+                self.lockState = 0;
+                [self.timer invalidate];
+                self.timer = nil;
             } else {
                 [self makeToast:event device:device];
             }
         } else {
-            NSLog(@"message ignored %@", msg);
+            [self makeToast:event device:device];
         }
     }
 }

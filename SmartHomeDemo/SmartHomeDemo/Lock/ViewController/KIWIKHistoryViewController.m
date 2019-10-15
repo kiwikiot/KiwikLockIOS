@@ -64,11 +64,8 @@
                     [weakSelf.dataArray removeAllObjects];
                     
                     if ([response objectForKey:@"records"]) {
-                        NSArray *messages = [response objectForKey:@"records"];
-                        for (NSString *str in messages) {
-                            KIWIKEvent *event = [[KIWIKEvent alloc] initWithString:str];
-                            [weakSelf.dataArray addObject:event];
-                        }
+                        NSArray *records = [response objectForKey:@"records"];
+                        [weakSelf.dataArray addObjectsFromArray:records];
                     }
                     if (weakSelf.dataArray.count == 0) {
                         [weakSelf.tableView showTips:NSLocalizedString(@"NoRecords", nil) centerY:self.tableView.boundsHeight * 0.5 - SafeInsets_1.bottom];
@@ -103,11 +100,8 @@
                 [weakSelf.tableView.mj_footer endRefreshing];
                 
                 if ([response objectForKey:@"records"]) {
-                    NSArray *messages = [response objectForKey:@"records"];
-                    for (NSString *str in messages) {
-                        KIWIKEvent *event = [[KIWIKEvent alloc] initWithString:str];
-                        [weakSelf.dataArray addObject:event];
-                    }
+                    NSArray *records = [response objectForKey:@"records"];
+                    [weakSelf.dataArray addObjectsFromArray:records];
                 }
                 [self.tableView reloadData];
                 

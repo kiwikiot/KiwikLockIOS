@@ -101,9 +101,6 @@ typedef NS_ENUM(NSInteger, DoorLockUserType) {
 //用户编号（0~65535）
 @property(nonatomic, assign) NSInteger userNo;
 
-
--(instancetype)initWithString:(NSString *)string;
-
 // 时间
 -(NSDate *)dateTime;
 

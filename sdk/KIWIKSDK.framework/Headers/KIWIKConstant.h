@@ -15,7 +15,7 @@ typedef enum : NSUInteger {
     KIWIKNamepaceDeviceKV,   //Iot.Device.KV
 } KIWIKNamepace;
 
-extern NSString * const kSocketMessageReceivedNotification;
+extern NSString * const kEventNotifyNotification;
 
 extern NSString * const KIWIKErrorResponse;
 
