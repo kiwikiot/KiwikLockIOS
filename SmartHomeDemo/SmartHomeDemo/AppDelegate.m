@@ -9,12 +9,14 @@
 #import "AppDelegate.h"
 #import "KIWIKDevicesViewController.h"
 #import "KIWIKLockService.h"
+#import <CoreLocation/CoreLocation.h>
 
 #define kAccessToken  @"kiwikAccessToken"
 #define kClientId     @"gC62dG7sVdgvgKG2l5ZGydQO7lQIBSeC"  // 这个是测试用的
 
-@interface AppDelegate ()
+@interface AppDelegate ()<CLLocationManagerDelegate>
 @property(nonatomic, strong) NSTimer *timer;
+@property(nonatomic, strong) CLLocationManager *locationManager;
 @end
 
 @implementation AppDelegate
@@ -60,7 +62,20 @@
     return YES;
 }
 
+-(void)openLocation {
+    NSString* phoneVersion = [[UIDevice currentDevice] systemVersion];
+    CGFloat version = [phoneVersion floatValue];
+    NSLog(@"openLocation %f", version);
+    // 如果是iOS13 未开启地理位置权限 需要提示一下
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined && version >= 13) {
+       self.locationManager = [[CLLocationManager alloc] init];
+       [self.locationManager requestWhenInUseAuthorization];
+    }
+}
+
 -(void)setToken:(KIWIKToken *)token {
+    [self openLocation];
+    
     __weak __typeof(self)weakSelf = self;
     [GKIWIKSDK setToken:token block:^(BOOL success, NSError *error) {
         if (success) {

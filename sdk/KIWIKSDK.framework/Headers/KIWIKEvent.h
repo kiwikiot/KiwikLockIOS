@@ -39,6 +39,8 @@ typedef NS_ENUM(NSInteger, DoorLockAlarm) {
     DoorLockAlarmFreezeRemote,//遥控尝试开锁被冻结
     DoorLockAlarmLowVoltage,//电量低压报警
     DoorLockAlarmThreatenUnlock,//胁迫开锁
+    DoorLockAlarmTesla,//特斯拉线圈
+    DoorLockAlarmFreeze,//冻结
 };
 
 typedef NS_ENUM(NSInteger, DoorLockWarning) {
@@ -54,6 +56,7 @@ typedef NS_ENUM(NSInteger, DoorLockWarning) {
     DoorLockWarningUserAdd,//添加用户
     DoorLockWarningUserDelete,//删除用户
     DoorLockWarningUserInit,//用户初始化
+    DoorLockWarningBell,//门铃
 };
 
 typedef NS_ENUM(NSInteger, DoorLockUserType) {
@@ -66,6 +69,7 @@ typedef NS_ENUM(NSInteger, DoorLockUserType) {
     DoorLockUserTypeFace,//人脸
     DoorLockUserTypePalmPrint,//掌纹
     DoorLockUserTypeIris,//虹膜
+    DoorLockUserTypeTemp,//临时密码
 };
 
 @interface KIWIKEvent : NSObject

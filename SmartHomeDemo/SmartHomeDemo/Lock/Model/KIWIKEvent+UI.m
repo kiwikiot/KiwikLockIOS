@@ -115,6 +115,10 @@
             return NSLocalizedString(@"ThreatenUnlock", nil);
         case DoorLockAlarmLowVoltage:
             return NSLocalizedString(@"LowVoltageWarning", nil);
+        case DoorLockAlarmTesla:
+            return NSLocalizedString(@"TeslaWarning", nil);
+        case DoorLockAlarmFreeze:
+            return NSLocalizedString(@"FreezeWarning", nil);
         default:
             return nil;
     }
@@ -146,6 +150,8 @@
             return NSLocalizedString(@"user_delete", nil);
         case DoorLockWarningUserInit:
             return NSLocalizedString(@"user_init", nil);
+        case DoorLockWarningBell:
+            return NSLocalizedString(@"DoorBellRing", nil);
         default:
             return nil;
     }
@@ -169,6 +175,8 @@
             return NSLocalizedString(@"user_palmprint", nil);
         case DoorLockUserTypeIris:
             return NSLocalizedString(@"user_iris", nil);
+        case DoorLockUserTypeTemp:
+            return NSLocalizedString(@"user_temp", nil);
         default:
             return NSLocalizedString(@"DefaultUser", nil);
     }
@@ -192,9 +200,9 @@
 }
 
 -(NSString *)timeString {
-    NSDateFormatter *formatter1 = [[NSDateFormatter alloc] init];
-    [formatter1 setDateFormat:@"y-MM-d HH:mm ss"];
-    return [formatter1 stringFromDate:[self dateTime]];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"y-MM-d HH:mm ss"];
+    return [formatter stringFromDate:[self dateTime]];
 }
 
 @end

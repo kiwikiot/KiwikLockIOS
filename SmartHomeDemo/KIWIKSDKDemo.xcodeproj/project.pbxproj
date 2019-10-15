@@ -40,6 +40,8 @@
 		D36A654820D39C9D00CEDA57 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D36A654720D39C9C00CEDA57 /* Security.framework */; };
 		D36A654A20D39CFD00CEDA57 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D36A654920D39CFC00CEDA57 /* Foundation.framework */; };
 		D36A654E20D39D5300CEDA57 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D36A654D20D39D5300CEDA57 /* libicucore.tbd */; };
+		D3885E642354727A00BE25A2 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3885E632354727A00BE25A2 /* ExternalAccessory.framework */; };
+		D3885E66235475CF00BE25A2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3885E65235475CF00BE25A2 /* CoreLocation.framework */; };
 		D3AFE29C2112A7A1006D8F63 /* KIWIKUserAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3AFE29B2112A7A1006D8F63 /* KIWIKUserAddViewController.m */; };
 		D3DAA0FB2186B0EC00F3A785 /* KIWIKSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3DAA0FA2186B0EC00F3A785 /* KIWIKSDK.framework */; };
 		D3DAA11721899C6300F3A785 /* Pagination.m in Sources */ = {isa = PBXBuildFile; fileRef = D3DAA11621899C6300F3A785 /* Pagination.m */; };
@@ -115,6 +117,8 @@
 		D36A654720D39C9C00CEDA57 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D36A654920D39CFC00CEDA57 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D36A654D20D39D5300CEDA57 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		D3885E632354727A00BE25A2 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		D3885E65235475CF00BE25A2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D3AFE29A2112A7A1006D8F63 /* KIWIKUserAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KIWIKUserAddViewController.h; sourceTree = "<group>"; };
 		D3AFE29B2112A7A1006D8F63 /* KIWIKUserAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KIWIKUserAddViewController.m; sourceTree = "<group>"; };
 		D3DAA0FA2186B0EC00F3A785 /* KIWIKSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KIWIKSDK.framework; path = ../../../sdk/KIWIKSDK.framework; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 				D3DAA0FB2186B0EC00F3A785 /* KIWIKSDK.framework in Frameworks */,
 				D36A654A20D39CFD00CEDA57 /* Foundation.framework in Frameworks */,
 				D36A654820D39C9D00CEDA57 /* Security.framework in Frameworks */,
+				D3885E66235475CF00BE25A2 /* CoreLocation.framework in Frameworks */,
+				D3885E642354727A00BE25A2 /* ExternalAccessory.framework in Frameworks */,
 				D36A652B20D3888800CEDA57 /* QuartzCore.framework in Frameworks */,
 				FC193E3561A012FC0660F0CC /* libPods-KIWIKSDKDemo.a in Frameworks */,
 			);
@@ -257,6 +263,8 @@
 		D36A620320D21EDD00CEDA57 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D3885E65235475CF00BE25A2 /* CoreLocation.framework */,
+				D3885E632354727A00BE25A2 /* ExternalAccessory.framework */,
 				D36A654D20D39D5300CEDA57 /* libicucore.tbd */,
 				D36A654920D39CFC00CEDA57 /* Foundation.framework */,
 				D36A654720D39C9C00CEDA57 /* Security.framework */,

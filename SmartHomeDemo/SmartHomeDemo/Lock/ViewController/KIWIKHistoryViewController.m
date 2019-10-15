@@ -58,38 +58,40 @@
     __weak __typeof(self)weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [weakSelf.device getRecords:1 limit:30 block:^(id response, NSError *error) {
-            [weakSelf.tableView.mj_header endRefreshing];
-            if (!error) {
-                [weakSelf.dataArray removeAllObjects];
-                
-                if ([response objectForKey:@"records"]) {
-                    NSArray *messages = [response objectForKey:@"records"];
-                    for (NSString *str in messages) {
-                        KIWIKEvent *event = [[KIWIKEvent alloc] initWithString:str];
-                        [weakSelf.dataArray addObject:event];
+            [NSThread mainTask:^{
+                [weakSelf.tableView.mj_header endRefreshing];
+                if (!error) {
+                    [weakSelf.dataArray removeAllObjects];
+                    
+                    if ([response objectForKey:@"records"]) {
+                        NSArray *messages = [response objectForKey:@"records"];
+                        for (NSString *str in messages) {
+                            KIWIKEvent *event = [[KIWIKEvent alloc] initWithString:str];
+                            [weakSelf.dataArray addObject:event];
+                        }
                     }
-                }
-                if (weakSelf.dataArray.count == 0) {
-                    [self.tableView showTips:NSLocalizedString(@"NoRecords", nil) centerY:self.tableView.boundsHeight * 0.5 - SafeInsets_1.bottom];
+                    if (weakSelf.dataArray.count == 0) {
+                        [weakSelf.tableView showTips:NSLocalizedString(@"NoRecords", nil) centerY:self.tableView.boundsHeight * 0.5 - SafeInsets_1.bottom];
+                    } else {
+                        [weakSelf.tableView hideTips];
+                    }
+                    [weakSelf.tableView reloadData];
+                    
+                    if ([response objectForKey:@"_pagination"]) {
+                        NSDictionary *dict = [response objectForKey:@"_pagination"];
+                        weakSelf.pagination = [Pagination mj_objectWithKeyValues:dict];
+                    }
+                    
+                    [weakSelf.tableView.mj_footer resetNoMoreData];
+                    
+                    KIWIKEvent *latest = [weakSelf.dataArray count] > 0 ? weakSelf.dataArray[0] : nil;
+                    if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(latestEventChanged:)]) {
+                        [weakSelf.delegate latestEventChanged:latest];
+                    }
                 } else {
-                    [self.tableView hideTips];
+                    NSLog(@"getRecords error %@", error.description);
                 }
-                [self.tableView reloadData];
-                
-                if ([response objectForKey:@"_pagination"]) {
-                    NSDictionary *dict = [response objectForKey:@"_pagination"];
-                    weakSelf.pagination = [Pagination mj_objectWithKeyValues:dict];
-                }
-                
-                [weakSelf.tableView.mj_footer resetNoMoreData];
-                
-                KIWIKEvent *latest = [weakSelf.dataArray count] > 0 ? weakSelf.dataArray[0] : nil;
-                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(latestEventChanged:)]) {
-                    [weakSelf.delegate latestEventChanged:latest];
-                }
-            } else {
-                NSLog(@"getRecords error %@", error.description);
-            }
+            }];
         }];
     }];
     self.tableView.mj_header.automaticallyChangeAlpha = YES;

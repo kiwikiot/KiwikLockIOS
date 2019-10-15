@@ -24,6 +24,7 @@
 "UnlockRecords" = "开锁记录";
 "AlarmRecords" = "报警记录";
 "OpenDoorRecords" = "开门记录";
+
 "DoorLocked" = "门已锁上";
 "DoorUnlock" = "门锁已打开";
 "RemoteUnlockRequest" = "远程开锁触发";
@@ -36,6 +37,9 @@
 "FrozenRemoteControl" = "遥控尝试开锁被冻结";
 "LowVoltageWarning" = "电量低压提醒";
 "ThreatenUnlock" = "胁迫开锁报警";
+"TeslaWarning" = "特斯拉线圈报警";
+"FreezeWarning" = "冻结报警";
+
 "ForgetPullOutKey" = "忘记拔钥匙";
 "LockDoorWarning" = "锁门提醒";
 "KnockDoorWarning" = "敲门提醒";
@@ -44,18 +48,22 @@
 "LockedOpposite" = "门已反锁";
 "DoorUnlocked" = "反锁解除";
 "KeepUnlockOpen" = "门锁常开已开启";
+"user_add" = "新增用户";
+"user_delete" = "删除用户";
+"user_init" = "初始化用户";
+"DoorBellRing" = "门铃提醒";
+
 "DefaultUser" = "默认用户";
 "FingerprintUser" = "指纹用户";
 "PasswordUser" = "密码用户";
 "CardUser" = "卡用户";
 "KeyUser" = "钥匙用户";
 "PhoneUser" = "手机用户";
-"user_add" = "新增用户";
-"user_delete" = "删除用户";
-"user_init" = "初始化用户";
 "user_face" = "人脸用户";
 "user_palmprint" = "掌纹用户";
 "user_iris" = "虹膜用户";
+"user_temp" = "临时密码";
+
 "UserNo" = "用户编号";
 "UserName" = "用户名字";
 "ClearRecords" = "清空记录";
