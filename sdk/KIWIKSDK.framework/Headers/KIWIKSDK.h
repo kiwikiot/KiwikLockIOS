@@ -17,20 +17,36 @@
 
 #define GKIWIKSDK          [KIWIKSDK shareInstance]
 
+@protocol KIWIKSDKDelegate <NSObject>
+-(void)loginChanged:(BOOL)success;
+@end
 
 @interface KIWIKSDK : NSObject
 
 // Log开关
 @property(nonatomic, assign) BOOL debug;
 
-// 设为NO即可
+// YES时时测试服务器，正式版请设为NO
 @property(nonatomic, assign) BOOL isTest;
+
+// 是否登录成功
+@property(nonatomic, assign, readonly) BOOL isLogin;
 
 // 请联系我们提供
 @property(nonatomic, strong) NSString *clientId;
 
+@property(nonatomic, assign) id<KIWIKSDKDelegate> delegate;
+
 
 +(KIWIKSDK *)shareInstance;
+
+/*
+* 检查是否登录成功
+*
+*
+*  @param block           回调
+*/
+-(void)checkLogined:(void(^)(BOOL success, NSError *error))block;
 
 
 /*
@@ -54,14 +70,5 @@
  * 清空token
  */
 -(void)clearToken;
-
-/*
- * 刷新token
- *
- *  @param token     旧的token，如果已经设置，这里可以不传
- *  @param block     新的token回调
- */
--(void)refreshToken:(KIWIKToken *)token
-              block:(void(^)(KIWIKToken *newToken, NSError *error))block;
 
 @end

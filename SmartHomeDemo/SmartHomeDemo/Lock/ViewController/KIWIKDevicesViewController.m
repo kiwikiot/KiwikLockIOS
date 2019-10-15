@@ -11,7 +11,7 @@
 #import "KIWIKLockViewController.h"
 #import "FRAlertController.h"
 
-@interface KIWIKDevicesViewController ()<KIWIKSocketDelegate>
+@interface KIWIKDevicesViewController ()<KIWIKSDKDelegate, KIWIKSocketDelegate>
 @property(nonatomic, strong) UIBarButtonItem *leftItem;
 @end
 
@@ -57,13 +57,7 @@
     self.navigationController.navigationBar.barTintColor = MAIN_THEME_COLOR;
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     
-    [APPDelegate addObserver:self forKeyPath:@"isLogin" options:NSKeyValueObservingOptionNew context:nil];
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    
-    [APPDelegate removeObserver:self forKeyPath:@"isLogin"];
+    GKIWIKSDK.delegate = self;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -73,7 +67,7 @@
 }
 
 -(void)loginAction:(id)sender {
-    if (APPDelegate.isLogin) {
+    if (GKIWIKSDK.isLogin) {
         [[KIWIKUtils alertWithTitle:@"确定要退出登录吗？" msg:nil ok:^(FRAlertController *al) {
             [APPDelegate logout];
         }] show];
@@ -82,15 +76,16 @@
     }
 }
 
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    [NSThread mainTask:^{
-        self.leftItem.title = APPDelegate.isLogin ? @"退出登录" : @"登录";
-    }];
-}
-
 -(void)addAction:(id)sender {
     KIWIKHotspotViewController *hotspotVC = [[KIWIKHotspotViewController alloc] init];
     [self.navigationController pushViewController:hotspotVC animated:YES];
+}
+
+#pragma mark - KIWIKSDKDelegate
+-(void)loginChanged:(BOOL)success {
+    [NSThread mainTask:^{
+        self.leftItem.title = success ? @"退出登录" : @"登录";
+    }];
 }
 
 #pragma mark - KIWIKSocketDelegate
@@ -124,6 +119,7 @@
         cell.textLabel.font = [UIFont systemFontOfSize:16];
         cell.detailTextLabel.textColor = [UIColor grayColor];
         cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
+        cell.backgroundColor = [UIColor whiteColor];
     }
     KIWIKDevice *device = GKIWIKSocket.deviceList[indexPath.row];
     cell.imageView.image = [[UIImage imageNamed:@"DoorLock_White"] imageWithTintColor:MAIN_THEME_COLOR];

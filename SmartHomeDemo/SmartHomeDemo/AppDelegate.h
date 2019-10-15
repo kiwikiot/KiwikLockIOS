@@ -12,8 +12,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property(nonatomic, assign) BOOL isLogin;
-
 -(void)login;
 
 -(void)logout;
