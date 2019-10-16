@@ -90,7 +90,7 @@
 #pragma mark - KIWIKSocketDelegate
 -(void)locksChanged:(NSArray *)locks {
     [NSThread mainTask:^{
-        if (GKIWIKSDK.locks.count == 0) {
+        if (locks.count == 0) {
             [self.tableView showTips:NSLocalizedString(@"NoRecords", nil)];
         } else {
             [self.tableView hideTips];
