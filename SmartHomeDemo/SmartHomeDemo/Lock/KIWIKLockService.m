@@ -33,7 +33,7 @@ SingletonM(KIWIKLockService,)
     NSLog(@"msg %@", msg);
     NSString *did = [msg objectForKey:@"did"];
     KIWIKDevice *device = nil;
-    for (KIWIKDevice *dev in GKIWIKSocket.deviceList) {
+    for (KIWIKDevice *dev in GKIWIKSDK.locks) {
         NSLog(@"dev %@", dev.did);
         if ([dev.did isEqualToString:did]) {
             device = dev;

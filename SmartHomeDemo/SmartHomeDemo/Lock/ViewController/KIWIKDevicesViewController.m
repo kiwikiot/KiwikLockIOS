@@ -11,15 +11,11 @@
 #import "KIWIKLockViewController.h"
 #import "FRAlertController.h"
 
-@interface KIWIKDevicesViewController ()<KIWIKSDKDelegate, KIWIKSocketDelegate>
+@interface KIWIKDevicesViewController ()<KIWIKSDKDelegate>
 @property(nonatomic, strong) UIBarButtonItem *leftItem;
 @end
 
 @implementation KIWIKDevicesViewController
-
-- (void)dealloc {
-    GKIWIKSocket.delegate = nil;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,7 +35,7 @@
     
     __weak __typeof(self)weakSelf = self;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [GKIWIKSocket getLocks:^(id response, NSError *error) {
+        [GKIWIKSDK getLocks:^(id response, NSError *error) {
             [weakSelf.tableView.mj_header endRefreshing];
             if (error) {
                 [SVProgressHUD showErrorWithStatus:error.localizedDescription];
@@ -47,8 +43,6 @@
         }];
     }];
     self.tableView.mj_header.automaticallyChangeAlpha = YES;
-    
-    GKIWIKSocket.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -63,7 +57,12 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    [self deviceListChanged:nil];
+    [self locksChanged:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    GKIWIKSDK.delegate = nil;
 }
 
 -(void)loginAction:(id)sender {
@@ -89,9 +88,9 @@
 }
 
 #pragma mark - KIWIKSocketDelegate
--(void)deviceListChanged:(NSArray *)deviceList {
+-(void)locksChanged:(NSArray *)locks {
     [NSThread mainTask:^{
-        if (GKIWIKSocket.deviceList.count == 0) {
+        if (GKIWIKSDK.locks.count == 0) {
             [self.tableView showTips:NSLocalizedString(@"NoRecords", nil)];
         } else {
             [self.tableView hideTips];
@@ -102,7 +101,7 @@
 
 #pragma mark - UITableViewDataSource & UITableViewDelegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [GKIWIKSocket.deviceList count];
+    return [GKIWIKSDK.locks count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -121,7 +120,7 @@
         cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
         cell.backgroundColor = [UIColor whiteColor];
     }
-    KIWIKDevice *device = GKIWIKSocket.deviceList[indexPath.row];
+    KIWIKDevice *device = GKIWIKSDK.locks[indexPath.row];
     cell.imageView.image = [[UIImage imageNamed:@"DoorLock_White"] imageWithTintColor:MAIN_THEME_COLOR];
     cell.textLabel.text = device.name.length ? device.name : @"LOCK";
     cell.detailTextLabel.text = device.did;
@@ -131,7 +130,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    KIWIKDevice *device = GKIWIKSocket.deviceList[indexPath.row];
+    KIWIKDevice *device = GKIWIKSDK.locks[indexPath.row];
     KIWIKLockViewController *vc = [[KIWIKLockViewController alloc] initWithDevice:device];
     [self.navigationController pushViewController:vc animated:YES];
 }

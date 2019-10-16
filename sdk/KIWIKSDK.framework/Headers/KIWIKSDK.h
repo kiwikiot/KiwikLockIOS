@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "KIWIKSocket.h"
 #import "KIWIKDevice.h"
 #import "KIWIKEvent.h"
 #import "KIWIKDevice_Add.h"
@@ -15,10 +14,14 @@
 #import "KIWIKWifi.h"
 #import "KIWIKConnect.h"
 
+extern NSString * const kEventNotifyNotification;
+
 #define GKIWIKSDK          [KIWIKSDK shareInstance]
 
 @protocol KIWIKSDKDelegate <NSObject>
+@optional
 -(void)loginChanged:(BOOL)success;
+-(void)locksChanged:(NSArray *)locks;
 @end
 
 @interface KIWIKSDK : NSObject
@@ -34,6 +37,12 @@
 
 // 请联系我们提供
 @property(nonatomic, strong) NSString *clientId;
+
+/**
+ * 设备列表
+ */
+@property(nonatomic, strong) NSArray *locks;
+
 
 @property(nonatomic, assign) id<KIWIKSDKDelegate> delegate;
 
@@ -70,5 +79,12 @@
  * 清空token
  */
 -(void)clearToken;
+
+/*
+ * 获取门锁列表
+ *
+ *  @param block   回调，与其他接口不同的是response是设备列表
+ */
+-(void)getLocks:(void(^)(id response, NSError *error))block;
 
 @end
