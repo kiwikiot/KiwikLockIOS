@@ -14,14 +14,14 @@
 #import "KIWIKWifi.h"
 #import "KIWIKConnect.h"
 
-extern NSString * const kEventNotifyNotification;
-
 #define GKIWIKSDK          [KIWIKSDK shareInstance]
+
+extern NSString * const kEventNotifyNotification;
 
 @protocol KIWIKSDKDelegate <NSObject>
 @optional
--(void)loginChanged:(BOOL)success;
--(void)locksChanged:(NSArray *)locks;
+-(void)loginChanged:(BOOL)success; // 登录状态变化
+-(void)locksChanged:(NSArray *)locks; // 锁列表变化
 @end
 
 @interface KIWIKSDK : NSObject
@@ -38,9 +38,7 @@ extern NSString * const kEventNotifyNotification;
 // 请联系我们提供
 @property(nonatomic, strong) NSString *clientId;
 
-/**
- * 设备列表
- */
+// 锁列表
 @property(nonatomic, strong) NSArray *locks;
 
 
@@ -57,7 +55,6 @@ extern NSString * const kEventNotifyNotification;
 */
 -(void)checkLogined:(void(^)(BOOL success, NSError *error))block;
 
-
 /*
  * 设置token
  *
@@ -66,7 +63,6 @@ extern NSString * const kEventNotifyNotification;
  *  @param block           回调
  */
 -(void)setToken:(KIWIKToken *)accessToken block:(void(^)(BOOL success, NSError *error))block;
-
 
 /*
  * 网页登录
@@ -85,6 +81,6 @@ extern NSString * const kEventNotifyNotification;
  *
  *  @param block   回调，与其他接口不同的是response是设备列表
  */
--(void)getLocks:(void(^)(id response, NSError *error))block;
+-(void)getLocks:(void(^)(NSArray *locks, NSError *error))block;
 
 @end

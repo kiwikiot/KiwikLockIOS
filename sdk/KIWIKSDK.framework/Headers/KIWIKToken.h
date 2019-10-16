@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define GKIWIKTokenMgr [KIWIKTokenMgr shareInstance]
-
-
 @interface KIWIKToken : NSObject
 
 /*

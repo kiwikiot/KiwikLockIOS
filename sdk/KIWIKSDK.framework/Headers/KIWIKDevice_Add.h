@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KIWIKDevice.h"
 
 @interface KIWIKDevice_Add : NSObject
 
@@ -25,6 +26,6 @@
  *
  *  @param block      回调
  */
--(void)bind:(void(^)(id response, NSError *error))block;
+-(void)bind:(KIWIKRespBlock)block;
 
 @end

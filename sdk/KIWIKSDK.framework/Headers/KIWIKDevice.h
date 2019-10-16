@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+* 请求的回调，response为payload，error为错误，10000为token过期，10001为连接失败，10002为超时
+*/
+typedef void(^KIWIKRespBlock)(id response, NSError *error);
+
 
 @interface KIWIKDevice : NSObject
 
@@ -53,14 +58,14 @@
  *  @param name       设备名
  *  @param block      回调
  */
--(void)setDeviceName:(NSString *)name block:(void(^)(id response, NSError *error))block;
+-(void)setDeviceName:(NSString *)name block:(KIWIKRespBlock)block;
 
 /*
  * 获取设备能力集
  *
  *  @param block      回调
  */
--(void)getDeviceAblility:(void(^)(id response, NSError *error))block;
+-(void)getDeviceAblility:(KIWIKRespBlock)block;
 
 /*
  * 获取设备详情
@@ -68,7 +73,7 @@
  *  @param didArray   设备ID列表
  *  @param block      回调
  */
--(void)getDeviceInfo:(void(^)(id response, NSError *error))block;
+-(void)getDeviceInfo:(KIWIKRespBlock)block;
 
 /*
  * 设备控制数据
@@ -76,7 +81,7 @@
  *  @param data       控制数据
  *  @param block      回调
  */
--(void)ctrl:(NSData *)data block:(void(^)(id response, NSError *error))block;
+-(void)ctrl:(NSData *)data block:(KIWIKRespBlock)block;
 
 
 /*
@@ -85,14 +90,14 @@
  *  @param state      1表示开锁，0表示关锁
  *  @param block      回调
  */
--(void)unlock:(BOOL)state block:(void(^)(id response, NSError *error))block;
+-(void)unlock:(BOOL)state block:(KIWIKRespBlock)block;
 
 /*
  * 删除设备
  *
  *  @param block      回调
  */
--(void)deleteDevice:(void(^)(id response, NSError *error))block;
+-(void)deleteDevice:(KIWIKRespBlock)block;
 
 /*
  * 读取设备事件记录
@@ -101,7 +106,7 @@
  *  @param limit      分页大小，最大限制为100，默认为30
  *  @param block      回调
  */
--(void)getRecords:(NSInteger)start limit:(NSInteger)limit block:(void(^)(id response, NSError *error))block;
+-(void)getRecords:(NSInteger)start limit:(NSInteger)limit block:(KIWIKRespBlock)block;
 
 /*
  * 设置事件用户ID备注
@@ -111,7 +116,7 @@
  *  @param name       用户名
  *  @param block      回调
  */
--(void)setUser:(NSInteger)userType userNo:(NSInteger)userNo name:(NSString *)name block:(void(^)(id response, NSError *error))block;
+-(void)setUser:(NSInteger)userType userNo:(NSInteger)userNo name:(NSString *)name block:(KIWIKRespBlock)block;
 
 /*
  * 删除事件用户ID备注
@@ -120,14 +125,14 @@
  *  @param userNo     用户编号
  *  @param block      回调
  */
--(void)deleteUser:(NSInteger)userType userNo:(NSInteger)userNo block:(void(^)(id response, NSError *error))block;
+-(void)deleteUser:(NSInteger)userType userNo:(NSInteger)userNo block:(KIWIKRespBlock)block;
 
 /*
  * 读取事件用户ID备注列表
  *
  *  @param block      回调
  */
--(void)getUsers:(void(^)(id response, NSError *error))block;
+-(void)getUsers:(KIWIKRespBlock)block;
 
 /*
  * 读取单个用户ID备注
@@ -136,6 +141,6 @@
  *  @param userNo     用户编号
  *  @param block      回调
  */
--(void)getUser:(NSInteger)userType userNo:(NSInteger)userNo block:(void(^)(id response, NSError *error))block;
+-(void)getUser:(NSInteger)userType userNo:(NSInteger)userNo block:(KIWIKRespBlock)block;
 
 @end
